@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html class="embed">
+<head>
+  <title>RidingSocial - Your motorcycle rides will never be the same - Powered by Butler Motorcycle Maps </title>
+  <%= render 'template/open_graph_tags', :route => @route %>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag '//fonts.googleapis.com/css?family=Open+Sans+Condensed:300,300italic,700' %>
+  <%= stylesheet_link_tag '//fonts.googleapis.com/css?family=Open+Sans:400,700,600,600italic,400italic,700italic,800,800italic&subset=latin,cyrillic' %>
+
+  <script src="//www.google.com/jsapi"></script>
+  <script src="//maps.googleapis.com/maps/api/js?<%= Rails.env.development? ? '' : 'client=gme-ridingsocialllc&'%>libraries=geometry&sensor=true"></script>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+  <script>
+      var ratyConf = {
+          starHalf: "<%= asset_path 'raty-master/star-half.png' %>", starOff: "<%= asset_path 'raty-master/star-off.png' %>", starOn: "<%= asset_path 'raty-master/star-on.png' %>"
+      };
+      <% admin_or_pro = current_user && current_user.roles?(:admin, :pro) %>
+      var mapviewConf = {
+          markerUrl: '<%= asset_path 'markers.png' %>',
+          waypointMarkerUrl: '<%= asset_path 'markers/waypoint-marker.png' %>',
+          butlerRideMarkerUrl: '<%= asset_path 'markers/butler-ride-marker.png' %>',
+          featureId: '<%= admin_or_pro ? '1AREaXlN0hWtHoj7sS8QI8N-cSIT7V4nwlODziC8q' : '' %>',
+          pmtFeatureId: '<%= admin_or_pro ? '1nT_LJmUAnNhPsbzeKgSeBrPe8JmalxB9GhyEGQ0_' : '' %>',
+          g1MarkersUrl: '<%= admin_or_pro ? '/routes/g1_markers.json' : '' %>',
+          userInfo: '',
+          waypointRestriction: <%= Rails.env.development? ? 8 : 24%>
+      };
+      isEmbed = true;
+      var C7E1249F = "ED908C23";
+      var currentUserRouteCountExceeded = true;
+  </script>
+
+  <style type="text/css">
+      body.with-bg {
+          background: url(<%= randomized_background_image %>) no-repeat center center fixed;
+          background-position-y: 59px;
+          background-size: 100% auto;
+      }
+  </style>
+</head>
+<body class="anonymous embed">
+
+
+<div class="row page-wrapper" style="margin-bottom: 0px;">
+  <%= yield %>
+  <div class="clearfix"></div>
+</div>
+<div class="map-block-wrapper add-custom-scroll hidden">
+  <div class="ajax-overlay">
+    <div class="ajax-loader"></div>
+  </div>
+  <div class="clearfix"></div>
+</div>
+
+<%= render 'template/layout/metrika' %>
+
+<script>
+  var embededRoute = {
+    id: <%= @route.id %>,
+    data: '<%= @route.data.html_safe %>'
+  };
+</script>
+
+</body>
+</html>

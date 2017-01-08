@@ -1,0 +1,56 @@
+<div class="wrapper-content">
+
+  <p>
+    Each and every road segment detailed in our maps has been ridden and rated by an owner of Butler Maps Inc.
+    From sport bike enthusiast, to dual sport adventurer, chopper rider, to two up tourers,
+    our team has diligently researched and presented fantastic riding experiences that are
+    sure to impress no matter what you ride.
+    <% if !current_user || current_user.roles?(:free, :plus) %>
+      To see all these awesome ride options upgrade to our premium account.
+      <a class="cbox-button-confirm sign-up" href="#">Upgrade</a>
+    <% end %>
+  </p>
+
+
+  <div class="row">
+    <div class="col_8"><h2 class="legend-g1"><span>G1 Rides (Best Segments)</span></h2>
+
+      <p>As riders we constantly search for the perfect road. We seek that fleeting moment where everything fits
+        perfectly together. The rhytmic hum of the motor, the dramatic vistas that overwhelm our senses and the one of
+        a kind road that ties all together. We search for G1. Steep climbs, fight switchbacks, deep canyons and
+        million dollar views. These roads have an undeniable appeal that set them apart from everything else.</p>
+    </div>
+    <div class="col_8"><h2 class="legend-g2"><span>G2 Rides (Better Segments)</span></h2>
+
+      <p>There are no stoplights or shopping malls here. G2 roads energetically flow from corner to corner gently
+        bobbing and weaving. They meander past lakes, criss cross forests and provide an experience you cant gen on
+        the freeway. Keep your head up. G2s can have fast sweepers, elevation change, tight corners and everything in
+        between.</p></div>
+    <div class="col_8 omega"><h2 class="legend-g3"><span>G3 Rides (Good Segments)</span></h2>
+
+      <p>G3 is not your average road. All though these stretches of tarmac require the fewest criteria to make our
+        list, dont be fooled. G3 roads are twisty and exciting. Ditch the traffic and head toward a stretch of orange.
+        You won't regret it.</p></div>
+    <div class="clearfix"></div>
+    <div class="col_8"><h2 class="legend-lost-highway"><span>Lost Highway Rides</span></h2>
+
+      <p>Beyond mountain passes and dramatic canyons are roads that extend to the horizon and the unknown beyond. The
+        faded paint of a centerline, or crumbing shoulder are all that remain to remind us of a more purposeful past.
+        They are highways that seem lost in time. Void of the trappings of population or procedure, these roads
+        provide a motorcycling experience as unique as the untouched landscapes they divide. They are America's "Lost
+        Highways".</p></div>
+    <div class="col_8"><h2 class="legend-paved-mountain-trail"><span>Paved Mountain Trail Rides</span></h2>
+
+      <p>Not all roads were meant to be paved - some got paved anyway. Stuck between the dust of a dirt road and the
+        smooth asphalt of a paved one lies the Paved Mt Trail. There roads have stood the test of time fighting for
+        space among dense forest and cliff sides. Their fragile surface crumbling as they succumb to the rugged
+        terrain they divide. Finding space for two cars to pass can be hard. Finding enjoyment on a bike easy.</p>
+    </div>
+    <div class="col_8 omega"><h2 class="legend-dirt-road"><span>Featured Dirt Road Rides</span></h2>
+
+      <p>These are dirt roads generally suitable for large adventure bikes. They were selected by Butler Maps for
+        their beauty, remoteness and “link-ability” to excellent paved roads. They are a mix of maintained gravel
+        roads and rugged two track, because of this, conditions and difficulty may vary.</p></div>
+    <div class="clearfix"></div>
+  </div>
+</div>

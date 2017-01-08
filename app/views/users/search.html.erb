@@ -1,0 +1,26 @@
+<h1>Search users</h1>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Location</th>
+      <th>Avatar</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= user.full_name %></td>
+        <td><%  if user.location %>
+            <%= user.location %>
+          <%  end %></td>
+        <td><%= avatar_url(user, :small) %></td>
+        <td><%= link_to 'Show', user %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+

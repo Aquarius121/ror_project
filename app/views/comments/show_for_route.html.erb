@@ -1,0 +1,6 @@
+<% if @comments %>
+  <%  @comments.each do |comment| %>
+    <div><%= comment.user.full_name %></div>
+    <div><%= comment.body %></div>
+  <% end %>
+<% end %>

@@ -1,0 +1,52 @@
+.b-ride-popup style="margin-left: -630px"
+  /TODO
+    .tip
+
+  .header
+    .heading-actions
+      a.btn.btn-orange href="#" view in map
+
+    h1 Ride info
+
+  .b-ride-info
+    .content
+      .title
+        /TODO
+          .heading-actions
+            .btn.btn-orange.btn-link copy to my rides
+
+        | Boston to Seattle
+
+        span.links.links-plus
+          a href="#" Group name
+
+  .map
+    = image_tag asset_url('v2/trip.png')
+
+  .description
+    .text
+      p
+        Phasellus ac est vel purus bibendum hendrerit nec a dolor. Aenean sodales pharetra ante. Ut vel massa et lorem consequat vestibulum. 
+      p
+        Phasellus accumsan nulla mollis mollis vulputate. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Fusce vel auctor ex, sed sagittis felis. 
+
+    .stats
+      .b-stat
+        .heading 4:46
+        .description total time
+
+      .b-stat
+        .heading 14
+        .description total rides
+
+      .b-stat
+        .heading 6
+        .description challenges
+
+  = render 'v2/markup/partials/socialize/ride'
+
+
+
+
+
+

@@ -1,0 +1,16 @@
+.row
+  .col-sm-12
+    .b-description-list
+      - if (bikes = user.user_bikes).present?
+        dl
+          dt in the garage
+          dd
+            - bikes.each do |bike|
+              div = bike.model
+
+      - if (preferences = user.riding_preferences).present?
+        dl
+          dt riding preferences
+          dd
+            - preferences.each do |preference|
+              div = preference.title

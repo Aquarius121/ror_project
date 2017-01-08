@@ -1,0 +1,43 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @club.title %>
+</p>
+
+<p>
+  <strong>Logo:</strong>
+  <%= club_logo_url(@club, :small) %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @club.description %>
+</p>
+
+<p>
+  <strong>Location:</strong>
+  <%= @club.location %>
+</p>
+
+<p>
+  <strong>Privacy:</strong>
+  <%= @club.privacy.title %>
+</p>
+
+<p>
+  <strong>Club Type:</strong>
+  <%= @club.club_type.title %>
+</p>
+
+<div>
+	<strong>Members:</strong>
+	<ul>
+    <% @club.list_members.each do |user| %>
+    	<li><a href="#"><%= user.full_name %></a></li>
+    <% end%>		
+	</ul>
+</div>
+
+<%= link_to 'Edit', edit_club_path(@club) %> |
+<%= link_to 'Back', clubs_path %>

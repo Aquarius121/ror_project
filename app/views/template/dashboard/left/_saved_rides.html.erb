@@ -1,0 +1,26 @@
+<div class="dashboard-left-bottom-item">
+  <div class="dashboard-left-bottom-item-head">
+    <span class="dashboard-left-bottom-item-title">My rides</span>
+    <span class="dashboard-left-bottom-item-toggler"></span>
+  </div>
+  <div class="dashboard-left-bottom-item-body-rides">
+    <div class="dashboard-ride-hidden">
+      <%= dashboard_single_ride '', '', '', '' %>
+    </div>
+    <div class="dashboard-rides-content">
+      <%= routes.map do |route|
+        if route.ridedate
+          date = route.ridedate.to_formatted_s(:long_ordinal)
+        else
+          date = route.created_at.to_formatted_s(:short_ordinal)
+        end
+        dashboard_single_ride(date, route.title, meters_to_mile(route.ride_distance).to_s + 'mi', route.id)
+      end.join.html_safe %>
+    </div>
+    <% if current_user.rides_count > 3 %>
+      <div class="see-all-rides">
+        <%= link_to 'See All Rides', "#", :class => "see-all-rides-link" %>
+      </div>
+    <% end %>
+  </div>
+</div>

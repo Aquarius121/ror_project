@@ -1,0 +1,37 @@
+.b-socialize
+  .b-socialize-bar
+    .b-socialize-toggle
+      /.b-socialize-expand   Expand
+      .b-socialize-collapse Collapse
+
+    .b-socialize-stats
+      .b-action Like
+      .b-action Comment
+      .b-socialize-stats-likes 15
+      .b-socialize-stats-comments 20
+
+  .b-comments
+    .b-comments-stats
+      a href="#" Lachie Thomas
+      '  and 53 others like this
+
+    .b-comments-list
+      - 2.times.each do 
+        .b-comment
+          .b-comment-avatar
+            = image_tag 'v2/avatar.png'
+
+          .b-comment-text
+            | It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.
+            span.b-comment-time 1hr
+
+      .b-comment
+        .b-comment-avatar
+          = image_tag 'v2/avatar.png'
+
+        input.b-comment-input type="text" placeholder="Comment..."
+
+    .b-comments-more
+      a href="#" 
+        i.icon-comment
+        ' 3 more comments

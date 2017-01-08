@@ -1,0 +1,47 @@
+<div class="invites">
+  <p id="notice"><%= notice %></p>
+
+  <% if @approved %>
+    <h1>Listing invites</h1>
+    <%= link_to 'Not Approved Invites', notapproved_invites_path %>
+  <% else %>
+    <h1>Not Approved invites</h1>
+    <%= link_to 'All Invites', invites_path %>
+  <% end %>
+
+  <table>
+    <thead>
+    <tr>
+      <th>First name</th>
+      <th>Last name</th>
+      <th>Email</th>
+      <th>Code</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <% @invites.each do |invite| %>
+        <tr>
+          <td><%= invite.firstname %></td>
+          <td><%= invite.lastname %></td>
+          <td><%= invite.email %></td>
+          <td><%= invite.code %></td>
+          <% if invite.code == nil %>
+              <td><%= link_to 'Approve', '/invites/approve/' + invite.id.to_s %></td>
+          <% else %>
+              <td><%= link_to('Approved', '/registrations/frominvite/' + Digest::MD5.hexdigest(invite.id.to_s))%></td>
+          <% end %>
+          <td><%= link_to 'Edit', edit_invite_path(invite) %></td>
+          <td><%= link_to 'Destroy', invite, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+    <% end %>
+    </tbody>
+  </table>
+
+  <br>
+
+  <%= link_to 'New Invite', new_invite_path %>
+</div>

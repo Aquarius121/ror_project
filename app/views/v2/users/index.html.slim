@@ -1,0 +1,49 @@
+.b-row
+  h1 Friend search
+
+  .b-group-table-filter
+    = simple_form_for @filter, url: v2_users_path, method: :get, as: :filter do |f|
+      .row
+        .col-sm-3
+          .b-form-row
+            = f.input_field :name, placeholder: 'User Name', required: false
+
+        .col-sm-3
+          .b-form-row
+            = f.input_field :location, placeholder: 'User Location', required: false
+
+        .col-sm-3
+          .b-form-row
+            = f.input_field :bike_type_id,
+                            collection: BikeType.all,
+                            include_blank: "Select Bike Type",
+                            required: false
+
+        .col-sm-3
+          = f.button :submit, 'SEARCH', class: 'btn btn-orange btn-block'
+
+  table.b-group-table
+    tbody
+      - @users.each do |user|
+        tr
+          td
+            = react_component 'UserListItemWithPopup', user.reactify(current_user)
+
+          /TODO user table fields
+          td width="15%"
+
+          td width="15%"
+            - if current_user.can? :befriend, user
+              = link_to 'Make friend',
+                befriend_v2_user_path(user),
+                method: :patch,
+                class: 'btn btn-white'
+            - if current_user.can? :unfriend, user
+              = link_to 'Unfriend',
+                befriend_v2_user_path(user),
+                method: :delete,
+                class: 'btn btn-gray'
+
+
+
+

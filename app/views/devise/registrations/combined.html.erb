@@ -1,0 +1,107 @@
+<div class="devise-form-container">
+  <div class="col_3"></div>
+  <div id="sign-div" class="col_18">
+    <div class="sign-div-wrapper col_24 combined">
+      <div class="sign-up-form-title"><h2>Sign up</h2></div>
+      <p id="notice"><%= notice %></p>
+      <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
+        <%= devise_error_messages! %>
+        <div class="col_9 omega">
+          <div class="sign-up-form-left">
+            <div class="field-wrapper">
+              <div><%= f.label :email %></div>
+              <%= f.email_field :email, :autofocus => true %>
+            </div>
+            <div class="field-wrapper">
+              <div><%= f.label :password %></div>
+              <%= f.password_field :password %></div>
+            <div class="field-wrapper">
+              <div><%= f.label :password_confirmation %></div>
+              <%= f.password_field :password_confirmation %></div>
+          </div>
+        </div>
+        <div class="col_9 omega">
+          <div class="sign-up-form-right">
+            <div class="field-wrapper">
+              <div><%= f.label 'First name' %></div>
+              <%= f.text_field :firstname %>
+            </div>
+            <div class="field-wrapper">
+              <div><%= f.label 'Last name' %></div>
+              <%= f.text_field :lastname %>
+            </div>
+            <div class="field-wrapper">
+              <div><%= f.label :zip %></div>
+              <%= f.text_field :zip %>
+            </div>
+          </div>
+        </div>
+
+        <div class="col_24 omega">
+          <div class="login-horisontal"></div>
+        </div>
+
+        <div class="col_9 omega">
+          <div style="padding: 25px 0 0 25px;">
+
+            <p>Pick a Plan</p>
+            <ul>
+              <% PremiumPlan.for_combined_form.order('label desc').each do |plan| %>
+                <li class="payment-rate">
+                  <label class="payment-rate-label">
+                    <%= radio_button_tag 'plan', plan.id, @plan ? plan.id == @plan.id : false %> <%= plan.label %>
+                  </label>
+                </li>
+              <% end %>
+            </ul>
+            <a href="http://ridingsocial.com/price/" target="blank" class="plan-details">
+              See plan details
+            </a>
+          </div>
+          <div class="premium-stats-error">
+            <ul class="error-list-payment" id="error_list_payment"></ul>
+          </div>
+        </div>
+        <div class="col_9 omega" style="padding: 25px 0 0 0;">
+
+          <ul class="payment-list-card" id="payment_logo">
+            <li class="payment-logo visa"></li>
+            <li class="payment-logo maestro"></li>
+            <li class="payment-logo dinersclub"></li>
+            <li class="payment-logo amexp"></li>
+          </ul>
+
+
+
+          <%= render partial: 'template/layout/premium_form', locals: {
+              customer: @customer,
+              cvv: @cvv,
+              card_num: @card_num,
+              expiration: @expiration
+          } %>
+
+        </div>
+
+
+        <div class="col_24 omega">
+          <div class="col_9 omega">
+
+            <div class="have-account-button"></div>
+
+          </div>
+          <div class="col_9 omega">
+            <div class="have-account-button">
+              <%= f.submit "Make Payment", :class => "make-payment" %>
+            </div>
+          </div>
+        </div>
+
+      <% end %>
+    </div>
+  </div>
+</div>
+
+
+
+
+

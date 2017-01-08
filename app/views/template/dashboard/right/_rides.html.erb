@@ -1,0 +1,23 @@
+<div class="dashboard-right-bottom">
+  <div class="dashboard-right-bottom-title">
+    <%= title %>
+  </div>
+  <div class="dashboard-right-bottom-rides">
+    <span class="left">Rides</span>
+    <span class="right">
+      <%= ride_stats.count.to_s %>
+    </span>
+  </div>
+  <div class="dashboard-right-bottom-distance">
+    <span class="left">Distance</span>
+    <span class="right">
+      <%= meters_to_mile(ride_stats.distance) %>mi
+    </span>
+  </div>
+  <div class="dashboard-right-bottom-time">
+    <span class="left">Time</span>
+    <span class="right">
+      <%= seconds_to_screen(ride_stats.time) %>
+    </span>
+  </div>
+</div>

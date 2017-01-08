@@ -1,0 +1,46 @@
+// CHALLENGES 
+.b-row
+  .row
+    .col-md-12
+      = react_component 'ExpandableBlock', @expandable_challenges
+      /h1 
+      /  ' Challenges
+      /  span.links.links-plus
+      /    a href="#" more
+      /
+      /.row
+      /  - Challenge.all.each do |challenge|
+      /    .col-md-4
+      /      = react_component 'ChallengeListItem', challenge.reactify
+      /
+      /.row
+      /  .col-md-4
+      /    .b-desc
+      /      .title
+      /        | Challenge name goes&nbsp;here
+      /      .desc
+      /        | San francisco bay ride
+      /
+      /      .links.links-plus
+      /        a href="#" do this challenge 
+      /
+      /  .col-md-4
+      /    .b-desc
+      /      .title
+      /        | Challenge name goes&nbsp;here
+      /      .desc
+      /        | San francisco bay ride
+      /
+      /      .links.links-plus
+      /        a href="#" join a group 
+      /        a href="#" do this challenge 
+      /
+      /  .col-md-4
+      /    .b-desc
+      /      .title
+      /        | Challenge name goes&nbsp;here
+      /      .desc
+      /        | San francisco bay ride
+      /
+      /      .links.links-plus
+      /        a href="#" do this challenge 

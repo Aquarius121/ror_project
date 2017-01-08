@@ -1,0 +1,84 @@
+<%= stylesheet_link_tag "admin_table" %>
+
+<h2 style="margin-top: 100px;">Listing users</h2>
+
+<%= form_tag('/users', :method => :get) do %>
+  <label for="q">Search:</label>
+  <%= text_field_tag('q', params[:q]) %>
+<% end %>
+
+<table class="table table-striped" style="font-size: 14px;">
+  <thead>
+  <tr>
+    <% @totals.each do |k, v| %>
+      <th><%= k %></th>
+    <% end %>
+  </tr>
+  </thead>
+
+  <tbody>
+  <tr>
+    <% @totals.each do |k, v| %>
+      <td><%= v %></td>
+    <% end %>
+  </tr>
+  </tbody>
+</table>
+
+
+<table class="table table-striped" style="font-size: 14px;">
+  <thead>
+  <tr>
+    <th><%= sortable 'id' %></th>
+    <th><%= sortable 'lastname,firstname', 'Name' %></th>
+    <th><%= sortable 'email' %></th>
+    <th><%= sortable 'role_id', 'Role' %></th>
+    <th><%= sortable 'created_at', 'Join date' %></th>
+    <th>Subscription details</th>
+    <th>Upgrade date</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @users.each do |user| %>
+    <% subs = user.subscription %>
+    <tr>
+      <td><%= user.id %></td>
+      <td><%= user.full_name %></td>
+      <td><%= user.email %></td>
+      <% role_name = user.role.name + (!subs && user.role?(:pro) ? ' (free)' : '') %>
+      <td><%= role_name %></td>
+      <td><%= user.created_at.in_time_zone('Mountain Time (US & Canada)').strftime '%F %I:%M %p' %></td>
+      <td><%= subs && subs.premium_plan && subs.premium_plan.label %></td>
+      <td><%= subs && subs.created_at.in_time_zone('Mountain Time (US & Canada)').strftime('%F') %></td>
+      <td>
+        <% if user.role? :free %>
+          <%= link_to 'Make an admin', promote_user_path(user), :method => :post %><br/>
+          <%= link_to 'Make a Pro', make_pro_user_path(user), :method => :post %>
+        <% end %>
+        <% unless user.role? :free %>
+          <%= link_to 'Make a \'free\' user', demote_user_path(user), :method => :post %>
+        <% end %>
+      </td>
+      <td><%= link_to 'Edit', "/users/edit/#{user.id}", class: "edit-user-account", data: {user_id: user.id} %></td>
+      <td><%= link_to 'Destroy', user, method: :delete, data: {confirm: 'Are you sure?'} %></td>
+      <td><%= link_to 'Assume', admin_user_session_path(user_id: user), method: :post %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+
+<%= paginate @users %>
+
+<%= link_to 'All users emails',  all_emails_users_path %>
+
+<script>
+  $('a.edit-user-account').click(function () {
+    toggleAccountPopup($(this).data('userId'));
+    return false;
+  });
+</script>

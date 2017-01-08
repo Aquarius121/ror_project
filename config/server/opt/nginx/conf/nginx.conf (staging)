@@ -1,0 +1,65 @@
+user  nginx;
+worker_processes  3;
+
+error_log  /var/log/error.log  warn;
+
+pid    /var/run/nginx.pid;
+
+events {
+    worker_connections  4096;
+}
+
+worker_rlimit_nofile 10000;
+
+http {
+
+    passenger_root /home/deploy/.gem/ruby/2.2.0/gems/passenger-4.0.59;
+    passenger_ruby /home/deploy/.rubies/ruby-2.2.0/bin/ruby;
+
+    passenger_max_pool_size 4;
+
+    include       mime.types;
+    default_type  application/octet-stream;
+
+    access_log  off;
+    sendfile        on;
+    #tcp_nopush     on;
+    keepalive_timeout  65;
+
+    server {
+        listen 80;
+        client_max_body_size 16M;
+        client_body_buffer_size 1m;
+        client_header_buffer_size 2k;
+
+        # Adjust connection keepalive for SPDY and non-SPDY clients:
+        keepalive_timeout 300; # up from 75 secs default
+
+        charset utf-8;
+        passenger_enabled on;
+        passenger_intercept_errors on;
+
+        root /var/www/butlermaps/current/public;
+
+        gzip  on;
+        gzip_types text/plain text/css application/json application/x-javascript text/xml application/xml application/xml+rss text/javascript application/javascript;
+        gzip_vary on;
+        gzip_disable     "MSIE [1-6]\.";
+        gzip_min_length  1000;
+
+        error_page  404              /404.html;
+
+        location ~ ^/(assets|images|javascripts|stylesheets|swfs|system|fonts|body-img)/ {
+          gzip_types application/octet-stream application/json;
+          gzip_static on;
+          expires 1y;
+          add_header Cache-Control public;
+          add_header Last-Modified "";
+          add_header ETag "";
+
+          open_file_cache max=1000 inactive=500s;
+          open_file_cache_valid 600s;
+          open_file_cache_errors on;
+        }
+    }
+}

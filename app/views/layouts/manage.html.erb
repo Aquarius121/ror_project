@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>RidingSocial - Your motorcycle rides will never be the same - Powered by Butler Motorcycle Maps </title>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
+  <script src="//www.google.com/jsapi"></script>
+  <script src="//maps.googleapis.com/maps/api/js?client=gme-ridingsocialllc&sensor=true"></script>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body class="manage">
+
+<div id="user-nav">
+  <div class="nav-wrapper">
+    <div id="logo-container" class="col_6 logo-wrapper">
+      <a class="logo" href="<%= root_url %>">
+        <%= image_tag 'logo.png' %>
+      </a>
+    </div>
+
+    <div class="col_12 main-navigation">
+      <div class="ajax-overlay">
+        <div class="ajax-loader"></div>
+      </div>
+
+        &nbsp;
+
+      <%= render 'template/contact_us' %>
+      <%= render 'template/about_us' %>
+
+      <div class="account-popup"></div>
+      <div class="account-close"></div>
+      <div class="share-popup"></div>
+    </div>
+
+    <div class="col_6 omega user-menu-wrapper">
+
+      <div id="header-powered-by" class="powered-by-wrapper">
+        <%= image_tag 'powered-by-butler.png' %>
+      </div>
+
+      <% if user_signed_in? %>
+        <div class="gravatar">
+          <%= image_tag avatar_url(current_user) %>
+        </div>
+        <div class="contact-button-container">
+          <%= link_to 'Contact', '#', :class => 'contact-button' %>
+          <div class="contact-menu hidden">
+            <ul>
+              <li><a href="#" data-container="contact">Contact Us</a></li>
+              <li><a href="#" data-container="about">About Us</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="user-menu-toggler">
+          <span class="name"><%= name_or_email %></span>
+          <div class='user-arrow-button'></div>
+          <div class="hidden user-menu">
+            <ul>
+              <li class="edit-account"><%= link_to 'Edit Account', edit_user_registration_path %></li>
+              <% if current_user.roles?(:pro, :plus) && current_user.subscription_id? %>
+                <li><a href="#" class="edit-subscription">Subscription</a></li>
+              <% end %>
+              <li><%= link_to 'Sign out', destroy_user_session_path %></li>
+              <li><a href="#" class="view-help">Help</a></li>
+              <li><a href="http://ridingsocial.com/forums/">Support</a></li>
+            </ul>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<div class="row page-wrapper">
+  <%= yield %>
+  <div class="clearfix"></div>
+</div>
+</body>
+</html>

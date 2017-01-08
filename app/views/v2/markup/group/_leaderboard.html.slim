@@ -1,0 +1,20 @@
+table.b-leaderboard
+  thead
+    tr
+      th.left width="35px" no.
+      th.left member name
+      th miles riden
+      th time
+      th width="30px"
+
+  tbody
+    - (1..12).each do |i|
+      tr
+        td.left = [i, '.'].join
+        td.left Member Name 
+        td = rand 1000
+        td = [rand(24), rand(60)].join ':'
+        td 
+
+
+

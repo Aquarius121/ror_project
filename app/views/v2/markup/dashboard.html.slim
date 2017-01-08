@@ -1,0 +1,61 @@
+- content_for :header_actions do
+  = link_to 'Plan a ride', '#plan', class: 'b-header-actions'
+
+// MYSTATS / LEADERBOARD
+.b-row
+  .row
+    .col-md-4
+      h1
+        ' My stats
+        span.links.links-plus 
+          a href="#" More stats
+
+      .row
+        .col-md-6
+          .b-stat
+            .heading
+              ' 123
+              small mi
+            .description total distance
+
+        .col-md-6
+          .b-stat
+            .heading 4:43
+            .description total time 
+
+    .col-md-8
+      h1 
+        ' Leaderboard
+        span.links.links-plus
+          a href="#" more
+
+      .row
+        .col-md-6
+          .b-desc
+            .title
+              | This is a Leaderboard&nbsp;Stat
+            .desc
+              | jan 2015 &ndash; apr 2015
+
+            .links.links-plus
+              a href="#" sam jones leads
+
+        .col-md-6
+          .b-desc
+            .title
+              | Challenge name goes&nbsp;here
+            .desc
+              | San francisco bay ride
+
+            .links.links-plus
+              a href="#" join a group 
+              a href="#" do this challenge 
+
+
+= render 'v2/markup/dashboard/rides'
+= render 'v2/markup/dashboard/whatsnew'
+= render 'v2/markup/dashboard/friends'
+= render 'v2/markup/dashboard/groups'
+= render 'v2/markup/dashboard/challenges'
+
+

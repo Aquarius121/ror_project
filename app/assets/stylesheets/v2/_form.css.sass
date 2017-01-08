@@ -1,0 +1,123 @@
+.l-sidebar
+  .b-form
+    padding-top: 45px
+.b-form
+  font-size: 16px
+
+.b-form-row
+  padding-bottom: 15px
+
+
+  label
+    @extend .control-label
+    color: $gray-text-color
+    margin-bottom: .2em
+    display: block
+
+  input[type=text], input[type=email], input[type=password], textarea, select 
+    @extend .form-control
+    padding-left: 10px
+    padding-right: 10px
+
+  .help-block
+    font-weight: 200
+    font-size: 13px
+    display: inline
+    margin-left: .3em
+    // &:before
+    //   content: '–'
+    //   margin-right: .3em
+
+
+
+  &.field-with-errors
+    @extend .has-error
+
+  .separated
+    position: relative
+    &:after
+      position: absolute
+      content: '/'
+      height: 30px
+      line-height: 30px
+      font-size: 22px
+      text-align: center
+      width: 20px
+      left: 100%
+      top: 50%
+      margin-top: -15px
+
+  .row.narrow
+    margin-left: -10px
+    margin-right: -10px
+    [class*=col] 
+      padding-left: 10px
+      padding-right: 10px
+
+.b-form-checkboxes
+  margin-bottom: 1em
+
+  & > label 
+    color: $gray-text-color
+    margin-bottom: 1.2em
+
+  .b-form-row
+    position: relative
+    padding-left: 1.5em
+    label 
+      color: #333
+
+  input[type=checkbox]
+    position: absolute
+    line-height: $input-height-base
+    margin-top: 4px
+    top: 0
+    left: 0
+
+.b-form-dnd
+  @extend .form-control
+
+  display: flex
+  align-items: center
+  justify-content: center
+  text-align: center
+  
+
+.b-form-radios
+  margin-bottom: 1em
+
+  & > label 
+    color: $gray-text-color
+    display: block
+    margin-bottom: 1em
+
+  .b-form-row
+    position: relative
+    label
+      font-weight: 200
+      margin-bottom: 0
+
+    padding-left: 1.5em
+
+  input[type=radio]
+    position: absolute
+    line-height: $input-height-base
+    margin-top: 2px
+    left: 0
+    top: 0
+
+  &.b-form-radios-inline
+    margin-left: -2em
+    +clearfix
+    .b-form-row
+      float: left
+      margin-left: 2em
+
+    & > label
+      margin-left: 2em
+
+
+.b-form-btn
+  @extend .btn
+  @extend .btn-block
+  @extend .btn-orange

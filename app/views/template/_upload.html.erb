@@ -1,0 +1,39 @@
+<div class="navigation-wrapper hidden upload-gpx">
+  <div class="popup-contacts-wrapper-bg">
+    <div class="back"><a class="back-to-my-rides">Back to My Rides</a></div>
+    <div class="popup-contacts-title">
+      Upload GPX/KML file
+    </div>
+    <div class="clearfix"></div>
+    <p>
+      Please drag and drop your file to upload an existing GPX/KML files from your device. This will add a new ride to your rides. GPX files that have multiple routes will be separated into individual rides. 
+    </p>
+
+    <p>
+    <div id="dropbox" class="upload-gpx">
+        <span class="message">
+            Drop GPX/KML/KMZ files here to upload.
+            <br><i>(they will only be visible to you)</i>
+            <br>Or use this button <input type="file" id="fallback">
+        </span>
+    </div>
+    <span class="file-upload-status" style="opacity:1;" id="upload-status"></span>
+
+    <div id="fileInfo">&nbsp;</div>
+    </p>
+    <div class="successful-single-upload hidden">
+      Your ride was successfully uploaded and saved. To change this ride, please click the edit button when viewing it
+      in full screen.
+      <div><a class="orange-btn view-large-map">View this ride in larger map</a>
+      Or <a class="orange-btn upload-again">Upload another file</a></div>
+    </div>
+    <div class="successful-multi-upload hidden">
+      Your rides were successfully uploaded and saved. To change the ride, please click the edit button when viewing it
+      in full screen.
+      <div><a class="orange-btn view-large-map">View the last uploaded ride in larger map</a>
+      Or <a class="orange-btn upload-again">Upload another file</a></div>
+    </div>
+  </div>
+</div>
+
+

@@ -1,0 +1,23 @@
+<div class="popup-butler-rides-tabs-form">
+
+  <%= form_tag search_butler_routes_path, :method => :post do %>
+      <%= text_field_tag 'name', nil, :class => 'name', :placeholder => 'Ride Name' %>
+      <%= text_field_tag 'location', nil, :class => 'location', :placeholder => 'City or State' %>
+      <% options = options_for_select({'BDR' => 5, 'Butler G1 Rides' => 4, 'Popular Rides' => 2}) %>
+      <%= select_tag 'type', options, :prompt => 'Type', :class => 'styled add-custom-select type' %>
+      <%= submit_tag 'Submit', :class => 'submit', :disabled => current_user.role?(:free) ? 'disabled' : false  %>
+  <% end %>
+  <% if current_user.role? :free %>
+      <div class="upgrade-to-premium">
+        You are missing some great roads in this search tab.
+        Upgrade now to view all the best rides and help you plan your trip.
+        <a class="cbox-button-confirm sign-up" href="#">Sign Up</a>
+      </div>
+  <% end %>
+</div>
+<div class="popup-butler-rides-tabs-form-result">
+  <div class="popup-butler-rides-tabs-form-result-content">
+    <div class="popup-butler-rides-tabs-form-result-content-wrapper"></div>
+  </div>
+</div>
+

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html class="embed">
+<head>
+  <title>RidingSocial - Your motorcycle rides will never be the same - Powered by Butler Motorcycle Maps </title>
+  <%= render 'template/open_graph_tags', :route => @route %>
+  <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true %>
+  <%= stylesheet_link_tag "//fonts.googleapis.com/css?family=Open+Sans+Condensed:300,300italic,700" %>
+  <%= stylesheet_link_tag "//fonts.googleapis.com/css?family=Open+Sans:400,700,600,600italic,400italic,700italic,800,800italic&subset=latin,cyrillic" %>
+  <script>
+      isEmbed = true;
+      var C7E1249F = "ED908C23";
+  </script>
+</head>
+<body class="anonymous embed">
+
+
+  <div class="row page-wrapper" style="margin-bottom: 0px;">
+    <%= yield %>
+    <div class="clearfix"></div>
+  </div>
+  <div class="map-block-wrapper add-custom-scroll hidden">
+    <div class="ajax-overlay">
+      <div class="ajax-loader"></div>
+    </div>
+    <div class="clearfix"></div>
+  </div>
+
+
+  <script>
+    var embededRoute = {
+      id: <%= @route.id %>,
+      data: '<%= @route.data.html_safe %>'
+    };
+  </script>
+
+</body>
+</html>

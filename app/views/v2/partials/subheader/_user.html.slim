@@ -1,0 +1,23 @@
+- if current_user.can? [:unfriend, :befriend], user
+  .pull-right 
+    - if current_user.can? :befriend, user 
+      = link_to 'Add to friends', 
+        befriend_v2_user_path(user), 
+        class: 'btn btn-orange',
+        method: :patch
+
+    - if current_user.can? :unfriend, user 
+      = link_to 'Unfriend', 
+        unfriend_v2_user_path(user), 
+        class: 'btn btn-orange',
+        method: :delete
+
+.b-user-info
+  = avatar_for user
+  .content
+    .title = user.full_name
+
+    - if %i[bike location].map{|i| user.send i}.map(&:present?).any?
+      .description
+        .address = user.location
+        .bike    = user.bike

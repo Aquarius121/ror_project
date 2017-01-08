@@ -1,0 +1,56 @@
+<div class="popup-friends-tabs-section">
+  <div class="popup-friends-tabs-section-a-wrapper active first">
+    <a class="popup-friends-tabs-section-link">Search Friends</a>
+
+    <div class="popup-friends-wrapper-bg popup-friends-tabs-section-content">
+      <div class="popup-friends-tabs-title">Search Friends</div>
+      <div class="clearfix"></div>
+      <div class="popup-friends-tabs-content">
+        <%= search_friends %>
+      </div>
+    </div>
+  </div>
+
+  <div class="popup-friends-tabs-section-a-wrapper search-butler-rides">
+    <a class="popup-friends-tabs-section-link">Search Rides</a>
+
+    <div class="popup-friends-tabs-section-content hidden">
+      <div class="popup-friends-tabs-title">
+        Search Rides
+      </div>
+      <div class="clearfix"></div>
+      <div class="popup-friends-tabs-content">
+        <%= search_butler_rides %>
+      </div>
+    </div>
+  </div>
+  <div class="popup-friends-tabs-section-a-wrapper approve-friends">
+    <a class="popup-friends-tabs-section-link">Approve friends</a>
+
+    <div class="popup-friends-tabs-section-content hidden">
+      <div class="popup-friends-tabs-title">Approve friends</div>
+      <div class="clearfix"></div>
+      <div class="popup-friends-tabs-content">
+        <%= approve_friends %>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="popup-own-butler-ride-wrapper-bg hidden">
+  <div class="popup-own-ride-left add-custom-scroll">
+    <%= popup_own_butler_ride_left %>
+  </div>
+  <div class="popup-own-ride-right">
+    <%= popup_own_butler_ride_right %>
+  </div>
+</div>
+
+<div class="popup-bdr-ride-wrapper-bg hidden">
+  <div class="popup-own-ride-left add-custom-scroll">
+    <%= render 'template/search/bdr_ride_left' %>
+  </div>
+  <div class="popup-own-ride-right">
+    <%= render 'template/search/bdr_ride_right' %>
+  </div>
+</div>
+

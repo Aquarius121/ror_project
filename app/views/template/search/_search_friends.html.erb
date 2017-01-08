@@ -1,0 +1,34 @@
+<div class="popup-friends-tabs-friends-form">
+  <%= form_tag search_users_path, :method => :post do %>
+    <%= text_field_tag "name", nil, :class => "name", :placeholder => "Friend's Name" %><%= text_field_tag "location", nil, :class => "location", :placeholder => "State/city/zip" %>
+    <%= select_tag "club", options_from_collection_for_select(Club.all, :id, :title), :prompt => "Group", :class => "club styled add-custom-select" %><%= select_tag "riding_preference", options_from_collection_for_select(RidingPreference.all, :id, :title), :prompt => "Riding Preference", :class => "riding-preference add-custom-select styled" %><%= select_tag "bike_type", options_from_collection_for_select(BikeType.all, :id, :title), :prompt => "Bike Type", :class => "bike-type styled add-custom-select" %><%= submit_tag "Submit", :name => "commit", :class => "submit" %>
+  <% end %>
+</div>
+<div class="popup-friends-tabs-friends-form-result">
+  <div class="popup-friends-tabs-form-result-hidden">
+    <div class="result-wrapper">
+      <div class="img-wrapper">
+        <%= image_tag asset_path('club-default-img.png'), :class => "club-img", :width => "116", :height => "116" %>
+      </div>
+      <div class="friend-info-wrapper">
+        <div class="name-wrapper">
+          <div class="name"></div>
+          <div class="location"></div>
+        </div>
+        <div class="info-wrapper">
+          <div class="rides"><span class="num">0</span>rides</div>
+          <div class="club">
+            <%= HTMLEntities.new.decode "&#160;" %>
+          </div>
+          <div class="miles"><span class="num">0</span>miles</div>
+          <a class="add-friend"><span class="add-friend-pre"></span><span class="add-friend-text">Add Friend</span></a>
+        </div>
+      </div>
+      <div class="clearfix"></div>
+    </div>
+  </div>
+  <div class="popup-friends-tabs-form-result-content add-custom-scroll">
+    <div class="popup-friends-tabs-form-result-content-wrapper"></div>
+  </div>
+</div>
+

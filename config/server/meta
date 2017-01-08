@@ -1,0 +1,10 @@
+repo file: server location
+
+etc/conf/logstash.conf: /etc/logstash/logstash.conf
+etc/conf/redis.conf: /etc/redis/redis.conf
+
+etc/init.d/logstash: /etc/init.d/logstash
+etc/init.d/elasticsearch: /etc/init.d/elasticsearch
+etc/init.d/postgresql: /etc/init.d/postgresql
+etc/init.d/nginx: /etc/init.d/nginx
+

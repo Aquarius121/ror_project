@@ -1,0 +1,20 @@
+table.b-group-table
+  thead
+    tr
+      th: .b-group-table-challenge Challenge
+      th Location
+      th Date
+      th
+
+  tbody
+    - 10.times.each do
+      tr
+        td
+          .b-group-info
+            .avatar = image_tag 'v2/avatar.png'
+            .content: .title Name of the challenge
+
+        td width="20%" Challenge, Location
+        td width="20%" 28 February 2015
+
+        td width="15%"

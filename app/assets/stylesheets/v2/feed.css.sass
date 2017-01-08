@@ -1,0 +1,115 @@
+.b-feed
+
+.b-feed-item
+  @extend .row
+  +clearfix
+
+.b-feed-legend
+  @extend .col-sm-3
+
+.b-feed-content-wrap
+  @extend .col-sm-9
+  padding-bottom: 45px
+  position: relative
+  padding-left: 0
+  &:before
+    position: absolute
+    left: -70px
+    top: 0
+    bottom: 0
+    width: 5px
+    background: #ccc
+    content: ''
+
+.b-feed-header
+  +clearfix
+  display: flex
+  align-items: center
+  font-size: 110%
+  border-bottom: 1px solid $border-color
+  margin: -1*$popup-space/3 0 0
+  padding-bottom: $popup-space/2
+
+.b-feed-date
+  height: 67px
+  display: flex
+  font-size: 16px
+  align-items: center
+
+  div
+    text-align: right
+    width: 100%
+    padding-right: 30px
+    line-height: 1.2
+
+  strong
+    font-weight: 600
+    display: block
+    font-size: 26px
+
+.b-feed-title
+  color: $orange-color
+  line-height: 45px
+  height: 45px
+  font-size: 140%
+
+
+.b-feed-header-avatar
+  float: left
+  flex: 0 0 50px
+  height: 50px
+  border-radius: 50%
+  overflow: hidden
+  margin-right: 1em
+  img
+    display: block
+    width: 100%
+
+
+.b-feed-socialize
+  margin: $popup-space -1*$popup-space -1*$popup-space
+
+.b-feed-content
+  @extend .b-popup
+  width: 100%
+  position: static
+
+.b-feed-image
+  img
+    display: block
+    width: 100%
+
+.b-feed-legend
+  z-index: 2
+  position: relative
+
+.b-feed-icon
+  float: right
+  width: 65px
+  height: 65px
+  position: relative
+  border: 1px solid $border-color
+  border-radius: 50%
+  margin-right: 20px
+
+  &:before
+    content: ''
+    position: absolute
+    top: 5px
+    left: 5px
+    right: 5px 
+    bottom: 5px
+    z-index: -1
+    background: $orange-color
+    border-radius: 50%
+
+  &:after
+    content: ''
+    position: absolute
+    top: 0
+    left: 0
+    right: 0
+    bottom: 0
+    z-index: 0
+    border: 5px solid #fff
+    border-radius: 50%

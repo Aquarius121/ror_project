@@ -1,0 +1,52 @@
+- content_for :header_actions do
+  = link_to 'Plan a ride', '#plan', class: 'b-header-actions'
+
+.b-row
+  h1 Create group
+
+  .b-group-form
+    .row.wide
+      .col-sm-6
+        .b-form-row
+          label for="i1" Group Name
+          input#i1 type="text" 
+
+        .b-form-row
+          label for="i2" Location
+          input#i2 type="text" 
+
+        .b-form-row
+          label for="i3" Type
+          input#i3 type="text" 
+
+      .col-sm-6
+        .b-form-row
+          label for="i4" Upload Logo
+          .b-form-dnd
+            div 
+              | Drag Image
+              br 
+              | or Upload
+
+
+    .b-form-row
+      label for="i5" Group Description
+      textarea#i5 rows="6"
+
+    .b-form-radios.b-form-radios-inline
+      label Group type
+      .b-form-row
+        label for="r1" Private
+        input#r1 type="radio" name="type"
+
+      .b-form-row
+        label for="r2" Public
+        input#r2 type="radio" name="type"
+
+    .row.wide
+      .col-sm-6
+        .b-form-actions
+          button.b-form-btn type="submit" update group info
+
+
+

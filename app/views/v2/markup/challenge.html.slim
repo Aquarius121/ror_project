@@ -1,0 +1,80 @@
+- content_for :header_actions
+  = dashboard_link
+
+- content_for :subheader do
+  = render partial: 'v2/markup/partials/subheader/challenge'
+
+.row
+  .col-md-9
+    .b-row
+      .row
+        .col-md-12
+          h1 Challenge
+
+      .row
+        .col-sm-3
+          .b-stat
+            .heading 
+              ' 123
+              small mi
+            .description total distance
+
+        .col-sm-3
+          .b-stat
+            .heading 
+              ' 4:38
+              small mi
+            .description total time
+
+        .col-sm-3
+          .b-stat
+            .heading 
+              ' 14
+            .description total rides
+
+        .col-sm-3
+          .b-stat
+            .heading 
+              ' 6
+            .description overall rank
+
+    .b-row
+      .row
+        .col-sm-12
+          h1 Challenge details
+
+          ul.nav.nav-tabs
+            li.active
+              a href="#leaderboard" data-toggle="tab" Leaderboard
+
+            li
+              a href="#rules" data-toggle="tab" rules
+
+            li
+              a href="#prize" data-toggle="tab" prize
+
+          .tab-content
+            .tab-pane.active#leaderboard
+              = render 'v2/markup/challenge/leaderboard'
+
+            .tab-pane#rules
+              = render 'v2/markup/challenge/rules'
+
+            .tab-pane#prize
+              = render 'v2/markup/challenge/prize'
+
+
+  .col-md-3.l-sidebar
+    .b-row
+      h2 Description
+
+      .b-description
+        p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed dolor risus, ullamcorper ac ligula ac, tristique tempor erat. 
+        p Nam quis fringilla neque. Mauris sit amet nibh in nisl ullamcorper pulvinar. Praesent lobortis felis faucibus massa fringilla, ac dictum sapien gravida. 
+
+    .b-row
+      h2 Share
+
+    .b-row
+      h2 Prize
+

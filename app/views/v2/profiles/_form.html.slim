@@ -1,0 +1,112 @@
+= simple_form_for current_user,
+  as: :user,
+  url: v2_profile_path,
+  html: { class: 'b-account-form' } do |f|
+
+  / TODO errors!
+  /= f.object.errors.messages.inspect
+
+  .row.wide
+    .col-sm-6
+      = f.input :firstname
+      = f.input :lastname
+      = f.input :zip
+
+    .col-sm-6
+      .b-form-row
+        label &nbsp;
+        .b-account-form-avatars
+          .b-user-info
+            = avatar_for f.object
+
+            .content
+              .description
+                a.plused href="#" upload avatar images
+                br 
+                a.plused href="#" upload avatar from facebook/gravatar
+
+      = f.input :motorcycle_club
+
+  hr 
+
+  .b-form-checkboxes
+    label Riding preference
+    .row.wide
+      = hidden_field :user_riding_preference_ids, '', name: 'user[user_riding_preference_ids][]', value: ''
+
+      - RidingPreference.all.each do |rp|
+        .col-sm-3
+          .b-form-row
+            label for="riding_preference_#{ rp.id }" = rp.title
+            = check_box_tag :riding_preference_ids,
+              rp.id,
+              f.object.riding_preference_ids.include?(rp.id),
+              id: "riding_preference_#{ rp.id }",
+              name: "user[riding_preference_ids][]"
+
+
+  .row.wide
+    .col-sm-6
+      .b-form-row
+        = f.input_field :riding_preference
+
+  hr
+
+  .b-form-row
+    label In My Garage
+
+    div data-behaviour="removable" data-for="#{ f.object_name }" data-field="user_bikes"
+      = f.fields_for :user_bikes do |ub|
+        .row.wide.b-form-row data-removable="item"
+          .col-sm-6
+            a href="#" data-removable="handle": i.icon-trash
+            = ub.input_field :model
+            = ub.hidden_field :_destroy, data: { removable: 'destroy' }
+
+      script type="text/removable-template" data-removable="template"
+        = f.fields_for 'user_bikes_attributes', nil do |ub|
+          = ub.fields_for '%i%', f.object.user_bikes.build do |ub|
+            .row.wide.b-form-row data-removable="item"
+              .col-sm-6
+                a href="#" data-removable="handle": i.icon-trash
+                = ub.input_field :model
+                = ub.hidden_field :_destroy, data: { removable: 'destroy' }
+
+
+      /.b-form-row
+      /  label for="im1" In My Garage
+      /  input type="text" value="CR 250"
+
+  hr
+
+  .row.wide
+    .col-sm-6
+      = f.input :location
+      = f.input :location, label_wrap_html: { class: 'hidden' }
+      = f.input :time_zone
+      = f.input :gender, collection: f.object.genders.invert, include_blank: 'Select your gender...'
+      = f.input :age,    collection: f.object.ages, include_blank: 'Select your age...'
+
+      br 
+      .b-form-checkboxes
+        .b-form-row
+          label for="ii10" Updates/Tips/Rides recommendations
+          input#ii10 type="checkbox"
+
+
+    .col-sm-6
+      = f.input :about_me, placeholder: 'Tell us something about you'
+
+      = f.input :email
+
+      = f.input :password
+      = f.input :password_confirmation
+      = f.input :current_password
+
+
+  .row.wide
+    .col-sm-6
+
+      .b-form-actions
+        button.b-form-btn type="submit" update card
+

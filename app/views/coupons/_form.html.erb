@@ -1,0 +1,31 @@
+<%= form_for(@coupon) do |f| %>
+  <% if @coupon.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@coupon.errors.count, "error") %> prohibited this coupon from being saved:</h2>
+
+      <ul>
+      <% @coupon.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+    <div class="field-wrapper">
+      <div><%= f.label :name %></div>
+      <%= f.text_field :name %>
+    </div>
+    <div class="field-wrapper">
+      <div><%= f.label :discount %></div>
+      <%= f.text_field :discount %>
+    </div>
+    <div class="field-wrapper">
+      <div><%= f.label :premium_plan_id %></div>
+      <% plan_array = PremiumPlan.active.map { |plan| [plan.name, plan.id] } %>
+      <%= f.select :premium_plan_id, plan_array %>
+    </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

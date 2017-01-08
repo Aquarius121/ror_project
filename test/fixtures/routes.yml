@@ -1,0 +1,61 @@
+# == Schema Information
+#
+# Table name: routes
+#
+#  id                      :integer          not null, primary key
+#  title                   :string(255)
+#  difficulty              :string(255)
+#  rating                  :float
+#  elevation               :string(255)
+#  ridedate                :date
+#  description             :text
+#  privacy_id              :integer
+#  condition_id            :integer
+#  created_at              :datetime
+#  updated_at              :datetime
+#  data                    :text
+#  user_id                 :integer
+#  surface_id              :integer
+#  ride_distance           :integer
+#  ride_time               :integer
+#  completed               :boolean          default("false")
+#  ride_type_id            :integer
+#  encoded_path            :string(4096)
+#  is_readonly             :boolean          default("false")
+#  archived                :boolean          default("false"), not null
+#  latitude                :decimal(9, 6)
+#  longitude               :decimal(9, 6)
+#  max_lean                :integer
+#  likes_counter           :integer
+#  cached_votes_total      :integer          default("0")
+#  cached_votes_score      :integer          default("0")
+#  cached_votes_up         :integer          default("0")
+#  cached_votes_down       :integer          default("0")
+#  cached_weighted_score   :integer          default("0")
+#  cached_weighted_total   :integer          default("0")
+#  cached_weighted_average :float            default("0.0")
+#  average_speed           :float
+#  max_speed               :float
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  title: MyString
+  difficulty: MyString
+  rating: 1.5
+  elevation: MyString
+  ridedate: 2013-10-21
+  description: MyText
+  privacy_id: 
+  condition_id: 
+
+two:
+  title: MyString
+  difficulty: MyString
+  rating: 1.5
+  elevation: MyString
+  ridedate: 2013-10-21
+  description: MyText
+  privacy_id: 
+  condition_id: 

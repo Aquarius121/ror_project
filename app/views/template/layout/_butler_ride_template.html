@@ -1,0 +1,30 @@
+<div class="result-wrapper" data-id="<%%= route.id %>">
+    <div class="top">
+        <div class="ride-type"></div>
+        <div class="img">
+            <%% if (route.encoded_path || route.ride_type_id == 4) { %>
+            <img data-src="<%%= staticMapUrlForRoute(route, '204x204') %>" />
+            <%% } %>
+        </div>
+        <div class="ride-title"><%%= route.title %></div>
+        <div class="distance bordered">
+            <span class="name">Distance</span>
+            <span class="val">
+                <span class="num"><%%= route.distance %></span>
+                <span class="unit">mi</span>
+            </span>
+        </div>
+        <div class="elevation bordered">
+            <span class="name">Elevation</span>
+            <span class="val">
+                <span class="num">0</span>
+                <span class="unit">ft</span>
+            </span>
+        </div>
+        <div class="time bordered">
+            <span class="name">Est. Time</span>
+            <span class="val"><span class="num"><%%= route.time %></span></span>
+        </div>
+    </div>
+    <div class="clearfix"></div>
+</div>

@@ -1,0 +1,262 @@
+#friends {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    width: 260px;
+    background-color: #212121;
+    border-left: #d05720 3px solid;
+    color: #fff;
+    z-index: 80;
+    display: none;
+    overflow-y: auto;
+
+    .fb-session-expired {
+      padding: 0 9px 12px 9px;
+      font-size: 14px;
+      font-weight: 600;
+      font-family: "Open Sans";
+    }
+
+    a.toggler {
+        display: block;
+        cursor: pointer;
+        font-size: 20px;
+        color: #fff;
+        height: 59px;
+        line-height: 59px;
+        padding-left: 72px;
+        font-family: 'Newtown';
+        font-style: italic;
+        font-weight: bold;
+        text-transform: uppercase;
+        background: image-url('friends-toggler.png') top left no-repeat;
+        background-size: cover;
+    }
+    a.toggler .icon {
+        display: block;
+        float: right;
+        width: 32px;
+        height: 32px;
+        margin-top: 14px;
+        margin-right: 8px;
+        background: image-url('friends-toggle-down.png') top left no-repeat;
+        background-size: contain;
+    }
+    a.toggler.up .icon {
+        background: image-url('friends-toggle-up.png') top left no-repeat;
+    }
+    .content {
+        padding: 0 9px 12px 9px;
+        font-size: 14px;
+        font-weight: 600;
+        font-family: "Open Sans";
+        border-top: #000 1px solid;
+        border-left: #000 1px solid;
+    }
+    .content.hidden {
+        display: none;
+    }
+    .friend-head .gravatar img {
+        border: #000 1px solid;
+    }
+    .rides-type-selector {
+        display: table;
+        width: 100%;
+        margin: 0;
+        box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+    }
+    .rides-type-selector li {
+        display: table-cell;
+        cursor: pointer;
+        width: 50%;
+        height: 38px;
+        line-height: 1.2;
+        font-size: 12px;
+        font-family: "Newtown";
+        font-style: italic;
+        font-weight: bold;
+        text-align: center;
+        text-transform: uppercase;
+        vertical-align: middle;
+        background: image-url('friends-rides-li.png') top left no-repeat;
+        background-size: 100% 100%;
+        border: #000 1px solid;
+        box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+        padding: 0 5px;
+    }
+    .rides-type-selector li.active {
+        background-image: image-url('friends-rides-li-active.png');
+    }
+    .friends_routes_block {
+        margin: 0;
+        display: none;
+    }
+    .friends_routes_block.active {
+        display: block;
+    }
+    .friends_routes_block li {
+        display: table;
+        width: 100%;
+        background: image-url('friends-rides-ride.png') top left no-repeat;
+        background-size: 100% 100%;
+        border-right: #000 1px solid;
+        border-left: #000 1px solid;
+        box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+    }
+    .friends_routes_block li.blank {
+        height: 38px;
+        line-height: 38px;
+        text-align: center;
+    }
+    .friends_routes_block li.created a:hover {
+        background-image: image-url('friends-rides-ride-hover.png');
+    }
+    .friends_routes_block li.ridden a:hover {
+        background-image: image-url('friends-rides-ride-hover-ridden.png');
+    }
+    .friends_routes_block li a {
+        display: block;
+        cursor: pointer;
+        width: 100%;
+        height: 38px;
+        line-height: 38px;
+        padding: 0 8px;
+        text-decoration: none;
+        vertical-align: middle;
+        font-weight: normal;
+        box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+        margin-bottom: 2px;
+    }
+    .friends_routes_block li .ride-type {
+        display: block;
+        margin: 5px;
+        height: 25px;
+        box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+        line-height: 25px;
+        padding-left: 15px;
+    }
+    .friends_routes_block li .ride-type.created {
+        background: image-url('created-by-me.png') no-repeat;
+    }
+    .friends_routes_block li .ride-type.ridden {
+        background: image-url('ridden-by-me.png') no-repeat;
+    }
+}
+
+#friends.hidden {
+    display: none;
+}
+
+
+
+/* friends accordion styles */
+
+#friends .ui-accordion .ui-accordion-content {
+    padding: 0;
+}
+
+.route-accordion-holder .ui-accordion .ui-accordion-content {
+    padding: 1em;
+}
+
+.route-accordion-holder .ui-accordion .ui-accordion-content {
+    width: 100%;
+    text-align: left;
+}
+
+#friends {
+    .ui-corner-all,
+    .ui-corner-bottom,
+    .ui-corner-right,
+    .ui-corner-br {
+        border-bottom-right-radius: 0;
+    }
+    .ui-corner-all,
+    .ui-corner-bottom,
+    .ui-corner-left,
+    .ui-corner-bl {
+        border-bottom-left-radius: 0;
+    }
+
+    .ui-widget-content {
+        background: transparent none;
+        border-width: 0;
+        color: inherit;
+    }
+
+    .ui-accordion-header {
+        padding: 10px 0;
+        color: #fff;
+        background: image-url('friends-friend-separator.png') bottom left repeat-x;
+    }
+    .ui-accordion-content {
+        padding-bottom: 10px;
+        color: #fff;
+        background: image-url('friends-friend-separator.png') bottom left repeat-x;
+    }
+    .ui-state-default,
+    .ui-widget-content .ui-state-default,
+    .ui-widget-header .ui-state-default {
+        border-width: 0;
+    }
+
+    .ui-state-active,
+    .ui-widget-content .ui-state-active,
+    .ui-widget-header .ui-state-active {
+        border-width: 0;
+    }
+
+}
+
+
+#friends .ui-accordion-content a {
+    color: #fff;
+}
+
+#friends .ui-accordion-header .gravatar,
+#friends .friend-name {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+#friends .friend-name {
+    padding-left: 10px;
+}
+
+#friends .ui-accordion .ui-accordion-header .ui-accordion-header-icon {
+    width: 24px;
+    height: 24px;
+    left: auto;
+    right: 0;
+    margin-top: -12px;
+    background-position: 0 0;
+    background-size: cover;
+}
+
+
+#friends {
+  .ui-icon-triangle-1-e {
+    background: image-url('friends-accordion-triangle-right.png') center center no-repeat;
+  }
+  .ui-icon-triangle-1-s {
+    background: image-url('friends-accordion-triangle-down.png') center center no-repeat;
+  }
+  .friends-route {
+    .title {
+      float: left;
+    }
+    .date {
+      float: right;
+    }
+  }
+}

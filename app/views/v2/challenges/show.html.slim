@@ -1,0 +1,20 @@
+- content_for :subheader do
+  = render partial: 'v2/partials/subheader/challenge', locals: { challenge: @challenge }
+
+.row
+  .col-md-9
+    .b-row = render 'stats'
+    .b-row = react_component 'ExpandableBlock', @info
+
+  .col-md-3.l-sidebar
+    .b-row
+      h2 Description
+
+      .b-description = @challenge.description
+
+    .b-row
+      h2 Share
+
+    .b-row
+      h2 Prize
+

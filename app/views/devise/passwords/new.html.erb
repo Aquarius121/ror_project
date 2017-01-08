@@ -1,0 +1,26 @@
+<div class="devise-form-container">
+  <div class="col_3"></div>
+  <div id="restore-div" class="col_18">
+    <div class="sign-div-wrapper col_24">
+      <div class="restore-form-title"><h2>Forgot your password?</h2></div>
+      <div class="col_9 omega">
+        <div class="restore-form-left">
+          <%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post }) do |f| %>
+            <%= devise_error_messages! %>
+
+            <div><%= f.label :email %><br />
+              <%= f.email_field :email, :autofocus => true %></div>
+
+            <div><%= f.submit "Send me reset password instructions", :class => "restore-form-submit" %></div>
+          <% end %>
+        </div>
+      </div>
+      <div class="restore-vertical"></div>
+      <div class="col_9 omega">
+        <div class="restore-form-right">
+          <%= render 'devise/shared/account_buttons' %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h3><%= @user.full_name %> (<%= @user.email %>) canceled subscription.</h3>
+    <p>
+      <% if @subscription %>
+      Subscription plan was <%= @subscription.premium_plan.label %>.
+      <% else %>
+        That was a free pro user.
+      <% end %>
+    </p>
+    <p>
+      <% canceled_at =  @subscription ? @subscription.canceled_at : @user.updated_at %>
+      User subscribed on <%= @subscription.created_at.in_time_zone('Mountain Time (US & Canada)').strftime '%F %I:%M %p' %>,
+      canceled on <%= canceled_at.in_time_zone('Mountain Time (US & Canada)').strftime '%F %I:%M %p' %>.
+    </p>
+
+  </body>
+</html>

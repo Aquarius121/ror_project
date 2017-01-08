@@ -1,0 +1,60 @@
+.b-popup
+  z-index: 10
+  position: relative
+  display: none
+
+  &.b-popup-top
+    .b-popup-wrap
+      bottom: 14px
+      margin-left: -20px
+
+
+  & > .stats
+    @extend .b-stats
+
+  .tip
+    @extend .b-popup-tip
+
+.b-popup-wrap
+  min-width: 400px
+  background: #fff
+  padding: $popup-space
+  border: 1px solid $border-color
+  +box-shadow($popup-box-shadow)
+  position: absolute
+
+
+.b-stats
+  border: 1px solid #fff
+  margin: $popup-space (-1 * $popup-space) (-1 * $popup-space)
+  padding: $popup-space $popup-space/2
+  background: $popup-stats-background
+  font-size: 62%
+  display: flex
+  justify-content: space-inside
+
+  & > div
+    flex-grow: 1
+
+
+.b-popup-tip
+  position: absolute
+  z-index: 2
+  top: 100%
+  margin-left: 20px
+  +triangle_down($popup-tip-width, $border-color)
+
+  &:after
+    position: absolute
+    content: ''
+    z-index: 3
+    margin: (-1 * $popup-tip-width/2 - 2) 0 0 (-1 * $popup-tip-width/2)
+    +triangle_down($popup-tip-width, $popup-stats-background)
+
+  &:before
+    position: absolute
+    content: ''
+    z-index: 2
+    margin: (-1 * $popup-tip-width/2 - 1) 0 0 (-1 * $popup-tip-width/2)
+    +triangle_down($popup-tip-width, #fff)
+

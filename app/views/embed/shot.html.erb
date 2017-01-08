@@ -1,0 +1,14 @@
+<style>
+    .embed-info .route-info .label {
+        font-size: 20px;
+        padding-bottom: 5px;
+    }
+    .embed-info .route-info .val .num {
+        font-size: 26px;
+    }
+    .embed-info .route-info .val {
+        font-size: 16px;
+    }
+</style>
+<%= render 'embed_info', :route => @route, :show_title => false %>
+<img id="embed-img" src="<%= @route.static_map_url('470x215') %>&scale=2">

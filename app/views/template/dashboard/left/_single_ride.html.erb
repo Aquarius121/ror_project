@@ -1,0 +1,26 @@
+<div class="ride-wrapper" data-id="<%= id.to_s %>">
+  <div class="text">
+    <div class="left-text">
+      <div class="ride-date">
+        <%= date %>
+      </div>
+      <div class="user-avatar">
+        <%= image_tag(current_user_avatar, :class => "avatar", :width => '50', :height => '40') %>
+      </div>
+      <div class="ride-data">
+        <div class="ride-title">
+          <a href="#route-<%= id.to_s %>">
+            <%= title %>
+          </a>
+        </div>
+        <div class="ride-info">
+            <span class="ride-distance">
+              <%= distance %>
+            </span>
+        </div>
+      </div>
+    </div>
+    <div class="map-thrumb"></div>
+  </div>
+  <div class="border"></div>
+</div>

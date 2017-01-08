@@ -1,0 +1,92 @@
+<div class="devise-form-container">
+  <div class="col_3"></div>
+  <div id="sign-div" class="col_18 additional">
+    <div class="sign-div-wrapper col_24">
+      <div class="sign-up-form-title"><h2>Additional Info(not required)</h2></div>
+      <p id="notice"><%= notice %></p>
+      <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => {:method => :put}) do |f| %>
+          <%= devise_error_messages! %>
+          <div class="col_5 omega">
+            <div class="sign-up-form-left">
+              <input id="user_my_garage" name="user[garage]" type="hidden" value="">
+              <%= f.hidden_field :avatar_id %>
+              <div class="hidden-garage-input">
+                <div class="garage-input-wrapper col_24">
+                  <div class="col_5 omega">
+                    <div class="sign-up-form-left">
+                      <input type="text" value="" class="garage-input"/>
+                    </div>
+                  </div>
+                  <div class="col_5">
+                    <div class="sign-up-form-right">
+                      <%= select_tag nil, options_from_collection_for_select(BikeType.all, :id, :title), :prompt => "Select", :id => nil, :class => 'bike-type no-customselect' %>
+                      <a href="#" class="remove-garage-input">X</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <%= render partial: 'devise/registrations/location_gender_age', locals: {f: f, resource: resource} %>
+
+            </div>
+          </div>
+          <div class="col_5 omega">
+            <div class="sign-up-form-right">
+              <div class="field-wrapper avatar">
+                <img src="<%= current_user_avatar %>">
+                <a href="#" class="dropbox-upload-popup">Upload Avatar Image</a>
+
+                <div>Or</br>
+                  <a href="#" class="update-avatar">Update Avatar from Facebook/Gravatar</a>
+                </div>
+              </div>
+              <div class="field-wrapper">
+                <div><%= f.label :motorcycle_club %></div>
+                <%= f.text_field :motorcycle_club %></div>
+              <div class="field-wrapper">
+                <div><%= f.label :about_me %></div>
+                <%= f.text_area :about_me, :rows => 5 %></div>
+
+            </div>
+          </div>
+          <div class="col_24 riding-preference-wrapper">
+            <div><%= f.label :riding_preference %></div>
+            <% @preferences = RidingPreference.all
+               @preferences.each do |p| %>
+                <div class="riding-preference col_3 omega">
+                  <%= check_box_tag "user[preference][]", p.id %>
+                  <div><%= p.title %></div>
+                </div>
+            <% end %>
+            <div class="field-wrapper col_24">
+              <%= f.text_field :riding_preference, :placeholder => 'other preference' %>
+            </div>
+          </div>
+          <div class="field-wrapper garage-field-wrapper col_24">
+            <div class="title">In My Garage:</div>
+            <div class="garage-input-wrapper col_24">
+              <div class="col_5 omega">
+                <div class="sign-up-form-left">
+                  <input type="text" value="" class="garage-input"/>
+                </div>
+              </div>
+              <div class="col_5">
+                <div class="sign-up-form-right">
+                  <%= select_tag nil, options_from_collection_for_select(BikeType.all, :id, :title), :prompt => "Select", :id => nil, :class => 'bike-type' %>
+                  <a href="#" class="remove-garage-input">X</a>
+                </div>
+              </div>
+            </div>
+            <div class="garage-input-wrapper col_24">
+              <div class="col_5 omega">
+                <div class="sign-up-form-left">
+                  <a href="#" class="add-garage-input">Add more</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col_24 omega"><%= f.submit "Sign up", :class => "sign-up-form-submit" %></div>
+
+      <% end %>
+    </div>
+  </div>
+</div>

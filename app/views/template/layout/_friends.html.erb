@@ -1,0 +1,12 @@
+<div id="friends">
+  <a class="toggler">Friends<span class="icon"></span></a>
+  <% if current_user.fb_session_expired %>
+    <div class="fb-session-expired">
+        You Facebook session within our app has expired. To continue getting friends from Facebook, please, login into the app using Facebook.
+    </div>
+  <% end %>
+
+  <div class="content" style="display: none;">
+
+  </div>
+</div>

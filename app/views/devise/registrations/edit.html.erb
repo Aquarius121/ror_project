@@ -1,0 +1,167 @@
+<div class="devise-form-container">
+  <div class="col_3"></div>
+  <div id="sign-div" class="col_18">
+    <div class="ajax-overlay" id="ajax-update-profile">
+      <div class="ajax-loader"></div>
+    </div>
+    <div class="sign-div-wrapper col_24">
+
+      <div class="edit-acc-form-title"><h2>Edit <%= resource_name.to_s.humanize %></h2></div>
+      <% url = registration_path(resource_name) %>
+      <% url = (url + '/' + @user_id) if @user_id %>
+      <%= form_for(resource, :as => resource_name, :url => url, :html => {:method => :put}) do |f| %>
+          <%= devise_error_messages! %>
+          <div class="col_5 omega">
+            <div class="sign-up-form-left">
+              <input id="user_my_garage" name="user[garage]" type="hidden" value="">
+              <%= f.hidden_field :avatar_id %>
+              <div class="hidden-garage-input">
+                <div class="garage-input-wrapper col_24">
+                  <div class="col_5 omega">
+                    <div class="sign-up-form-left">
+                      <input type="text" value="" class="garage-input"/>
+                    </div>
+                  </div>
+                  <div class="col_5">
+                    <div class="sign-up-form-right">
+                      <%= select_tag nil, options_from_collection_for_select(BikeType.all, :id, :title), :prompt => "Select", :id => nil, :class => 'bike-type  no-customselect' %>
+                      <a href="#" class="remove-garage-input">X</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="field-wrapper">
+                <%= f.label 'First name' %>
+                <br/>
+                <%= f.text_field :firstname %>
+              </div>
+              <div class="field-wrapper">
+                <%= f.label 'Last name' %>
+                <br/>
+                <%= f.text_field :lastname %>
+              </div>
+              <div class="field-wrapper">
+                <%= f.label :zip %>
+                <br/>
+                <%= f.text_field :zip %>
+              </div>
+            </div>
+          </div>
+          <div class="col_5 omega">
+            <div class="sign-up-form-right">
+              <div class="field-wrapper avatar">
+                <img src="<%= avatar_url(@user) %>">
+                <a href="#" class="dropbox-upload-popup">Upload Avatar Image</a>
+
+                <div>Or</br>
+                <a href="#" class="update-avatar">Update Avatar from Facebook/Gravatar</a>
+                </div>
+              </div>
+              <div class="field-wrapper"><%= f.label :motorcycle_club %>
+                <br/>
+                <%= f.text_field :motorcycle_club %></div>
+            </div>
+          </div>
+          <div class="clearfix"></div>
+          <div class="col_24 login-horisontal-wrap">
+            <div class="login-horisontal"></div>
+          </div>
+          <div class="col_24 riding-preference-wrapper">
+            <div><%= f.label :riding_preference %></div>
+            <% preferences = RidingPreference.all
+               my_preferences = @user.user_riding_preferences
+               preferences.each do |p| %>
+               <div class="riding-preference col_3 omega">
+                 <%= check_box_tag "user[preference][]", p.id, my_preferences.any? {|my_p| my_p.preference_id == p.id} %>
+                 <div><%= p.title %></div>
+               </div>
+            <% end %>
+            <div class="field-wrapper col_24">
+              <%= f.text_field :riding_preference %>
+            </div>
+          </div>
+          <div class="clearfix"></div>
+          <div class="col_24 login-horisontal-wrap">
+            <div class="login-horisontal"></div>
+          </div>
+          <div class="field-wrapper garage-field-wrapper col_24">
+            <div class="title">In My Garage:</div>
+            <% @user.user_bikes.order(:id).each do |bike| %>
+                <div class="garage-input-wrapper col_24">
+                  <input type="hidden" value="<%= bike.id %> " class="garage-id"/>
+
+                  <div class="col_5 omega">
+                    <div class="sign-up-form-left">
+                      <input type="text" value="<%= bike.model %> " class="garage-input"/>
+                    </div>
+                  </div>
+                  <div class="col_5">
+                    <div class="sign-up-form-right">
+                      <%= select_tag nil, options_from_collection_for_select(BikeType.all, :id, :title, bike.type_id), :prompt => "Select", :id => nil, :class => 'bike-type' %>
+                      <a href="#" class="remove-garage-input">X</a>
+                    </div>
+                  </div>
+                </div>
+            <% end %>
+            <div class="garage-input-wrapper col_24">
+              <div class="col_5 omega">
+                <div class="sign-up-form-left">
+                  <input type="text" value="" class="garage-input"/>
+                </div>
+              </div>
+              <div class="col_5">
+                <div class="sign-up-form-right">
+                  <%= select_tag nil, options_from_collection_for_select(BikeType.all, :id, :title), :prompt => "Select", :id => nil, :class => 'bike-type' %>
+                  <a href="#" class="remove-garage-input">X</a>
+                </div>
+              </div>
+            </div>
+            <div class="garage-input-wrapper col_24">
+              <div class="col_5 omega">
+                <div class="sign-up-form-left">
+                  <a href="#" class="add-garage-input">Add more</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="clearfix"></div>
+          <div class="col_24 login-horisontal-wrap">
+            <div class="login-horisontal"></div>
+          </div>
+          <div class="col_5 omega">
+            <div class="sign-up-form-left sign-up-form-left-bottom">
+              <%= render partial: 'location_gender_age', locals: {f: f} %>
+
+              <div class="field-wrapper agree-checkbox">
+                <%= f.check_box :subscribed %>
+                <div>Updates/tips/ride recommendations</div>
+              </div>
+            </div>
+          </div>
+          <div class="col_5 omega">
+            <div class="sign-up-form-right sign-up-form-right-bottom">
+              <div class="field-wrapper">
+                <div><%= f.label :about_me %></div>
+                <%= f.text_area :about_me, :rows => 5 %></div>
+              <div class="field-wrapper"><%= f.label :email %>
+                <br/>
+                <%= f.email_field :email, :autofocus => true %></div>
+              <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+                  <div class="field-wrapper">Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+              <% end %>
+              <div class="field-wrapper"><%= f.label :password %>
+                <i>(leave blank if you don't want to change it)</i><br/>
+                <%= f.password_field :password, :autocomplete => "off" %></div>
+              <div class="field-wrapper"><%= f.label :password_confirmation %>
+                <br/>
+                <%= f.password_field :password_confirmation %></div>
+              <div class="field-wrapper"><%= f.label :current_password %> <i>(for confirming your changes)</i><br/>
+                <%= f.password_field :current_password %></div>
+            </div>
+          </div>
+          <div class="clearfix"></div>
+          <div><%= f.submit "Update", :class => "update-acc-form-submit" %></div>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,14 @@
+<h1>Friends</h1>
+<% Friendship.list_friends(current_user).each do |friend| %>
+  <div>
+    <div class="gravatar">
+      <%= image_tag avatar_url(friend) %>
+    </div>
+    <%= friend.full_name %>
+	<ul class="friends_routes_block">
+    <% list_public_routes_for_user(friend).each do |route| %>
+    	<li><a href="/friends/route/<%= route.id%>" class="friends-route"><%= route.title%></a></li>
+    <% end%>
+	</ul>
+  </div>
+<% end  %>

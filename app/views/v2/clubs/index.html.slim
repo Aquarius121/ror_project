@@ -1,0 +1,59 @@
+.b-row
+  h1
+    .heading-actions = link_to 'Add group', new_v2_club_path, class: 'btn btn-orange'
+    | Group search
+
+  .b-group-table-filter
+    = simple_form_for @filter,
+      url: v2_clubs_path,
+      method: :get,
+      as: :filter do |f|
+      .row
+        .col-sm-3
+          .b-form-row
+            = f.input_field :name, placeholder: "Group Name", required: false
+
+        .col-sm-3
+          .b-form-row
+            = f.input_field :location, placeholder: "Group Location", required: false
+
+        .col-sm-3
+          .b-form-row
+            = f.input_field :club_type_id,
+              collection: ClubType.all, 
+              include_blank: "Select Group Type", 
+              required: false
+
+        .col-sm-3
+          = f.button :submit, 'SEARCH', class: 'btn btn-orange btn-block'
+
+
+  table.b-group-table
+    tbody
+      - @clubs.each do |club|
+        tr
+          td
+            = react_component 'GroupListItemCompactWithPopup', club.reactify(current_user)
+
+          /TODO stats
+          td width="15%"
+            /.b-stat
+            /  .heading = rand 15
+            /  .description Members
+
+
+          td width="15%"
+
+          td width="15%"
+
+          td width="15%"
+            - if current_user.can? :join, club
+              = link_to 'Join',
+                join_v2_club_path(club),
+                method: :patch,
+                class: 'btn btn-white'
+            - if current_user.can? :leave, club
+              = link_to 'leave',
+                leave_v2_club_path(club),
+                method: :delete,
+                class: 'btn btn-gray'

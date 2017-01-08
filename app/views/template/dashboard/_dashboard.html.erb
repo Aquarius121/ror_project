@@ -1,0 +1,24 @@
+<div class= "dashboard-left">
+  <div class="dashboard-left-top">
+    Hello, <%= name_or_email %>!
+  </div>
+  <div class="dashboard-left-bottom">
+    <%= render 'template/dashboard/left/recent_activities' %>
+    <%= render 'template/dashboard/left/my_profile' %>
+    <%= render 'template/dashboard/left/saved_rides', :routes => user_routes %>
+  </div>
+</div>
+<div class="dashboard-right">
+  <div class="dashboard-right-top">
+    <div class="dashboard-stats-title">
+      My stats
+    </div>
+    <%= render 'template/dashboard/right/activity', :ride_stats => get_rides_stats_week %>
+
+    <%= render 'template/dashboard/right/rides',
+               :ride_stats => get_rides_stats_completed, :title => "Your Tracked Rides" %>
+
+    <%= render 'template/dashboard/right/rides',
+               :ride_stats => get_rides_stats, :title => "All time" %>
+  </div>
+</div>

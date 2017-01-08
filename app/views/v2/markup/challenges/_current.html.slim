@@ -1,0 +1,31 @@
+table.b-group-table
+  thead
+    tr
+      th: .b-group-table-challenge Challenge
+      th Location
+      th Date
+      th
+
+  tbody
+    - 10.times.each do
+      tr
+        td
+          .b-group-info
+            .avatar = image_tag 'v2/avatar.png'
+
+            .content 
+              .title
+                | Name of
+                br 
+                | the challenge
+
+        td width="20%" Challenge, Location
+        td width="20%" 28 February 2015
+
+        td width="15%"
+          - if (rand(10) % 2) == 0
+            a.btn.btn-gray href="#" Participating
+          - else
+            a.btn.btn-orange href="#" join challenge
+
+

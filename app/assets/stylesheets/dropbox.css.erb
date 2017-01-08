@@ -1,0 +1,120 @@
+/*-------------------------
+	Dropbox Element
+--------------------------*/
+
+#dropbox {
+    border-radius: 3px;
+    position: relative;
+    margin: auto;
+    min-height: 290px;
+    overflow: hidden;
+    padding-bottom: 40px;
+    width: 990px;
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.3) inset, 0 -3px 2px rgba(0, 0, 0, 0.1);
+}
+
+#dropbox .message {
+    font-size: 11px;
+    text-align: center;
+    padding-top: 160px;
+    display: block;
+}
+
+#dropbox.upload-gpx {
+    min-height: 170px;
+}
+#dropbox.upload-gpx .message {
+    padding-top: 110px;
+}
+
+
+#dropbox .message i {
+    color: #ccc;
+    font-size: 10px;
+}
+
+#dropbox:before {
+    border-radius: 3px 3px 0 0;
+}
+
+/*-------------------------
+	Image Previews
+--------------------------*/
+
+#dropbox .preview {
+    width: 245px;
+    height: 215px;
+    margin: 55px auto 0 auto;
+    position: relative;
+    text-align: center;
+}
+
+#dropbox.ride-photo .preview {
+    width: 120px;
+    height: 105px;
+    margin: 20px 10px 10px 10px;
+    display: inline-block;
+}
+
+#dropbox .preview img {
+    max-width: 240px;
+    max-height: 180px;
+    border: 3px solid #fff;
+    display: block;
+    box-shadow: 0 0 2px #000;
+}
+
+#dropbox.ride-photo .preview img {
+    max-width: 117px;
+    max-height: 78px;
+}
+
+#dropbox .imageHolder {
+    display: inline-block;
+    position: relative;
+}
+
+#dropbox .uploaded {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: url(<%= asset_path 'done.png' %>) no-repeat center center rgba(255, 255, 255, 0.5);
+    display: none;
+}
+
+#dropbox .preview.done .uploaded {
+    display: block;
+}
+
+/*-------------------------
+	Progress Bars
+--------------------------*/
+
+#dropbox .progressHolder {
+    position: absolute;
+    background-color: #252f38;
+    height: 12px;
+    width: 100%;
+    left: 0;
+    bottom: 0;
+    box-shadow: 0 0 2px #000;
+}
+
+#dropbox .progress {
+    background-color: #2586d0;
+    position: absolute;
+    height: 100%;
+    left: 0;
+    width: 0;
+    box-shadow: 0 0 1px rgba(255, 255, 255, 0.4) inset;
+    -moz-transition: 0.25s;
+    -webkit-transition: 0.25s;
+    -o-transition: 0.25s;
+    transition: 0.25s;
+}
+
+#dropbox .preview.done .progress {
+    width: 100% !important;
+}

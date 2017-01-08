@@ -1,0 +1,160 @@
+.popup-own-ride-block {
+
+}
+
+.photos {
+  margin-bottom: 10px;
+  overflow: hidden;
+}
+
+.title-ride {
+  font-size: 12px;
+  overflow: hidden;
+  padding: 5px;
+  margin-bottom: 0;
+}
+
+.title-ride span {
+  border-bottom: 1px solid;
+  display: block;
+  font-size: 16px;
+  font-style: italic;
+  font-weight: bold;
+  margin-bottom: 5px;
+  padding-bottom: 5px;
+}
+
+.photos-list {
+  display: block;
+  list-style: none outside none;
+  width: inherit;
+}
+
+.photos-item {
+  background: none repeat scroll 0 0 #828282;
+  border: 5px solid #FFFFFF;
+  display: inline-block;
+  height: 90px;
+  margin: 5px;
+  width: 150px;
+}
+
+.more-photos {
+  float: right;
+}
+
+.view-poi {
+  margin-top: 10px;
+  text-align: center;
+  width: 100%;
+}
+
+.description-text, .embed-controls {
+  font-size: 13px;
+  margin-left: 10px;
+}
+
+.description-text {
+  margin-bottom: 20px;
+}
+
+.embed-controls {
+  float: right;
+  width: 30%;
+  margin-top: 40px;
+}
+
+.embed-text {
+  float: left;
+  width: 60%;
+  margin-top: 40px;
+  font-size: 12px;
+  line-height: normal;
+}
+.popup-share-tabs-content .embed-privacy-warning {
+  color: red;
+}
+
+.popup-share-tabs-content .embed-privacy-warning a {
+  cursor: pointer;
+  color: red;
+  text-decoration: underline;
+}
+
+.embed-controls #embed-height, #embed-width {
+  width: 40px;
+}
+
+.embed-text label,
+.embed-controls label {
+  display: block;
+  line-height: 15px;
+  font-family: 'Open Sans';
+  font-size: 15px;
+  height: 25px;
+  line-height: 25px;
+  margin-bottom: 0;
+  text-transform: none;
+  color: #4b4b4b;
+  font-weight: bold;
+}
+
+.embed-text #embed-text {
+  margin-top: 11px;
+  width: 100%;
+}
+
+.description-ride--title {
+  margin-bottom: 5px;
+}
+
+.description_ride {
+  display: block;
+  overflow: hidden;
+  width: 100%;
+}
+
+.popup-own-ride-left .map-img .edit-link .edit-ride {
+  background: image-url('create-club-button-bd.png') no-repeat;
+  line-height: 40px;
+  font-size: 18px;
+  padding: 0 0px 0 9px;
+  text-align: center;
+  font-family: 'Newtown';
+  font-style: italic;
+  color: white;
+  border: 0px;
+  cursor: pointer;
+  display: inline-block;
+  width: 181px;
+  font-weight: 400;
+  background-size: 100% 100%;
+  margin-right: -20px;
+  text-decoration: none;
+}
+
+.route-photo .photo-wrapper {
+  display: inline-block;
+  margin-right: 7px;
+  letter-spacing: 0;
+  position: relative;
+}
+
+.route-photo .photo-wrapper .del-img {
+  position: absolute;
+  top: 0;
+  right: 0;
+  color: red;
+  line-height: 11px;
+  text-decoration: none;
+}
+
+.successful-upload {
+  color: green;
+  font-family: Open Sans;
+  font-size: 24px;
+  line-height: 60px;
+  font-family: Newtown;
+  text-transform: none;
+  font-weight: bold;
+}

@@ -1,0 +1,17 @@
+- content_for :subheader do
+  = render partial: 'v2/partials/subheader/group'
+
+.row
+  .col-md-9
+    .b-row
+      = react_component 'ExpandableBlock', @stats
+
+    .b-row
+      = react_component 'ExpandableBlock', @info
+
+  .col-md-3.l-sidebar
+    .b-row
+      = react_component 'ExpandableBlock', @upcoming_rides
+
+    .b-row
+      = react_component 'ExpandableBlock', @announcements

@@ -1,0 +1,27 @@
+doctype html
+html
+  head
+    title Sign in &mdash; V2
+    meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"
+    = stylesheet_link_tag    'v2', media: 'all', 'data-turbolinks-track' => true
+    = javascript_include_tag 'v2', 'data-turbolinks-track' => true
+
+    link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'
+    link href='http://fonts.googleapis.com/css?family=Alfa+Slab+One' rel='stylesheet' type='text/css'
+
+    = csrf_meta_tags
+
+    /- if notice
+    /  javascript:
+    /    $(function () {
+    /      alertify.success("#{notice}");
+    /    })
+    /
+    /- if alert
+    /  javascript:
+    /    $(function () {
+    /      alertify.error("#{alert}");
+    /    })
+  body data-bg="#{ signin_bg }"
+    = yield
+

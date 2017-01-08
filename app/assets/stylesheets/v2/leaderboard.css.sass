@@ -1,0 +1,32 @@
+.b-leaderboard
+  @extend .table, .table-striped
+  font-size: 14px
+
+  th
+    text-transform: uppercase
+    color: #878787
+    font-size: 13px
+
+  td
+    text-transform: capitalize
+    vertical-align: middle !important
+
+    &.crown
+      width: 30px
+      padding: 0
+
+    &.avatar
+      width: 30px
+      padding: 0 5px
+
+      img 
+        display: block
+        width: 30px
+        height: 30px
+        border-radius: 50%
+
+  td, th
+    text-align: center
+
+    &.left
+      text-align: left

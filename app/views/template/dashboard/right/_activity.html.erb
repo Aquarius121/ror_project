@@ -1,0 +1,12 @@
+<div class="dashboard-activity">
+  <span class="dashboard-activity-title">Activity</span>
+  <span class="dashboard-activity-rides">
+    <%= ride_stats.count.to_s %>
+  </span>
+  <span class="dashboard-activity-distance">
+    <%= meters_to_mile(ride_stats.distance).to_i.to_s %>
+  </span>
+  <span class="dashboard-activity-time">
+    <%= seconds_to_time_short(ride_stats.time).to_s %>
+  </span>
+</div>

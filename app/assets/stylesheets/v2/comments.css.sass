@@ -1,0 +1,45 @@
+/**
+ * COMMENTS BLOCK
+ */
+.b-comments-list
+  padding: $popup-space/4 0
+
+.b-comments-more
+  border-top: 1px solid $border-color
+  line-height: 35px
+  height: 35px
+
+.b-comments-stats
+  border-bottom: 1px solid $border-color
+  line-height: 35px
+  height: 35px
+
+/**
+ * COMMENT ITSELF
+ */
+.b-comment
+  display: flex
+  align-items: center
+  +clearfix
+  margin: $popup-space/3 0
+
+.b-comment-avatar
+  flex: 0 0 45px 
+  height: 45px
+  float: left
+  border-radius: 50%
+  overflow: hidden
+  margin-right: $comments-space
+
+  img 
+    width: 100%
+    display: block
+
+.b-comment-time
+  color: #999
+  padding: 0 .5em
+
+.b-comment-input
+  @extend .form-control
+  margin-left: -1*$comments-space/2 - 1
+  padding-left: $comments-space/2

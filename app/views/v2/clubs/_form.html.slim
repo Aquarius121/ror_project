@@ -1,0 +1,39 @@
+= simple_form_for [:v2, @club], html: { class: 'b-group-form' } do |f|
+
+  .row.wide
+    .col-sm-6
+      = f.input :title, label: 'Group name'
+      = f.input :location
+      = f.association :club_type, label: 'Type'
+
+    .col-sm-6
+      .b-form-row
+        label for="i4" Upload Logo
+        .b-form-dnd
+          div 
+            | Drag Image
+            br 
+            | or Upload
+
+
+  .b-form-row
+    = f.input :description
+
+  .b-form-radios.b-form-radios-inline
+    label Access type
+
+    - Privacy.all.each do |p|
+      .b-form-row
+        label for="club_privacy_id_#{ p.id }" = p.title
+        = f.radio_button :privacy_id, p.id
+
+  .row.wide
+    .col-sm-6
+      .b-form-actions
+        - if @club.new_record?
+          = f.button :submit, 'Create group', class: 'b-form-btn'
+        - else
+          = f.button :submit, 'Update group info', class: 'b-form-btn'
+
+
+

@@ -1,0 +1,64 @@
+- content_for :header_actions do
+  = link_to 'Plan a ride', '#plan', class: 'b-header-actions'
+
+.b-row
+  h1
+    .heading-actions: .btn.btn-orange Add group
+    | Group search
+
+  .b-group-table-filter
+    .row
+      .col-sm-3
+        .b-form-row
+          input type="text" placeholder="Group Name"
+
+      .col-sm-3
+        .b-form-row
+          input type="text" placeholder="Group Location"
+
+      .col-sm-3
+        .b-form-row
+          input type="text" placeholder="Group Type"
+
+      .col-sm-3
+        a.btn.btn-orange.btn-block href="#" SUBMIT
+
+
+  table.b-group-table
+    tbody
+      - 10.times.each do
+        tr
+          td
+            .b-group-info
+              .avatar
+                = image_tag 'v2/avatar.png'
+
+              .content
+                .title Group Name
+                .description Eagle, Colorado
+
+          td width="15%"
+            .b-stat
+              .heading = rand 15
+              .description Members
+
+
+          td width="15%"
+            .b-stat
+              .heading = rand 20
+              .description rides
+
+          td width="15%"
+            .b-stat
+              .heading CLUB
+              .description type
+
+          td width="15%"
+            - if (rand(10) % 2) == 0
+              a.btn.btn-white href="#" Member 
+            - else
+              a.btn.btn-gray href="#" Send request
+
+
+
+

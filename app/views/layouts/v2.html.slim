@@ -1,0 +1,60 @@
+doctype html
+html
+  head
+    title Markup &mdash; V2
+    meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"
+    = stylesheet_link_tag    'v2', media: 'all', 'data-turbolinks-track' => true
+    = javascript_include_tag 'v2', 'data-turbolinks-track' => true
+
+    link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'
+    link href='http://fonts.googleapis.com/css?family=Alfa+Slab+One' rel='stylesheet' type='text/css'
+
+    = csrf_meta_tags
+
+    - if notice
+      javascript:
+        $(function () {
+          alertify.success("#{notice}");
+        })
+
+    - if alert
+      javascript:
+        $(function () {
+          alertify.error("#{alert}");
+        })
+  body
+    header
+      .b-header-ribbon
+        div
+          = support_link
+          = get_the_app_link
+          = logout_link
+          div #{ current_user.full_name } - #{ current_user.role_title }
+
+      .l-header
+        - if content_for? :header_actions 
+          = content_for :header_actions
+        - else
+          = dashboard_link
+
+        .b-logo
+
+    .l-subheader#subheader
+      .container 
+        - if content_for? :subheader
+          = content_for :subheader
+        - else
+          = render partial: 'v2/partials/subheader/current_user'
+
+
+    .container#content = yield
+
+    footer
+      .container 
+        .b-footer-links
+          a href="#" sign-up For emails
+          a href="#" try it for free
+          a href="#" Log In
+
+        .b-copyrights
+          | Copyright REVER &copy; #{ current_year } - All Rights Reserved

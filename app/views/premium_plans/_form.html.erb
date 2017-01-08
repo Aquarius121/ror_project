@@ -1,0 +1,39 @@
+<%= form_for(@premium_plan) do |f| %>
+  <% if @premium_plan.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@premium_plan.errors.count, "error") %> prohibited this premium_plan from being saved:</h2>
+
+      <ul>
+      <% @premium_plan.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+    <div class="field-wrapper">
+      <div><%= f.label :name %></div>
+      <%= f.text_field :name %>
+    </div>
+    <div class="field-wrapper">
+      <div><%= f.label :price %></div>
+      <%= f.text_field :price %>
+    </div>
+    <div class="field-wrapper">
+      <div><%= f.label :description %></div>
+      <%= f.text_field :description %>
+    </div>
+    <div class="field-wrapper">
+      <div><%= f.label :label %></div>
+      <%= f.text_field :label %>
+    </div>
+
+    <div class="field-wrapper">
+      <div><%= f.label :period %></div>
+      <%= f.text_field :period %>
+    </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

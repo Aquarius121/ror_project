@@ -1,0 +1,39 @@
+- content_for :header_actions do
+  = link_to 'To My Dashboard', '#', class: 'b-header-actions'
+
+.row
+  .col-sm-9
+    .b-row
+      h1 Subscription settings
+
+      .bigger
+        p You currently have our annual subscription type. We will deductour payment of $89.99 on the 1st of March 2016.
+        p Thank you for being a part of Rever.
+
+    .b-row
+      h1 Upgrade/Downgrade/Cancel
+
+      p Currently we're working on a way to change your subscription within this web interface, but it is not ready yet. To change your subscription, please contact us using the following information and we will amke this change for you.
+
+      p
+        | Email &ndash;
+        =< mail_to 'sales@ridingsocial.com'
+        br
+        | Phone &ndash; 877-379-6053
+
+      p If you wish to cancel your subscription please clickon the following link below.
+
+      br
+
+      p
+        a.btn.btn-orange href="#" data-confirm="Are you sure, you want to cancel?" Cancel subscription
+
+
+
+  .col-sm-3.l-sidebar
+    h3 Premium plans
+    .b-row
+      = render partial: 'v2/markup/partials/plans'
+
+
+

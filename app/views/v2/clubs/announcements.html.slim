@@ -1,0 +1,41 @@
+- content_for :header_actions
+  = back_to_group_link @club
+
+h1 Feed
+
+.b-feed
+  - 5.times.each do 
+    .b-feed-item
+      .b-feed-legend
+
+        .b-feed-icon
+          i.icon
+
+        .b-feed-date
+          div
+            | Today, 
+            strong 04:20
+
+      .b-feed-content-wrap
+        .b-feed-content
+          .b-feed-header
+            .b-feed-header-avatar
+              = image_tag 'v2/avatar.png'
+
+            .b-feed-header-content
+              .title Anna gun
+
+          .b-feed-title Seattle to Boston
+
+          .b-feed-image
+            = image_tag 'v2/trip.png'
+
+          .b-feed-socialize
+            = render 'v2/markup/partials/socialize/feed'
+
+
+
+
+
+      
+

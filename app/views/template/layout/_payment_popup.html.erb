@@ -1,0 +1,38 @@
+<div class="popup-premium-tabs-content add-custom-scroll">
+  <div class="premium-stats-title"><%= title %></div>
+  <div class="premium-stats-error">
+    <ul class="error-list-payment" id="error_list_payment"></ul>
+  </div>
+  <div class="premium-list-rate">
+    <form class="premium-list-rate">
+      <ul class="payment-list-rate">
+        <% if current_user && current_user.subscription && current_user.subscription.premium_plan %>
+          <% plan = current_user.subscription.premium_plan %>
+          <li class="payment-rate">
+            <label class="payment-rate-label">
+              <%= radio_button_tag 'plan', plan.id, true %> <%= plan.label %>
+            </label>
+          </li>
+        <% else %>
+          <% PremiumPlan.for_upgrade_form.order('label desc').each do |plan| %>
+            <li class="payment-rate">
+              <label class="payment-rate-label">
+                <%= radio_button_tag 'plan', plan.id %> <%= plan.label %>
+              </label>
+            </li>
+          <% end %>
+        <% end %>
+      </ul>
+    </form>
+  </div>
+  <div class="premium-list-cart"><span>Credit Card</span>
+    <ul class="payment-list-card" id="payment_logo">
+      <li class="payment-logo visa"></li>
+      <li class="payment-logo maestro"></li>
+      <li class="payment-logo dinersclub"></li>
+      <li class="payment-logo amexp"></li>
+    </ul>
+  </div>
+  <%= get_premium_form %>
+  <span class="orange-btn complete-purchase" id="buy_premium"><%= button_text %></span>
+</div>

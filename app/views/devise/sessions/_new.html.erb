@@ -1,0 +1,54 @@
+<div class="devise-form-container">
+  <div class="col_3"></div>
+  <div id="sign-div" class="col_18 log-in">
+    <div class="sign-div-wrapper col_24">
+      <div class="login-form-title"><h2 style="text-transform: uppercase;">Log In</h2></div>
+      <% if notice %>
+          <p id="notice"><%= notice %></p>
+      <% end %>
+      <% if alert %>
+          <p id="alert"><%= alert %></p>
+      <% end %>
+      <div class="col_9 omega">
+        <div class="login-form-left">
+          <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+            <div class="field-wrapper email"><%= f.label :email, 'Your Email address' %><br />
+              <%= f.email_field :email, :autofocus => true %></div>
+
+            <div class="field-wrapper pass"><%= f.label :password, 'Your password' %><br />
+              <%= f.password_field :password %></div>
+            <div class="login-form-submit-button-wrapper">
+              <div class="col_9 omega">
+                <% if devise_mapping.rememberable? -%>
+                  <div class="remember-me-wrapper"><%= f.check_box :remember_me %> <%= f.label :remember_me %></div>
+                <% end -%>
+
+                <%= link_to "Forgot Your password?", new_user_password_path(resource_name), :class => "restore-password-link" %>
+              </div>
+              <div class="col_9">
+                <%= f.submit 'Login', :class => "login-form-submit" %>
+              </div>
+            </div>
+          <% end %>
+        </div>
+        <div class="login-horisontal"></div>
+        <div class="login-form-left">
+          <div class="fb-login-button">
+          </div>
+        </div>
+      </div>
+      <div class="login-vertical"></div>
+      <div class="col_9 omega">
+        <div class="login-form-right">
+          New to Riding Social?<br />
+          <div class="create-account-button">
+            <%= link_to new_user_registration_path, class: "register-link" do %>
+              <span class="arrow-sprites create-account-button-arrow">>></span>
+              Create an Account
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,17 @@
+- if current_user.can? :invite, @club
+  / TODO invite friends page
+
+  .pull-right
+    = react_component 'ModalFriendsInviteTrigger', @friends
+
+.b-group-info
+  = avatar_for @club
+
+  .content
+    .title 
+      | #{ @club.title }
+      span.links.links-plus
+        = link_to 'Edit', edit_v2_club_path if current_user.can? :edit, @club
+
+    .description
+      .address = @club.location

@@ -1,0 +1,19 @@
+development:
+  site_email: "RidingSocial <noreply@ridingsocial.com>"
+  sing_in_url: 'http://maps.ridingsocial.com/users/sign_in'
+  base_url: 'http://maps.ridingsocial.com/'
+
+test:
+  site_email: "RidingSocial <noreply@ridingsocial.com>"
+  sing_in_url: 'http://maps.ridingsocial.com/users/sign_in'
+  base_url: 'http://maps.ridingsocial.com/'
+
+staging:
+  site_email: "RidingSocial(Staging) <noreply@staging.ridingsocial.com>"
+  sing_in_url: 'http://46.22.223.59/users/sign_in'
+  base_url: 'http://46.22.223.59/'
+
+production:
+  site_email: "RidingSocial <noreply@ridingsocial.com>"
+  sing_in_url: 'http://maps.ridingsocial.com/users/sign_in'
+  base_url: 'http://maps.ridingsocial.com/'

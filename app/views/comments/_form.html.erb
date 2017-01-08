@@ -1,0 +1,41 @@
+<div id="comment-ride-wrapper">
+	<div class="comments-list-title">Comments</div>
+	
+  <% if @all_comments %>
+    <div class="all-comments">
+      <%  @all_comments.each do |comment| %>
+      	<div class="comment">
+	        <div class="comment-head">From: <span><%= comment.user.full_name %></span></div>
+	        <div class="comment-body"><%= comment.body %></div>
+        </div>
+        <br>
+      <% end %>
+    </div>
+  <% end %>
+	
+  <% if @comment %>
+    <%= form_for(@comment) do |f| %>
+      <% if @comment.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@comment.errors.count, "error") %> prohibited this comment from being saved:</h2>
+
+          <ul>
+            <% @comment.errors.full_messages.each do |msg| %>
+              <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+      <%= f.hidden_field :related_id %>
+      <div class="field">
+      	<h3><%= f.label :body, 'Your Comment' %></h3>
+        
+        <%= f.text_area :body %>
+      </div>
+      <div class="actions">
+        <%= f.submit %>
+      </div>
+    <% end %>
+  <% end %>
+</div>

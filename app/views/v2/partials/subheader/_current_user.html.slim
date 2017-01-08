@@ -1,0 +1,24 @@
+- if current_user.can? :upgrade, :profile
+  .pull-right = link_to 'Upgrade',
+    upgrade_v2_subscription_path,
+    class: 'btn btn-orange'
+
+.b-user-info
+  = avatar_for current_user
+
+  .content
+    .title 
+      | #{ current_user.full_name }
+      span.links.links-plus = link_to 'Edit profile', v2_profile_path
+
+    .description
+      .address = current_user.location
+      - current_user.user_bikes.first.try do |b|
+        .bike = b.model
+
+      .member 
+        = member_since_for current_user
+
+        span.links.links-plus = link_to 'Manage', v2_subscription_path
+
+

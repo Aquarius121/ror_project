@@ -1,0 +1,91 @@
+// GROUPS
+.b-row
+  .row
+    .col-md-12 = react_component 'ExpandableBlock', @expandable_groups
+
+      /h1
+      /  ' Groups
+      /  span.links.links-plus
+      /    a href="#" expand groups
+      /
+      /ul.nav.nav-tabs
+      /  li.pull-right
+      /    .btn.btn-orange Find groups
+      /
+      /  li.active
+      /    a href="#my-groups" data-toggle="tab" My grops
+      /
+      /  li
+      /    a href="#group-rides" data-toggle="tab" Group rides
+      /
+      /  li
+      /    a href="#announcements" data-toggle="tab" announcements
+      /
+      /.tab-content
+      /  .tab-pane.active#my-groups
+      /    .row
+      /      .col-md-4
+      /        .b-block href="#"
+      /          .avatar
+      /            = image_tag 'v2/block2.png'
+      /
+      /          .date Group member since Nov 24, 2014
+      /
+      /          a.title href="#" Harley Owners group
+      /
+      /      .col-md-4
+      /        = render partial: 'v2/markup/partials/popups/group'
+      /
+      /        .b-block href="#"
+      /          .avatar
+      /            = image_tag 'v2/block1.png'
+      /
+      /          .date Group member since Nov 24, 2014
+      /
+      /          a.title href="#" BMW of colorado
+      /
+      /      .col-md-4
+      /        .b-block href="#"
+      /          .avatar
+      /            = image_tag 'v2/block3.png'
+      /
+      /          .date Group member since Nov 24, 2014
+      /
+      /          a.title href="#" Vultures
+      /
+      /  .tab-pane#group-rides
+      /    .row
+      /      .col-md-4
+      /        .b-block href="#"
+      /          .avatar
+      /            = image_tag 'v2/block1.png'
+      /
+      /          .date Group member since Nov 24, 2014
+      /
+      /          a.title href="#" BMW of colorado
+      /
+      /      .col-md-4
+      /        .b-block href="#"
+      /          .avatar
+      /            = image_tag 'v2/block3.png'
+      /
+      /          .date Group member since Nov 24, 2014
+      /
+      /          a.title href="#" Vultures
+      /
+      /  .tab-pane#announcements
+      /    .row
+      /      - 3.times.each do 
+      /        .col-md-4
+      /          .b-group-info href="#"
+      /            .avatar
+      /              = image_tag 'v2/avatar.png'
+      /
+      /            .content
+      /              .title Group name
+      /
+      /          .b-announce
+      /            .date 15 February 2015 
+      /
+      /            a.title href="#" Announcement for Harley owners
+      /

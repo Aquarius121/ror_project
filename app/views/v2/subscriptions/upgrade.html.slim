@@ -1,0 +1,45 @@
+- content_for :header_actions do
+  = link_to 'To My Dashboard', '#', class: 'b-header-actions'
+
+.row
+  .col-sm-9
+    .b-row
+      h1 Upgrade
+
+      .bigger
+        p We offer the following Plus and Premium subscriptions to help you plan and track your rides a ride like a pro.
+
+      p Premium &ndash; The best for just $59.99/year or $5.99/month:
+
+      br
+
+      ul.list-squared
+        li View Butler Maps Segments &ndash; View all our awesome layers from our wellknow Butler Maps. We are adding new rides all the time and these will be automatically added to your account.
+
+        li Copy unlimited rides &ndash; See a nice ride from a friend. You can copy it to your profile and then ride it.
+
+        li Track a ride &ndash; Use our app to track all your rides and then save it to the site. 
+
+        li Share a ride &ndash; Ride something great? Share it with your buddies. 
+
+        li Upload GPX files &ndash; Have a bunch of old rides from your Garmin? You can upload them within our system.
+
+        li Download GPX filex &ndash; Still not convincied our app is cooler than your Garmin? You can still plan a ride in our system and download it to your Garmin.
+
+        li Offline Butler Maps in the app (Coming in September 2014) &ndash; Althought the app will track you no matter what, sometimes it is nice to see the map. We will be delivering offline map access to the app ASAP.
+
+        li Groups (Coming Soon) &ndash; Find like minded people.
+
+        li Weather Alerts (Coming Soon) &ndash; Sometimes it is good to know what is going on with the weather.
+
+      br
+
+      p Please choose your best option to you right.
+
+
+
+
+  .col-sm-3.l-sidebar
+    h3 Premium plans
+    .b-row
+      = render partial: 'v2/markup/partials/plans'

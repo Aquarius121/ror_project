@@ -1,0 +1,8 @@
+<div class="popup-rides-tabs-form">
+  <%= form_tag search_routes_path, :method => :post do %>
+    <%= text_field_tag 'name', nil, :class => 'name', :placeholder => 'Ride Name' %>
+    <%= text_field_tag 'location', nil, :class => 'location', :placeholder => 'Ride Location' %>
+    <%= ride_type_select %>
+    <%= submit_tag 'Submit', :class => 'submit' %>
+  <% end %>
+</div>

@@ -1,0 +1,96 @@
+html
+  height: 100%
+  width: 100%
+
+body
+  min-height: 100%
+
+body
+  font-family: 'Proxima Nova'
+  font-size: 14px
+  font-weight: 600
+  letter-spacing: .02em
+
+h1, h2, h3, h4, h5, h6
+  text-transform: capitalize
+  font-family: 'Alfa Slab One'
+  font-style: italic
+
+h2 
+  font-size: 24px
+  margin-bottom: 1em
+
+
+.b-row
+  padding-bottom: 80px
+
+  .bigger
+    p 
+      font-size: 120%
+
+  &.flat
+    padding-bottom: 0
+
+  .list-squared
+    padding: 0
+    margin: 0
+    list-style: none
+    & > li 
+      padding-left: 1.2em
+      position: relative
+      margin-bottom: 1em
+      &:before
+        content: ''
+        height: 5px
+        width: 5px
+        background: $orange-color
+        position: absolute
+        left: 0
+        top: .5em
+.plused
+  position: relative
+  padding-left: 1.2em
+  &:before
+    content: '+'
+    position: absolute
+    top: 50%
+    left: 0
+    height: 30px
+    line-height: 2em
+    margin-top: -.9em
+    font-size: 140%
+    font-weight: bolder
+
+
+.heading-actions
+  position: relative
+  z-index: 2
+  line-height: inherit
+  float: right
+  font-family: 'Proxima Nova' 
+  font-weight: normal
+  font-style: normal
+
+
+/**
+ * BUTTONS
+ */
+
+.btn-orange
+  background: #f18431
+  color: #fff
+  &:hover
+    color: rgba(255,255,255,.5)
+
+.btn-white
+  background: #fff
+  color: #333
+  border: 1px solid $border-color
+  &:hover
+    color: rgba(0,0,0,.5)
+
+.btn-gray
+  background: #eee
+  color: #333
+  &:hover
+    color: rgba(0,0,0,.5)

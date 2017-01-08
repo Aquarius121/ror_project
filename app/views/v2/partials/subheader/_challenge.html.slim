@@ -1,0 +1,14 @@
+.pull-right
+  / TODO accept
+  .btn.btn-orange Join Challenge
+
+.b-challenge-info
+  = avatar_for challenge
+
+  .content
+    .title = challenge.name
+
+    - if (location = challenge.try :location).present?
+      .description
+        .address = location 
+

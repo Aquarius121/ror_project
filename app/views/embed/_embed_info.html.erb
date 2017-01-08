@@ -1,0 +1,41 @@
+<div class="embed-info">
+    <% if show_title %>
+    <div class="title-info">
+        <span class="title">
+            <%= route.title %>
+        </span>
+        <div id="logo-container">
+            <span class="embed-powered-by">Powered by</span>
+            <a class="logo" href="<%= "#{root_url}?from-embedded-page" %>" target="_blank">
+            <%= image_tag 'logo.png' %>
+            </a>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+    <% end %>
+    <div class="route-info">
+        <div class="distance">
+            <div class="label">Distance</div>
+            <div class="val"><span class="num">
+          <%= meters_to_mile(route.ride_distance) %>
+        </span><span> miles</span>
+            </div>
+        </div>
+        <div class="date">
+            <div class="label">Date</div>
+            <div class="val">
+          <span class="num">
+            <%= route.ridedate ? route.ridedate.to_date.strftime('%m/%d/%Y') : '' %>
+          </span>
+            </div>
+        </div>
+        <div class="time">
+            <div class="label">Time</div>
+            <div class="val">
+          <span class="num">
+            <%= seconds_to_screen(route.ride_time) %>
+          </span>
+            </div>
+        </div>
+    </div>
+</div>

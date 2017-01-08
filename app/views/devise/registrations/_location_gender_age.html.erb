@@ -1,0 +1,22 @@
+<div class="field-wrapper">
+  <div><%= f.label :location %></div>
+  <%= f.hidden_field :location %>
+  <div><%= select_tag nil, options_for_select(JSON.parse(open('app/assets/json/cities-per-state.json').read).keys.collect { |val| [val, val] }, :selected => location_state(resource.location.to_s)), {:prompt => '', :id => nil, :class => 'user-state add-custom-select'} %></div>
+  <div><%= select_tag nil, options_for_select(location_cities(location_state(resource.location.to_s)), :selected => location_city(resource.location.to_s)), {:prompt => '', :id => nil, :class => 'user-city add-custom-select'} %></div>
+</div>
+
+<div class="field-wrapper">
+  <div><%= f.label 'Time zone' %></div>
+  <div>
+    <%= time_zone_select('user', 'time_zone', ActiveSupport::TimeZone.us_zones, default: "Pacific Time (US &amp; Canada)") %>
+  </div>
+</div>
+
+<div class="field-wrapper">
+  <div><%= f.label :gender %></div>
+  <%= f.select :gender, options_for_select(["Male", "Female"]), :include_blank => "Select" %></div>
+
+<div class="field-wrapper">
+  <div><%= f.label :age %></div>
+  <%= f.select :age, options_for_select([">18", "18-30", "31-40", "41-50", "51-60", "60+"]), :include_blank => "Select" %>
+</div>

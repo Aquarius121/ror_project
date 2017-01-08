@@ -1,0 +1,17 @@
+.b-group-popup
+  @extend .b-popup
+  display: block
+
+  -webkit-transition: all .2s cubic-bezier(0.175, 0.885, 0.32, 1.275)
+  transition:         all .2s cubic-bezier(0.175, 0.885, 0.32, 1.275)
+
+  &.b-popup-top
+    &.b-popup-compact
+      .b-popup-wrap
+        margin-left: -14px
+
+    .b-popup-wrap
+      margin-left: 0
+
+    .b-popup-tip
+      margin-left: 14px

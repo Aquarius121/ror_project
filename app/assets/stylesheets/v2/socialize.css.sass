@@ -1,0 +1,51 @@
+.b-socialize
+  font-size: 13px
+  font-weight: 100
+  border-top: 1px solid #fff
+
+.b-socialize-bar
+  padding: 0 $popup-space
+  background: #ebebeb
+  line-height: 40px
+  +clearfix
+
+.b-socialize-toggle
+  @extend .pull-right
+  color: $gray-text-color
+  font-weight: 600
+  font-size: 13px
+  text-transform: uppercase
+  cursor: pointer
+
+.b-socialize-expand, .b-socialize-collapse
+  position: relative
+  padding-left: 1.2em
+
+  &:before
+    position: absolute
+    font-size: 150%
+    height: 30px
+    line-height: 30px
+    left: 0
+    top: 50%
+    margin-top: -15px
+    font-weight: bolder
+
+.b-socialize-expand
+  &:before
+    content: '+'
+
+.b-socialize-collapse
+  &:before
+    content: '–'
+    font-size: 140%
+    margin-top: -16px
+
+.b-socialize-stats
+  & > div
+    float: left
+    margin-right: 2em
+
+.b-socialize
+  .b-comments
+    padding: $popup-space/4 $popup-space

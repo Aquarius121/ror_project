@@ -1,0 +1,32 @@
+<%= form_for(@invite, :url => url_for(:controller => 'registrations', :action => 'inviterequest')) do |f| %>
+    <% if @invite.errors.any? %>
+      <p id="alert"><%= @invite.errors.full_messages.join "\n"  %></p>
+    <% end %>
+    <div class="col_24 omega invite-info">
+      Thanks for your interest in the site. We are deep in testing and don't want to disappoint.
+      So as a consequence we are only letting people who we can't offend or frustrate too much to use the site.
+      If you think this fits your profile, please fill in the form below and we will let you know if we are ready
+      for the next round of testers. Thanks for your patience.
+    </div>
+    <div class="col_9 omega">
+      <div class="sign-up-form-left">
+        <div class="field-wrapper">
+          <div><%= f.label 'First name' %></div>
+          <%= f.text_field :firstname %>
+        </div>
+        <div class="field-wrapper">
+          <div><%= f.label 'Last name' %></div>
+          <%= f.text_field :lastname %>
+        </div>
+      </div>
+    </div>
+    <div class="col_9 omega">
+      <div class="sign-up-form-right">
+        <div class="field-wrapper">
+          <div><%= f.label :email %></div>
+          <%= f.text_field :email %>
+        </div>
+      </div>
+    </div>
+    <div class="col_24 omega"><%= f.submit "Send", :class => "sign-up-form-submit" %></div>
+<% end %>

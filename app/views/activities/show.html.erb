@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @activity.user %>
+</p>
+
+<p>
+  <strong>Follower:</strong>
+  <%= @activity.follower %>
+</p>
+
+<p>
+  <strong>Activity date:</strong>
+  <%= @activity.activity_date %>
+</p>
+
+<p>
+  <strong>Activity text:</strong>
+  <%= @activity.activity_text %>
+</p>
+
+<%= link_to 'Edit', edit_activity_path(@activity) %> |
+<%= link_to 'Back', activities_path %>

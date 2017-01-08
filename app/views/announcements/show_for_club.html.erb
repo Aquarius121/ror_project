@@ -1,0 +1,6 @@
+<% if @announcements %>
+  <%  @announcements.each do |announcement| %>
+    <div><%= announcement.title %></div>
+    <div><%= announcement.body %></div>
+  <% end %>
+<% end %>

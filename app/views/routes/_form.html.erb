@@ -1,0 +1,79 @@
+<%= form_for(@route) do |f| %>
+    <% if @route.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@route.errors.count, "error") %> prohibited this route from being saved:</h2>
+
+          <ul>
+            <% @route.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+
+    <div class="field trip-planner-title">
+      <%= f.text_field :title, placeholder: 'Enter Plan Name' %>
+    </div>
+    <% if !@route.new_record? %>
+    <div class="field">
+      Surface Type<br>
+      <%= f.select :surface_id, options_from_collection_for_select(Surface.all, :id, :title, @route.surface_id), :prompt => "please select" %>
+    </div>
+    <div class="field datepicker-input">
+      Ride Date<br>
+      <%#= f.date_select :ridedate %>
+      <%= f.text_field :ridedate %>
+    </div>
+    <% end %>
+    <div class="field trip-planner-description">
+      <%= f.text_area :description, placeholder: 'Enter Description' %>
+    </div>
+    <div class="field trip-planner-privacy">
+      <%= f.label :privacy %>
+      <br>
+      <%= f.select :privacy_id, options_from_collection_for_select(Privacy.all, :id, :title, @route.privacy_id) %>
+    </div>
+    <% if !@route.new_record? %>
+    <div class="field">
+      <%= f.label :condition %>
+      <br>
+      <%= f.select :condition_id, options_from_collection_for_select(Condition.all, :id, :title, @route.condition_id) %>
+    </div>
+    <% end %>
+    <% if current_user.role?(:admin) %>
+        <div class="field">
+          Ride Type<br>
+          <%= f.select :ride_type_id, options_from_collection_for_select(RideType.all, :id, :title, @route.ride_type_id) %>
+        </div>
+    <% end %>
+    <% if !@route.new_record? %>
+        <% photos = []
+           if @route.gallery
+             photos = (@route.gallery.attachments || [])
+           end
+        %>
+
+        <div class="route-photo">
+          <div class="route-photo-wrapper">
+            <% photos.each do |photo| %>
+                <li class="photo-wrapper">
+                  <a href="#" class="del-img" data-photo-id="<%= photo.id %>">x</a>
+                  <img src="<%= photo.file(:thumb) %>" data-full-url="<%= photo.file(:original)%>">
+            <% end %>
+          </div>
+
+          <div>
+            <a class="add-photo-to-ride" href="#" data-route-id="<%= @route.id %>">Add Photo</a>
+          </div>
+        </div>
+    <% end %>
+    <div class="actions toggle-save-to-plans">
+      <%= f.submit "Save to my rides" %>
+    </div>
+    <br>
+    Or <a href="#" class="cancel-edit">Cancel save</a>
+    <%= f.hidden_field :data %>
+    <%= f.hidden_field :ride_distance %>
+    <%= f.hidden_field :ride_time %>
+    <%= f.hidden_field :encoded_path %>
+<% end %>

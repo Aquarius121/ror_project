@@ -1,0 +1,24 @@
+default:
+  api_login_id: 63dC6k2Sy
+  api_transaction_key: 3ef2u46FWgy77HpD
+  merchant_hash_value: 
+
+development:
+  api_login_id: 9x2PNnF5fC
+  api_transaction_key: 546A6D6Yw98FcQpQ
+  merchant_hash_value:
+
+test:
+  api_login_id: 63dC6k2Sy
+  api_transaction_key: 3ef2u46FWgy77HpD
+  merchant_hash_value:
+
+staging:
+  api_login_id: 9x2PNnF5fC
+  api_transaction_key: 546A6D6Yw98FcQpQ
+  merchant_hash_value:
+
+production:
+  api_login_id: 63dC6k2Sy
+  api_transaction_key: 3ef2u46FWgy77HpD
+  merchant_hash_value:

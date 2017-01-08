@@ -1,0 +1,86 @@
+<div class="premium-wrapper">
+  <% if current_user.role? :free %>
+    <div class="payment_wrapper">
+      <div class="popup-premium-wrapper-bg">
+        <div class="popup-premium-tabs-title">Get the most from RidingSocial!</div>
+        <div class="premium-sale-text">
+          <p>We offer the following Plus and Premium subscriptions to help you plan
+            and track your rides a ride like a pro.
+          </p>
+          <p>Premium &mdash; The best for just $89.99/year or $8.99/month:</p>
+
+          <ul>
+            <li>View Butler Maps Segments &mdash; View all our awesome layers from our well know Butler Maps. We are adding new rides all the time and these will be automatically added to your account.</li>
+            <li>Copy unlimited rides &mdash; See a nice ride from a friend. You can copy it to your profile and then ride it.</li>
+            <li>Track a ride &mdash; Use our app to track all your rides and then save it to the site.</li>
+            <li>Share a ride &mdash; Ride something great? Share it with your buddies.</li>
+            <li>Upload GPX files &mdash; Have a bunch of old rides from your Garmin? You can upload them within our system.</li>
+            <li>Download GPX files &mdash; Still not convinced our app is cooler than your Garmin? You can still plan a ride in our system and download it to your Garmin.</li>
+            <li>Offline Butler Maps in the app (Coming in September 2014) &mdash; Although the app will track you no matter what, sometimes it is nice to see the map. We will be delivering offline map access to the app ASAP.</li>
+            <li>Groups (Coming Soon) &mdash; Find like minded people.</li>
+            <li>Weather Alerts (Coming Soon) &mdash; Sometimes it is good to know what is going on with the weather.</li>
+          </ul>
+          <p>Plus &mdash; Just what you need need for $49.99/year:</p>
+          <ul>
+            <li>Copy unlimited rides &mdash; See a nice ride from a friend. You can copy it to your profile and then ride it.</li>
+            <li>Track a ride &mdash; Use our app to track all your rides.</li>
+            <li>Share a ride &mdash; Ride something great? Share it with your buddies.</li>
+            <li>Upload GPX files &mdash; Have a bunch of old rides from your Garmin? You can upload them within our system.</li>
+            <li>Groups (Coming Soon) &mdash; Find like minded people.</li>
+            <li>Weather Alerts (Coming Soon) &mdash; Sometimes it is good to know what is going on with the weather.</li>
+          </ul>
+          <p>Please choose your best option to your right.</p>
+        </div>
+
+      </div>
+      <%= payment_popup('Premium Plans', 'Compete purchase') %>
+    </div>
+    <div class="popup-premium-account">
+      <div class="popup-premium-wrapper-bg popup-premium-wrapper-confirm">
+        <div class="popup-premium-tabs-title popup-premium-confirm">Go RidingSocial Premium!</div>
+        <div class="popup-premium-confirm--message">
+          <p class="popup-premium-confirm--message-thanks">Thank you for joining us</p>
+
+          <p class="popup-premium-confirm--message-desk">Now you ready to explore all of our features!</p>
+          <span class="close-premium-popup" id="close_premium">Close this window and go for a Ride</span></div>
+      </div>
+    </div>
+  <% else %>
+    <div class="payment_wrapper">
+      <div class="popup-premium-wrapper-bg">
+        <div class="popup-premium-tabs-title popup-premium-confirm">Subscription Settings</div>
+        <div>
+          <% subs = current_user.subscription || Subscription.new(:premium_plan => PremiumPlan.first, :created_at => Time.zone.now) %>
+          <% subs = Subscription.new(:premium_plan => PremiumPlan.first, :created_at => Time.zone.now) unless subs.premium_plan %>
+
+          You currently have our <strong><%= subs.type %></strong> subscription type.
+          <% subs_date = [subs.created_at, subs.updated_at].compact.max %>
+          <% if subs.type == 'annual' %>
+            We will deduct our payment of <strong>$<span class="payment-amount"><%= subs.price %></span></strong> on the
+            <strong> <span class="payment-day"><%= subs_date.day.ordinalize %> </span></strong>
+            of <%= "#{subs_date.strftime('%B')} #{subs_date.year + 1}" %>.
+        <% else %>
+            We deduct our payment of <strong>$<span class="payment-amount"><%= subs.price %></span></strong> on the
+            <strong> <span class="payment-day"><%= subs_date.day.ordinalize %> </span></strong>
+            of each month.
+        <% end %>
+          <br/><br/>
+          Thanks for being a part of RidingSocial.
+        </div>
+        <div class="popup-premium-tabs-title popup-premium-confirm">Subscription Upgrade/Downgrade/Cancel</div>
+        <div>
+          Currently we are working on a way to change your subscription within this web interface, but it is not ready yet. To change your subscription, please contact us using the following information and we will make this change for you.
+          <br/><br/>
+          Email - sales@ridingsocial.com
+          <br/>
+          Phone - 877-379-6053
+          <br/><br/>
+          If you wish to cancel your subscription please click on the following link below.
+          <div class="orange-btn complete-purchase close-premium-account">Cancel</div>
+		      <div class="terms-and-conditions-container"><a href="http://ridingsocial.com/terms-conditions/" target="_blank" class="terms-and-conditions">View Terms, Conditions and Refund Policy</a></div>
+        </div>
+      </div>
+      <%= payment_popup('Update Credit Card', 'Update Card') %> 
+    </div>
+  <% end %>
+</div>

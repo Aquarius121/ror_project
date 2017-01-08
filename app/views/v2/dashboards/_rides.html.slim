@@ -1,0 +1,48 @@
+// RIDES
+.b-row
+  .row
+    .col-md-12 = react_component 'ExpandableBlock', @expandable_rides
+
+/// RIDES
+/.b-row
+/  .row
+/    .col-md-12
+/      h1
+/        ' Rides
+/        span.links.links-plus
+/          a href="#" more rides
+/
+/      ul.nav.nav-tabs
+/        /li.pull-right
+/        /  select placeholder="search"
+/        /    option value="" Search...
+/
+/        li.active
+/          a href="#tab1" data-toggle="tab" Planned
+/
+/        li
+/          a href="#tab2" data-toggle="tab" Tracked
+/
+/        li
+/          a href="#tab3" data-toggle="tab" Shared
+/
+/      .tab-content
+/        .tab-pane.active#tab1
+/          .row
+/            - 3.times do |i|
+/              .col-md-4
+/                .b-ride href="#"
+/                  .avatar
+/                    = image_tag 'v2/block1.png'
+/                    ul.stats
+/                      li 123 mi
+/                      li 3h 2m
+/
+/                  .date Nov 24, 2014
+/
+/                  a.title href="#" New Group Ride
+/
+/                  .actions
+/                    .btn-group.btn-group-justified
+/                      .btn.btn-orange Edit ride
+/                      .btn.btn-link View ride

@@ -1,0 +1,332 @@
+.popup-premium-wrapper-bg {
+  float: left;
+  width: 600px;
+  font-size: 16px;
+  line-height: 20px;
+
+}
+
+.popup-premium-tabs-content {
+  width: 384px;
+  height: 600px;
+  float: right;
+  line-height: 52px;
+  font-weight: bold;
+  font-size: 16px;
+  font-family: 'Open Sans Condensed';
+  text-transform: uppercase;
+}
+
+.premium-stats-title {
+  font-family: 'Newtown';
+  font-size: 24px;
+  width: 100%;
+  text-align: center;
+  color: #f5f5f5;
+  font-weight: 700;
+  font-style: italic;
+  text-transform: uppercase;
+  line-height: 24px;
+  padding: 22px 0 5px;
+  text-shadow: 1px 1px 2px #aa4700;
+}
+
+.credit-cart-info {
+  margin-left: 10px;
+  .cc-title {
+    display: block;
+    width: 114px;
+    height: 30px;
+    position: relative;
+    top: -15px;
+    font-size: 13px;
+    font-weight: 300;
+    font-family: sans-serif;
+    text-transform: none;
+  }
+  input[type='text'] {
+    display: block;
+    padding: 5px;
+    font-size: 17px;
+    position: relative;
+    top: -10px;
+    width: 280px;
+  }
+  input[type='text'].short {
+    width: 40px;
+    display: inline-block !important;
+  }
+}
+
+.sign-div-wrapper {
+  .credit-cart-info .cc-title {
+    top: 3px;
+  }
+  .payment-list-card {
+    padding-left: 10px;
+  }
+}
+
+.cc-cvv {
+  display: inline-block !important;
+  margin-left: 40px;
+  input {
+    width: 60px;
+  }
+}
+
+.credit-cart-info-date {
+  display: inline-block;
+  span {
+    position: relative;
+    top: -10px;
+    margin: 0 10px;
+  }
+  .cc-title {
+    margin: 0
+  }
+}
+
+.complete-purchase {
+  margin-left: 10px;
+  width: 297px;
+  text-align: center;
+  height: 35px;
+  line-height: 35px;
+  text-transform: uppercase;
+}
+
+.close-premium-account {
+  margin-top: 20px;
+  margin-left: 0px;
+  display: block;
+}
+
+.popup-premium-tabs-title {
+  margin-bottom: 14px;
+  margin-top: 25px;
+  line-height: 30px;
+}
+
+.popup-premium-wrapper-bg > .popup-premium-tabs-title:first-child {
+  margin-top: 5px;
+}
+
+.error-list-payment {
+  overflow: hidden !important;;
+}
+
+.error-payment, .error-payment:first-child {
+  font-size: 14px !important;
+  margin-left: 10px !important;
+  line-height: 14px !important;
+  height: 20px !important;
+  background: none !important;
+  padding: 0 10px !important;
+  width: 100%;
+}
+
+.cbox-payment-message-title {
+  padding: 10px;
+  line-height: 35px;
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.cbox-payment-message {
+  padding: 10px;
+  line-height: 37px;
+  font-size: 20px;
+}
+
+#payment_logo {
+  overflow: hidden;
+}
+
+.premium-list-cart {
+  margin-left: 10px;
+}
+
+.payment-logo {
+  width: 50px;
+  height: 30px;
+  padding: 0;
+  margin-right: 10px;
+  float: left;
+  background: image-url('credit_card/sprites.png') no-repeat;
+}
+
+.amexp {
+  width: 50px;
+  height: 30px;
+  background-position: 0 0;
+}
+
+.dinersclub {
+  width: 50px;
+  height: 30px;
+  background-position: 0 -31px;
+}
+
+.maestro {
+  width: 50px;
+  height: 30px;
+  background-position: 0 -62px;
+}
+
+.paypal {
+  width: 50px;
+  height: 30px;
+  background-position: 0 -93px;
+}
+
+.visa {
+  width: 50px;
+  height: 30px;
+  background-position: 0 -124px;
+}
+
+.premium-list-rate {
+  margin-left: 10px;
+}
+
+.payment-rate {
+  display: block;
+  width: 100% !important;
+  background: none !important;
+  padding-left: 0 !important;
+  height: 30px !important;
+  overflow: hidden;
+  line-height: 20px !important;
+  font-size: 16px;
+  font-weight: bold;
+  font-family: 'Open Sans Condensed';
+  float: left;
+}
+
+.popup-premium-account {
+  overflow: hidden;
+  display: none;
+}
+
+.popup-premium-wrapper-confirm {
+  width: 100% !important;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  min-height: 600px;
+}
+
+.popup-premium-confirm {
+  border-bottom: 1px solid #dbdbdb;
+  margin-right: 34px;
+  width: 610px;
+  line-height: 30px;
+}
+
+.popup-premium-confirm--message {
+  text-align: center;
+  margin-top: 50px;
+}
+
+.popup-premium-confirm--message-thanks {
+  color: #E56828;
+  font-size: 45px;
+  text-transform: none;
+  margin-bottom: 40px;
+}
+
+.popup-premium-confirm--message-desk {
+  text-transform: none;
+  font-size: 27px;
+  font-weight: 100;
+  font-family: sans-serif;
+}
+
+.close-premium-popup {
+  background: image_url('create-club-button-bd.png') no-repeat 100% 100%;
+  background-size: cover;
+  display: block;
+  width: 450px;
+  height: 50px;
+  color: #fff;
+  text-transform: none;
+  font-style: italic;
+  font-weight: bold;
+  font-family: sans-serif;
+  margin: 87px auto;
+  cursor: pointer;
+}
+
+.premium-sale-text, .premium-sale-text ul li {
+  font-family: 'Open Sans Condensed';
+  font-size: 14px;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: normal;
+  text-transform: none;
+  line-height: 18px;
+  height: inherit;
+  background: inherit;
+  float: none;
+  list-style: square;
+  margin-left: 10px;
+
+}
+
+.premium-sale-text ul li {
+  padding-bottom: 5px;
+  margin-left: 18px;
+  padding-left: 10px;
+}
+
+.premium-sale-text {
+  overflow-y: scroll;
+  height: 500px;
+  p, ul {
+    margin-bottom: 1em;
+  }
+}
+
+.terms-and-conditions-container {
+  margin-top: 15px;
+}
+
+#user-nav .navigation li.navigation-toggler .payment_wrapper a.terms-and-conditions,
+#user-nav .navigation li.navigation-toggler .payment_wrapper a.terms-and-conditions:hover {
+  border-bottom: none;
+  margin-top: 15px;
+}
+
+#user-nav .navigation li.navigation-toggler .payment_wrapper a.terms-and-conditions:hover {
+  text-decoration: underline;
+}
+
+.plan-details {
+  color: white;
+  font-size: 12px;
+  padding-left: 24px;
+  padding-top: 0;
+  margin-top: 0;
+}
+
+.combined p#notice{
+  margin-bottom: 0;
+}
+
+.combined .premium-stats-error {
+  position: relative;
+  top: 40px;
+  font-weight: bold;
+  color: darkred;
+  font-family: 'Open Sans Condensed';
+  text-transform: uppercase;
+  .error-payment {
+    font-size: 16px !important;
+  }
+}
+.combined #error_list_payment {
+  margin-bottom: 0;
+}
+
+

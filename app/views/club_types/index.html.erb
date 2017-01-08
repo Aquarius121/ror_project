@@ -1,0 +1,27 @@
+<h1>Listing club_types</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @club_types.each do |club_type| %>
+      <tr>
+        <td><%= club_type.title %></td>
+        <td><%= link_to 'Show', club_type %></td>
+        <td><%= link_to 'Edit', edit_club_type_path(club_type) %></td>
+        <td><%= link_to 'Destroy', club_type, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Club type', new_club_type_path %>

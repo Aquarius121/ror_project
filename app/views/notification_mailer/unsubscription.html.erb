@@ -1,0 +1,76 @@
+<!-- START LAYOUT 1 -->
+
+<tr>
+  <td align="center" valign="top" class="fix-box">
+
+    <!-- start layout-1 container width 600px -->
+    <table width="600" align="center" border="0" cellspacing="0" cellpadding="0" class="container" bgcolor="#ffffff" style="background-color: rgb(255, 255, 255); border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: rgb(199, 199, 199);">
+      <tbody>
+      <tr>
+        <td valign="top">
+
+          <!-- start layout-1 container width 560px -->
+          <table width="560" align="center" border="0" cellspacing="0" cellpadding="0" class="full-width" bgcolor="#ffffff" style="background-color:#ffffff;">
+
+            <!--start space height -->
+            <tbody>
+            <tr>
+              <td height="20"></td>
+            </tr>
+            <!--end space height -->
+
+
+            <!-- start text content -->
+            <tr>
+              <td valign="top">
+                <table border="0" cellspacing="0" cellpadding="0" align="left">
+                  <tbody>
+                  <tr>
+                    <td style="font-size: 18px; line-height: 22px; font-family: Arial,Tahoma, Helvetica, sans-serif; color:#555555; font-weight:bold; text-align:center;">
+                      <p style="color: #555555; font-weight:bold;">
+                        <a href="#" style="text-decoration: none; color: rgb(85, 85, 85); font-weight: bold;">
+                          Hi <span style="color: rgb(226, 101, 38)"><%= @user.full_name %></span></a>,
+                      </p>
+
+                      <p style="font-weight:bold;">You have successfully unsubscribed.</p></td>
+                  </tr>
+
+                  <!--start space height -->
+                  <tr>
+                    <td height="15"></td>
+                  </tr>
+                  <!--end space height -->
+                  </tbody>
+                </table>
+              </td>
+            </tr>
+            <!-- end text content -->
+
+            <!--start space height -->
+            <tr>
+              <td height="10"></td>
+            </tr>
+            <tr>
+              <td height="10" style="font-size: 13px; line-height: 22px; font-family: Arial,Tahoma, Helvetica, sans-serif; color: #333333; font-weight: normal; text-align: center;">Thanks
+                for being part of RidingSocial and have a great day!
+              </td>
+            </tr>
+            <tr>
+              <td height="10"></td>
+            </tr>
+            <tr>
+              <td height="10">
+                <%= render "template/email/footer" %>
+              </td>
+            </tr>
+            <!--end space height -->
+            </tbody>
+          </table>
+          <!-- end layout-1 container width 560px -->
+        </td>
+      </tr>
+      </tbody>
+    </table>
+    <!-- end layout-1 container width 600px -->
+  </td>
+</tr>

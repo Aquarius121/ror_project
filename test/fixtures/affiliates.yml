@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  club_id: 
+  user_id: 
+  active: false
+  start: 2013-11-20 03:35:49
+
+two:
+  club_id: 
+  user_id: 
+  active: false
+  start: 2013-11-20 03:35:49

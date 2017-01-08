@@ -1,0 +1,73 @@
+<div class="rebuild-form-block">
+	<form method="post" action="api/build" class="rebuilder">
+		<label><input type="checkbox" name="clear_old" value="1"> Clear older entries (required once per import)</label><br />
+		<hr />
+		<a href="#" class="all-on">all on</a> / <a href="#" class="all-off">all off</a>
+		<ul class="ids">
+<% @maps.each_pair do |i, map|%>
+			<li class="id-entry"><label><input type="checkbox" name="ids[]" value="<%= "#{i}" %>" checked="checked"> <%= "#{i} #{map['name']}" %></label></li>
+<% end %>
+		</ul>
+		<input type="submit" value="Rebuild" class="submit">
+	</form>
+  <div id="results" style="display:none;"></div>
+</div>
+<script type="text/javascript">
+	jQuery(function($){
+
+    function pollJobs(jobs){
+      $.ajax({
+        url: 'api/jobs',
+        dataType: 'json',
+        contentType: 'application/json',
+        data: { jobs: jobs },
+        success: function (data) {
+          var _data = _(data);
+
+          var filterByStatus = function (status) {
+            return _data.select(function (task) {
+              return _(status).contains(task.status);
+            });
+          };
+          var running = filterByStatus(['queued', 'working']);
+          var done = filterByStatus(['complete']);
+          var failed = filterByStatus(['failed']);
+
+          $('#results').html(
+                  '<li>Running: ' + running.length + '</li>' +
+                  '<li>Done: ' + done.length + '</li>' +
+                  '<li>Failed: ' + failed.length + '</li>'
+          ).show();
+          if (running.length != 0) {
+            setTimeout(function(){pollJobs(jobs)}, 5000);
+          } else {
+            $('input[name=clear_old]').prop('checked', false);
+            $('.submit').val('Rebuild').prop('disabled', false);
+            toastr.success('Import complete.')
+          }
+        }
+      });
+    }
+
+    $('.rebuilder').submit(function(){
+			$.ajax({
+        url: this.action,
+        data: $(this).serialize(),
+        dataType: 'json',
+        success: pollJobs
+      });
+			$('.submit', this).val('Rebuilding...').prop('disabled', true);
+			return false;
+		});
+
+		$('.rebuilder .all-on').click(function(){
+			$('.id-entry input:checkbox').prop('checked', true)
+			return false;
+		});
+
+		$('.rebuilder .all-off').click(function(){
+			$('.id-entry input:checkbox').prop('checked', false)
+			return false;
+		});
+	});
+</script>

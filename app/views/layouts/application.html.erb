@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>RidingSocial - Your motorcycle rides will never be the same - Powered by Butler Motorcycle Maps </title>
+  <link rel="shortcut icon" href="/favicon.ico"/>
+  <meta name=viewport content="width=device-width, initial-scale=1">
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
+  <link href="//fonts.googleapis.com/css?family=Open+Sans+Condensed:300,300italic,700&amp;subset=latin,cyrillic" media="screen" rel="stylesheet" />
+  <link href="//fonts.googleapis.com/css?family=Open+Sans:400,700,600,600italic,400italic,700italic,800,800italic&amp;subset=latin,cyrillic" media="screen" rel="stylesheet" />
+
+  <script src="//www.google.com/jsapi"></script>
+  <script src="//maps.googleapis.com/maps/api/js?<%= Rails.env.development? ? '' : 'client=gme-ridingsocialllc&'%>libraries=geometry,places&sensor=true"></script>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+  <script>
+      var ratyConf = {
+          starHalf: "<%= asset_path 'raty-master/star-half.png' %>", starOff: "<%= asset_path 'raty-master/star-off.png' %>", starOn: "<%= asset_path 'raty-master/star-on.png' %>"
+      };
+      <% admin_or_pro = current_user && current_user.roles?(:admin, :pro) %>
+      var mapviewConf = {
+          markerUrl: '<%= asset_path 'markers.png' %>',
+          waypointMarkerUrl: '<%= asset_path 'markers/waypoint-marker.png' %>',
+          butlerRideMarkerUrl: '<%= asset_path 'markers/butler-ride-marker.png' %>',
+          featureId: '<%= admin_or_pro ? '1AREaXlN0hWtHoj7sS8QI8N-cSIT7V4nwlODziC8q' : '' %>',
+          pmtFeatureId: '<%= admin_or_pro ? '1nT_LJmUAnNhPsbzeKgSeBrPe8JmalxB9GhyEGQ0_' : '' %>',
+          g1MarkersUrl: '<%= admin_or_pro ? '/routes/g1_markers.json' : '' %>',
+          userInfo: '<%= current_user && current_user.zip %>',
+          waypointRestriction: <%= Rails.env.development? ? 8 : 23 %>
+      };
+      var isEmbed = false;
+      var swfPath = '<%= asset_path 'ZeroClipboard.swf' %>';
+      var C7E1249F = '<%= current_user && current_user.role?(:free) ? 'ED908C23' : 'FC03EB9D' %>';
+      var F24E43D9 = '<%= current_user && current_user.roles?(:pro, :admin) ? '2E315E03' : '' %>';
+      var B41C6E6D = '<%= current_user && current_user.role?(:admin) ? '101F9B92' : '' %>';
+      var currentUserRouteCountExceeded = <%= (current_user && current_user.route_count_exceeded?) || 'false' %>;
+      var userHasToken = <%= (current_user && current_user.device_tokens.length > 0) ? 'true' : 'false' %>;
+  </script>
+  <% if user_signed_in? %>
+      <% if current_user.sign_in_count == 0 %>
+      <% end %>
+  <% else %>
+  <% end %>
+  <style type="text/css">
+      body.with-bg {
+          background: url(<%= randomized_background_image %>) no-repeat center center fixed;
+          background-position-y: 59px;
+          background-size: 100% 100%;
+      }
+  </style>
+</head>
+<body class="<%= logged_class %> <%= body_bg_class %> ">
+
+<div id="user-nav">
+  <div class="nav-wrapper">
+    <div id="logo-container" class="col_6 logo-wrapper">
+      <a class="logo" href="<%= root_url %>">
+        <%= image_tag 'logo.png' %>
+      </a>
+    </div>
+
+    <div class="col_12 main-navigation">
+      <div class="ajax-overlay">
+        <div class="ajax-loader"></div>
+      </div>
+      <% if user_signed_in? %>
+          <%= render 'template/navigation' %>
+      <% else %>
+          &nbsp;
+      <% end %>
+      <%= render 'template/contact_us' %>
+      <%= render 'template/about_us' %>
+      <%= render 'template/upload', :upload_route => Route.new %>
+      <div class="account-popup"></div>
+      <div class="account-close"></div>
+      <div class="share-popup"></div>
+    </div>
+
+    <div class="col_6 omega user-menu-wrapper">
+      <% if user_signed_in? %>
+        <div class="new-route-btn-container">
+          <a href="#" id="new-route-main" class="orange-btn orange btn">create new route</a>
+        </div>
+      <% end %>
+      <div id="header-powered-by" class="powered-by-wrapper">
+        <%= image_tag 'powered-by-butler.png' %>
+      </div>
+
+      <% if user_signed_in? %>
+          <div class="gravatar">
+            <%= image_tag avatar_url(current_user) %>
+          </div>
+          <div class="contact-button-container">
+            <%= link_to 'Contact', '#', :class => 'contact-button' %>
+            <div class="contact-menu hidden">
+              <ul>
+                <li><a href="#" data-container="contact">Contact Us</a></li>
+                <li><a href="#" data-container="about">About Us</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="user-menu-toggler">
+            <span class="name"><%= name_or_email %></span>
+            <div class='user-arrow-button'></div>
+            <div class="hidden user-menu">
+              <ul>
+                <li class="edit-account"><%= link_to 'Edit Account', edit_user_registration_path %></li>
+                <% if current_user.roles?(:pro, :plus) && current_user.subscription_id? %>
+                    <li><a href="#" class="edit-subscription">Subscription</a></li>
+                <% end %>
+                <li><%= link_to 'Sign out', destroy_user_session_path %></li>
+                <li><a href="#" class="view-help">Help</a></li>
+                <li><a href="http://ridingsocial.com/forums/">Support</a></li>
+              </ul>
+            </div>
+          </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<div class="row page-wrapper">
+  <% if user_signed_in? %>
+      <%= sidebar %>
+  <% end %>
+  <%= yield %>
+  <div class="clearfix"></div>
+</div>
+<div class="map-layers-wrapper hidden">
+  <% if admin_or_pro %>
+  <div class="wrapper-content">
+    <div class="label">Change layers visibility</div>
+    <a href="#" class="layer-g1 active sprites" data-layer="track-g1"></a>
+    <a href="#" class="layer-g2 active sprites" data-layer="track-g2"></a>
+    <a href="#" class="layer-g3 active sprites" data-layer="track-g3"></a>
+    <a href="#" class="layer-lost-highway active sprites" data-layer="track-lh"></a>
+    <a href="#" class="layer-paved-mountain-trail active sprites" data-layer="track-pmt"></a>
+    <a href="#" class="layer-featured-dirt-road active sprites" data-layer="track-dirt"></a>
+    <a href="#" class="active" data-layer="track-g1-markers"><%= image_tag 'markers/butler-ride-marker.png' %></a>
+  </div>
+  <% end %>
+</div>
+<div class="map-legend-wrapper hidden">
+  <%= render 'template/layout/legend' %>
+</div>
+<div class="map-block-wrapper add-custom-scroll hidden">
+  <div class="ajax-overlay">
+    <div class="ajax-loader"></div>
+  </div>
+  <% if user_signed_in? %>
+      <div id="map-block">
+        <div class="select-route">
+          <div class="route-title">
+            New route
+          </div>
+          <div class="saved_routes_block">
+            <%= saved_routes_select %>
+          </div>
+          <div class="edit-download-send">
+            <div class="edit-download">
+              <div class="edit-route">
+                <span class="edit-icon"></span>
+                <span><a href="#" class="edit-ride" id="a-edit">edit route</a></span>
+              </div>
+              <div class="download-gps">
+                <span class="download-icon"></span>
+                <span><a href="#" id="a-download">download gpx</a></span>
+              </div>
+            </div>
+
+            <div class="send">
+              <span><a href="#" id="a-send">send offline maps to smartphone</a></span>
+            </div>
+          </div>
+        </div>
+        <div class="edit-controls">
+
+          <% ready_div_class = current_user.role?(:admin) ? 'waypoints-present' : 'waypoints-ready' %>
+          <% not_ready_div_class = current_user.role?(:admin) ? 'waypoints-not-present' : 'waypoints-not-ready' %>
+
+          <div class="start-end-points" id="start-div">
+            <div id="type-in-locations">
+              <p class="title">Plan Ride</p>
+              <p class="appeal">Please enter a starting and ending locations in the fields below.</p>
+              <p>Or you can click anywhere on the map to create your ride using your mouse.</p>
+              <p><a class="plan-rides-help" href="//player.vimeo.com/video/105198880?title=0&byline=0&portrait=0">View ride planning video</a></p>
+            </div>
+
+            <p>
+              <input type="text" id="startingaddress" name="startingaddress" value="" class="starting-address-input" placeholder="Starting from"/><span class="clear-input" id="clear-start-input"></span>
+              <input type="text" id="goingaddress" name="goingaddress" value="" class="going-address-input" placeholder="Going to, or click on map"/><span class="clear-input" id="clear-going-input"></span>
+            </p>
+
+            <div class="add-destination">
+              <p><a href="#" id="a-add-destination">+ Add Destination</a></p>
+            </div>
+          </div>
+          <div class="additional-way-options waypoints-ready">
+            <p>
+              <input type="checkbox" id="avoid-highways" class="avoid-highways">
+              <label for="avoid-highways"><span></span>Avoid Highways</label><br>
+              <input type="checkbox" id="avoid-toll-ways" class="avoid-toll-ways">
+              <label for="avoid-toll-ways"><span></span>Avoid Toll ways</label><br>
+            </p>
+          </div>
+
+          <div class="routes-param controls">
+            <div class="routes-param-title">Controls:</div>
+            <div class="routes-param-value">
+              <button class="controls-undo" title="Undo last action"></button>
+              <button class="controls-redo" title="Redo changes"></button>
+              <button class="controls-polygon" title="Use this tool to create a route where there are no roads on the map"></button>
+              <button class="controls-clear" title="Clear all"></button>
+            </div>
+          </div>
+
+          <div class="start-end-points">
+            <% if current_user.role?(:admin) %>
+              <p class="waypoints-present">
+                <a href="#">Create route with one point (G1)</a>
+              </p>
+            <% end %>
+            <p><a href="#" class="go-button waypoints-ready">Go!</a></p>
+          </div>
+        </div>
+
+        <div class="show-controls">
+
+          <div class="activity">
+            <span class="activity-title">Activity</span>
+
+            <div class="route-length-title-wrapper">
+              <span id="route-length-title">Ride Distance (mi)</span>
+              <span id="route-duration-title">Total Ride Time</span>
+            </div>
+
+            <div class="route-length-wrapper">
+              <span id="route-length">0</span>
+              <span id="route-duration">00:00</span>
+            </div>
+
+            <div class="route-waypoints-wraper">
+              <div class="route-waypoints-title-wraper">
+                <span id="route-waypoints-title">Waypoints</span>
+              </div>
+              <div class="route-waypoints-count-wraper">
+                <span id="route-waypoints-count">0</span>
+              </div>
+            </div>
+            <a href="#" class="want-upgrade">Want more? Upgrade</a>
+          </div>
+
+
+          <div class="trip-planner-form" style="display:none;">
+            <%= @route and render('routes/form') %>
+          </div>
+
+
+          <a href="#" class="toggle-copy-trip" style="display:none;">Copy</a>
+          <a href="#" class="toggle-save-trip" style="display:inline-block;">Save this plan</a>
+
+          <div class="share hidden"></div>
+
+
+          <div class="trip-planner" style="display:none;"></div>
+          <div class="route-accordion-holder hidden">
+            <div class="route-accordion">
+              <h2 class="waypoints">Waypoints</h2>
+
+              <div class="waypoints-container waypoints">
+                <ul id="waypoints" class="sortable">
+                  <li class="waypoint wp-template">
+                    <input type="text" value="" class="location"/>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+
+          <div class="evaluation-button">
+            <div id="Elevation-link"></div>
+            <span>Elevation Profile</span>
+          </div>
+        </div>
+
+      </div>
+  <% end %>
+  <div class="close"><</div>
+  <div class="clearfix"></div>
+</div>
+
+<% if user_signed_in? %>
+    <%= render 'template/layout/friends' %>
+    <div id="ElevationsProfileChartHolder" style="display:none;">
+      <div class="elevation-close"></div>
+      <div id="ElevationsProfileChart"></div>
+    </div>
+
+    <div class="overlay">
+      <div class="ajax-overlay">
+        <div class="ajax-loader"></div>
+      </div>
+    </div>
+<% end %>
+
+<% if !user_signed_in? %>
+    <%= render 'template/footer' %>
+<% else %>
+    <%= render 'template/layout/joyride'%>
+    <script type="text/template" id="ride-template">
+      <%= render 'template/layout/ride_template' %>
+    </script>
+    <script type="text/template" id="butler-ride-template">
+      <%= render 'template/layout/butler_ride_template' %>
+    </script>
+<% end %>
+
+<%= render 'template/layout/metrika' %>
+
+<script>
+    var oldBrowser =<%= browser.modern? ? 'false' : 'true' %>;
+    if (oldBrowser && !$.cookie('oldBrowser')) {
+        $.cookie('oldBrowser', 'true', { path: '/' });
+        toastr.warning('Hey, looks like you have a seriously old browser. This site works so much better on the newer ones. Please take a look at the updated browsers on offer by clicking on the link below.<br><br> <a href="http://outdatedbrowser.com/">http://outdatedbrowser.com/</a>',
+                '', {timeOut: 0, extendedTimeOut: 0, toastClass: 'toast wide'});
+    }
+    <% if @signup_error %>
+    var signupError = '<%= @signup_error %>';
+    if (signupError) {
+        toastr.warning('There was an error while processing card details. The systems says:<br>' + signupError
+                        + '<br> You can upgrade your free account using the "UPGRADE" button in the top toolbar.',
+                '', {timeOut: 0, extendedTimeOut: 0, toastClass: 'toast wide'});
+    }
+    <% end %>
+</script>
+</body>
+</html>

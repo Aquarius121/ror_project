@@ -1,0 +1,37 @@
+<h1>Listing clubs</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Logo</th>
+      <th>Description</th>
+      <th>Location</th>
+      <th>Privacy</th>
+      <th>Clubtype</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @clubs.each do |club| %>
+      <tr>
+        <td><%= club.title %></td>
+        <td><%= club_logo_url(club, :small) %></td>
+        <td><%= club.description %></td>
+        <td><%= club.location %></td>
+        <td><%= club.privacy.nil? ? "" : club.privacy.title %></td>
+        <td><%= club.club_type.nil? ? "" : club.club_type.title %></td>
+        <td><%= link_to 'Show', club %></td>
+        <td><%= link_to 'Edit', edit_club_path(club) %></td>
+        <td><%= link_to 'Destroy', club, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Club', new_club_path %>

@@ -1,0 +1,131 @@
+<div id="share-ride-container" data-route-id="<%= @route.id %>">
+  <div class="popup-share-ride-title">Share route "<%= @route.title %>"</div>
+  <div class="popup-share-tabs-section">
+    <div class="popup-share-tabs-section-a-wrapper active first">
+      <a class="popup-share-tabs-section-link">Riding Social</a>
+
+      <div class="popup-share-wrapper-bg popup-share-tabs-section-content">
+        <div class="popup-share-tabs-content">
+          <div id="share-ride-wrapper" data-route-id="<%= @route.id %>">
+
+            <div class="popup-share-ride-body">
+              <%= form_for(@shared_ride) do |f| %>
+                  <% if @shared_ride.errors.any? %>
+                      <div id="error_explanation">
+                        <h2><%= pluralize(@shared_ride.errors.count, "error") %> prohibited
+                          this route from being saved:
+                        </h2>
+                        <ul>
+                          <% @route.errors.full_messages.each do |msg| %>
+                              <li><%= msg %></li>
+                          <% end %>
+                        </ul>
+                      </div>
+                  <% end %>
+                  <div class="field">
+                    <h3>To</h3>
+                    <%= hidden_field_tag "shared_ride[friend]" %>
+                  </div>
+                  <div class="field">
+                    <h3>Message</h3>
+                    <%= text_area_tag "shared_ride[message]", nil, rows: 5 %>
+                  </div>
+                  <div class="actions">
+                    <%= f.submit 'Share This Route' %>
+                  </div>
+                  <%= f.hidden_field :route_id, :value => @route.id %>
+              <% end %>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="popup-share-tabs-section-a-wrapper social-media-share">
+      <a class="popup-share-tabs-section-link">Social Media</a>
+
+      <div class="popup-share-tabs-section-content hidden">
+        <div class="popup-share-tabs-content">
+          <% if @route.privacy_id == 1 %>
+                <span class="embed-privacy-warning">
+                Sorry, this ride will not display in your blog or forum as it is set
+                to private.
+                Please <a class="embed-edit-ride">edit</a> the ride and update the privacy settings to public and
+                you will be good to go.
+                </span>
+          <% else %>
+            <a href="#" onclick="FB.ui({
+                method: 'share',
+                href: 'https://maps.ridingsocial.com/embed/<%= @route.id %>'
+                }, function(response){});">
+              <%= image_tag('fb-share-icon.png') %>
+              Share the ride with your friends on Facebook
+          <% end %>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="popup-share-tabs-section-a-wrapper email-share">
+      <a class="popup-share-tabs-section-link">Email</a>
+
+      <div class="popup-share-tabs-section-content hidden">
+        <div class="popup-share-tabs-content email-share">
+          <%= form_for(@shared_ride, url: share_via_email_shared_rides_path) do |f| %>
+              <div class="field">
+                <h3>Email Address</h3>
+                <%= text_field_tag "shared_ride[email]", nil, placeholder: 'Please enter Email address' %>
+              </div>
+              <div class="actions">
+                <%= f.submit 'Email This Route' %>
+              </div>
+              <%= f.hidden_field :route_id, :value => @route.id %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <div class="popup-share-tabs-section-a-wrapper embed-share">
+      <a class="popup-share-tabs-section-link">Blog/Forum</a>
+
+      <div class="popup-share-tabs-section-content hidden">
+        <div class="popup-share-tabs-content">
+          <div class="embed-text">
+            <label for="embed-text">Embed ride</label>
+            <textarea id="embed-text" rows="5"></textarea>
+            <% if @route.privacy_id == 1 %>
+                <span class="embed-privacy-warning">
+                Sorry, this ride will not display in your blog or forum as it is set
+                to private.
+                Please <a class="embed-edit-ride">edit</a> the ride and update the privacy settings to public and
+                you will be good to go.
+                </span>
+            <% else %>
+                <a class="orange-btn embed-copy-clipboard">Copy code to clipboard</a>
+            <% end %>
+
+          </div>
+          <div class="embed-controls">
+            <label for="embed-width">Width:</label>
+            <input type="text" name="embed-width" id="embed-width" value="700"/> pixels<div class="clearfix"></div>
+            <label id="embed-height-label" for="embed-height">Height:</label>
+            <input type="text" name="embed-height" id="embed-height" value="700"/> pixels
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+https://www.facebook.com/dialog/feed?
+app_id=595428443887130
+&caption=LA%20-%20Angelas%20Crest
+&description=
+&display=popup
+&e2e=%7B%7D
+&href=https%3A%2F%2Fmaps.ridingsocial.com%2F
+&locale=en_US
+&name=Butler%20Maps
+&next=http%3A%2F%2Fstatic.ak.facebook.com%2Fconnect%2Fxd_arbiter%2FV80PAcvrynR.js%3Fversion%3D41%23cb%3Df1a3c2e4f4%26domain%3Dlocalhost%26origin%3Dhttp%253A%252F%252Flocalhost%253A3000%252Ff32de8c47%26relation%3Dopener%26frame%3Df60844a0c%26result%3D%2522xxRESULTTOKENxx%2522
+&picture=https%3A%2F%2Fmaps.ridingsocial.com%2Fsystem%2Froutes%2Ffb-280.png
+&sdk=joey

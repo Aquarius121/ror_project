@@ -1,0 +1,14 @@
+<div id="approve-members-form">
+  <%= form_tag('/members/approve/' + @club_id, method: 'post') do %>
+      <% @members.map do |member| %>
+          <div class="field">
+            <%= hidden_field_tag('member[' + member.id.to_s + ']', value = 'false', options = {:id => nil}) %>
+            <%= check_box_tag('member[' + member.id.to_s + ']', value = 'true', checked = false, options = {}) %>
+            <%= label_tag 'member[' + member.id.to_s + ']', content_tag(:img, '', :src => avatar_url(member, :thumb)) + member.full_name %>
+          </div>
+      <% end %>
+      <div class="actions">
+        <%= submit_tag('Approve selected users') %>
+      </div>
+  <% end %>
+</div>

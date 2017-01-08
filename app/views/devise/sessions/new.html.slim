@@ -1,0 +1,32 @@
+.b-signup-wrap
+
+  .b-signup
+    .b-logo
+
+    = form_for resource, 
+      as: resource_name, 
+      url: session_path(resource_name),
+      html: { class: 'b-signup-form' } do |f|
+        .b-signup-input
+          = f.email_field :email, autofocus: true, placeholder: 'Email Address'
+
+        .b-signup-input
+          = f.password_field :password, placeholder: 'Password'
+
+        - if devise_mapping.rememberable? 
+          label.b-signup-checkbox
+            = f.check_box :remember_me, id: 'remember_me'
+            span Remember Me
+
+        .b-signup-input
+          = f.button 'Sign Me In', class: "b-signup-button"
+
+        .b-signup-input
+          = link_to "Login via Facebook",
+            user_omniauth_authorize_path(:facebook),
+            class: 'b-signup-button facebook'
+
+        .hint
+          | Not a member yet? Click 
+          => link_to('here', new_user_registration_path)
+          ' to register.

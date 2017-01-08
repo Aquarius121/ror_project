@@ -1,0 +1,29 @@
+<h1>Listing shared_rides</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Route</th>
+      <th>User</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @shared_rides.each do |shared_ride| %>
+      <tr>
+        <td><%= shared_ride.route_id %></td>
+        <td><%= shared_ride.user_id %></td>
+        <td><%= link_to 'Show', shared_ride %></td>
+        <td><%= link_to 'Edit', edit_shared_ride_path(shared_ride) %></td>
+        <td><%= link_to 'Destroy', shared_ride, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Shared ride', new_shared_ride_path %>

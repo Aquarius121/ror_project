@@ -1,0 +1,99 @@
+- content_for :header_actions
+  = dashboard_link
+
+- content_for :subheader do
+  = render partial: 'v2/markup/partials/subheader/group'
+
+.row
+  .col-md-9
+    .b-row
+      .row
+        .col-md-12
+          h1 Group stats
+
+      .row
+        .col-sm-3
+          .b-stat
+            .heading 
+              ' 123
+              small mi
+            .description total distance
+
+        .col-sm-3
+          .b-stat
+            .heading 
+              ' 4:38
+              small mi
+            .description total time
+
+        .col-sm-3
+          .b-stat
+            .heading 
+              ' 14
+            .description total rides
+
+        .col-sm-3
+          .b-stat
+            .heading 
+              ' 6
+            .description overall rank
+
+    .b-row
+      .row
+        .col-sm-12
+          h1 Group info
+
+          ul.nav.nav-tabs
+            li.active
+              a href="#leaderboard" data-toggle="tab" Leaderboard
+
+            li
+              a href="#members" data-toggle="tab" Members
+
+            li
+              a href="#description" data-toggle="tab" Description
+
+          .tab-content
+            .tab-pane.active#leaderboard
+              = render 'v2/markup/group/leaderboard'
+
+            .tab-pane#members
+              = render 'v2/markup/group/members'
+
+            .tab-pane.f-regular.f-16#description
+              = render 'v2/markup/group/description'
+
+
+  .col-md-3.l-sidebar
+    .b-row
+      h2 Upcoming rides
+
+      .b-ride
+        .date Nov 24, 2015
+        a.title href="#" Seattle to boston
+
+      .b-ride
+        .date Nov 24, 2015
+        a.title href="#" Seattle to boston
+
+      .b-ride
+        .date Nov 24, 2015
+        a.title href="#" Seattle to boston
+
+    .b-row
+      h2 Announcements
+
+      .b-announce
+        .date Nov 24, 2015
+        a.title href="#" Title here
+
+      = render partial: 'v2/markup/partials/popups/ride'
+
+      .b-announce
+        .date Nov 24, 2015
+        a.title href="#" Title here
+
+      .b-announce
+        .date Nov 24, 2015
+        a.title href="#" Title here
+

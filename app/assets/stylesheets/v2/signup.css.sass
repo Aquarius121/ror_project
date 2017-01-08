@@ -1,0 +1,100 @@
+.b-signup-wrap
+  display: flex
+  align-items: center
+  justify-content: center
+  position: fixed
+  top: 0
+  bottom: 0
+  left: 0
+  right: 0
+
+.b-signup
+  position: relative
+  padding: 30px
+  color: #333
+  font-weight: 300
+
+  @extend .col-md-4
+
+  .b-logo
+    position: absolute
+    left: 0
+    right: 0
+    top: 0
+    margin-top: -80px
+
+  .hint 
+    a 
+      color: inherit
+      text-decoration: underline
+      &:hover
+        text-decoration: none
+
+  &:before
+    content: ''
+    position: absolute
+    top: 0
+    left: 0
+    right: 0
+    bottom: 0
+    z-index: -1
+    background: rgba(255,255,255,.7)
+    border-radius: 5px
+
+.b-signup-errors
+  @extend .alert
+  @extend .alert-danger
+
+  h2 
+    font-style: normal
+    font-weight: 600
+    font-family: 'Open Sans', sans-serif
+    font-size: 16px
+    margin: 0 0 .5em
+
+  ul
+    padding-left: 1.3em
+    margin-bottom: 0
+
+  background: none
+  border-color: $alert-danger-text
+
+.b-signup-checkbox
+  @extend .checkbox
+  margin-left: 20px
+  font-weight: inherit
+
+.b-signup-row
+  @extend .row
+  margin-left: -4px
+  margin-right: -4px
+
+
+  .b-signup-input
+    @extend .col-md-6
+    padding-left: 4px
+    padding-right: 4px
+
+
+.b-signup-input
+  @extend .form-group
+  input
+    @extend .form-control
+    background: rgba(255,255,255,.7)
+    border: none
+    border-radius: 3px
+    color: inherit
+    font-weight: 400
+
+.b-signup-button
+  @extend .btn
+  @extend .btn-orange
+  @extend .btn-block
+
+  &.facebook
+    background: $facebook-color
+
+
+
+
+

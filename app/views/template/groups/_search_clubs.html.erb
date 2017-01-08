@@ -1,0 +1,32 @@
+<div class="popup-club-tabs-friends-form">
+  <form action="<%= search_clubs_path %>" method="POST">
+    <input class="name" name="name" placeholder="Group Name" type="text"/>
+    <input class="location" name="location" placeholder="Group Location" type="text"/>
+    <select class="club styled add-custom-select" name="club">
+      <option value="">Group Type</option>
+      <%= options_from_collection_for_select(ClubType.all, :id, :title) %>
+    </select>
+    <input class="submit" type="submit" value="Submit"/></form>
+</div>
+<div class="popup-club-tabs-friends-form-result">
+  <div class="popup-club-tabs-form-result-hidden">
+    <div class="result-wrapper">
+      <div class="img-wrapper">
+        <img class="club-img" height="116px" src="<%= asset_path('club-default-img.png')%>" width="116px"/>
+      </div>
+      <div class="name-wrapper">
+        <div class="name"></div>
+        <div class="location"></div>
+      </div>
+      <div class="info-wrapper">
+        <div class="members"><span class="num">0</span>Members</div>
+        <div class="type"></div>
+        <div class="rides"><span class="num">0</span>rides</div>
+      </div>
+      <div class="clearfix"></div>
+    </div>
+  </div>
+  <div class="popup-club-tabs-form-result-content add-custom-scroll">
+    <div class="popup-club-tabs-form-result-content-wrapper"></div>
+  </div>
+</div>

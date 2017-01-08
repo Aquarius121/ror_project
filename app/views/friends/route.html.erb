@@ -1,0 +1,14 @@
+<div id="butler-map"></div>
+<div id="main">
+
+	<div id="handle"></div>
+	<div id="closeBox"></div>
+
+</div>
+<script type="text/javascript">
+	(function($){
+		$('#butler-map').on('map-loaded', function(){
+			routes.load(<%= @route.id%>, <%= @route.to_json.html_safe %>);
+		});
+	})(jQuery);
+</script>

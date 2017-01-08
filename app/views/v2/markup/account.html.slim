@@ -1,0 +1,124 @@
+- content_for :header_actions do
+  = link_to 'Plan a ride', '#plan', class: 'b-header-actions'
+
+.b-row
+  h1 Account
+
+  .b-form.b-account-form
+    .row.wide
+      .col-sm-6
+        .b-form-row
+          label for="i1" First Name
+          input#i1 type="text" value="Lachie"
+      
+        .b-form-row
+          label for="i2" Last Name
+          input#i2 type="text" value="Thomas"
+
+        .b-form-row
+          label for="i3" Zip
+          input#i3 type="text" value="81000"
+
+      .col-sm-6
+        .b-form-row
+          label &nbsp;
+          .b-account-form-avatars
+            .b-user-info
+              .avatar
+                = image_tag 'v2/avatar.png'
+
+              .content
+                .description
+                  a.plused href="#" upload avatar images
+                  br 
+                  a.plused href="#" upload avatar from facebook/gravatar
+
+        .b-form-row
+          label for="i4" Motorcycle club
+          input#i4 type="text" 
+
+    hr 
+
+
+    .b-form-checkboxes
+      label Riding preference
+      .row
+        - ['Sport', 'Sport-Touring', 'Side Car', 'Bagger', 'Cruiser', 'Single Track', 'Trike', 'Adventure', 'Cafe', 'Scooter', 'Standard', 'Vintage', 'Electric'].each do |i|
+          .col-sm-3
+            .b-form-row
+              label for="t#{ i.parameterize }" = i
+              input type="checkbox" id="t#{ i.parameterize }" 
+
+    .row.wide
+      .col-sm-6
+        .b-form-row
+          input type="text"
+
+
+    hr
+
+    .row.wide
+      .col-sm-6
+        .b-form-row
+          label for="im1" In My Garage
+          input type="text" value="CR 250"
+
+    hr
+
+    .row.wide
+      .col-sm-6
+        .b-form-row
+          label for="ii1" Location
+          input#ii1 type="text" value="Colorado"
+
+        .b-form-row
+          input type="text" value="Eagle"
+
+        .b-form-row
+          label for="ii2" Time Zone
+          input#ii2 type="text" value="(GMT -10:00) Hawaii"
+
+        .b-form-row
+          label for="ii3" Gender
+          input#ii3 type="text" placeholder="select..." 
+ 
+        .b-form-row
+          label for="ii4" Age
+          input#ii4 type="text" placeholder="select..." 
+
+        br 
+        .b-form-checkboxes
+          .b-form-row
+            label for="ii10" Updates/Tips/Rides recommendations
+            input#ii10 type="checkbox"
+
+
+      .col-sm-6
+        .b-form-row
+          label for="ii5" About Me
+          textarea#ii5 placeholder="Tell us something about you"
+
+        .b-form-row
+          label for="ii6" Email
+          input#ii6 type="text" value="email@email.com"
+
+        .b-form-row
+          label for="ii7" New password
+          input#ii7 type="password"
+
+        .b-form-row
+          label for="ii8" Confirm New Password
+          input#ii8 type="password" 
+
+        .b-form-row
+          label for="ii9" Your Old Password
+          input#ii9 type="password" 
+
+    .row.wide
+      .col-sm-6
+
+        .b-form-actions
+          button.b-form-btn type="submit" update card
+
+
+

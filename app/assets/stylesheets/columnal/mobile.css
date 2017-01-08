@@ -1,0 +1,87 @@
+/* COLUMNAL - MOBILE
+///////////////////////////////////////////// */
+
+@media handheld, only screen and (max-width: 767px) {
+    
+	.row, .body, .container {
+	width: 100%;
+	margin-left:0;
+	margin-right:0;
+	padding-left:0;
+	padding-right:0;
+	}
+	/* kill prefixes and suffixes, otherwise 1-column version breaks */
+	.pre_1, .pre_2, .pre_3, .pre_4, .pre_5, .pre_6, .pre_7, .pre_8, .pre_9, .pre_10, .pre_11 {padding-left: 0;}
+	.suf_1, .suf_2, .suf_3, .suf_4, .suf_5, .suf_6, .suf_7, .suf_8, .suf_9, .suf_10, .suf_11 {padding-right: 0;}
+
+	/************************************************************************/
+
+	/* cssgrid.net - mobile presets */
+	.col_1, .col_2, .col_3, .col_4, .col_5, .col_6,
+	.col_7, .col_8, .col_9, .col_10, .col_11, .col_12,
+                  .col_13, .col_14, .col_15, .col_16, .col_17, .col_18,
+                  .col_19, .col_20, .col_21, .col_22, .col_23, .col_24 {
+		clear: both;
+		float: none;
+		margin-left: 0;
+		margin-right: 0;
+		padding-left: 20px;
+		padding-right: 20px;
+		width: auto;
+		width: -moz-available;
+	}
+
+
+	/* Columnal - sub columns */
+	.col_2 .col_1, 
+	.col_3 .col_2, .col_3 .col_1,
+	.col_4 .col_3, .col_4 .col_2, .col_4 .col_1,
+	.col_5 .col_4, .col_5 .col_3, .col_5 .col_2, .col_5 .col_1,
+	.col_6 .col_5, .col_6 .col_4, .col_6 .col_3, .col_6 .col_2, .col_6 .col_1,
+	.col_7 .col_6, .col_7 .col_5, .col_7 .col_4, .col_7 .col_3, .col_7 .col_2, .col_7 .col_1,
+	.col_8 .col_7, .col_8 .col_6, .col_8 .col_5, .col_8 .col_4, .col_8 .col_3, .col_8 .col_2, .col_8 .col_1,
+	.col_9 .col_1, .col_9 .col_2, .col_9 .col_3, .col_9 .col_4, .col_9 .col_5, .col_9 .col_6, .col_9 .col_7, .col_9 .col_8,
+	.col_10 .col_9, .col_10 .col_8, .col_10 .col_7, .col_10 .col_6, .col_10 .col_5, .col_10 .col_4, .col_10 .col_3, .col_10 .col_2, .col_10 .col_1,
+	.col_11 .col_10, .col_11 .col_9, .col_11 .col_8, .col_11 .col_7, .col_11 .col_6, .col_11 .col_5, .col_11 .col_4, .col_11 .col_3, .col_11 .col_2, .col_11 .col_1,
+	.col_12 .col_11, .col_12 .col_10, .col_12 .col_9, .col_12 .col_8, .col_12 .col_7, .col_12 .col_6, .col_12 .col_5, .col_12 .col_4, .col_12 .col_3, .col_12 .col_2, .col_12 .col_1,
+                  .col_13 .col_12, .col_13 .col_11, .col_13 .col_10, .col_13 .col_9, .col_13 .col_8, .col_13 .col_7, .col_13 .col_6, .col_13 .col_5, .col_13 .col_4, .col_13 .col_3, .col_13 .col_2, .col_13 .col_1,
+                  .col_14 .col_13, .col_14 .col_12, .col_14 .col_11, .col_14 .col_10, .col_14 .col_9, .col_14 .col_8, .col_14 .col_7, .col_14 .col_6, .col_14 .col_5, .col_14 .col_4, .col_14 .col_3, .col_14 .col_2, .col_14 .col_1,
+                  .col_15 .col_14, .col_15 .col_13, .col_15 .col_12, .col_15 .col_11, .col_15 .col_10, .col_15 .col_9, .col_15 .col_8, .col_15 .col_7, .col_15 .col_6, .col_15 .col_5, .col_15 .col_4, .col_15 .col_3, .col_15 .col_2, .col_15 .col_1,
+                  .col_16 .col_15, .col_16 .col_14, .col_16 .col_13, .col_16 .col_12, .col_16 .col_11, .col_16 .col_10, .col_16 .col_9, .col_16 .col_8, .col_16 .col_7, .col_16 .col_6, .col_16 .col_5, .col_16 .col_4, .col_16 .col_3, .col_16 .col_2, .col_16 .col_1,
+                  .col_17 .col_16, .col_17 .col_15, .col_17 .col_14, .col_17 .col_13, .col_17 .col_12, .col_17 .col_11, .col_17 .col_10, .col_17 .col_9, .col_17 .col_8, .col_17 .col_7, .col_17 .col_6, .col_17 .col_5, .col_17 .col_4, .col_17 .col_3, .col_17 .col_2, .col_17 .col_1,
+                  .col_18 .col_17, .col_18 .col_16, .col_18 .col_15, .col_18 .col_14, .col_18 .col_13, .col_18 .col_12, .col_18 .col_11, .col_18 .col_10, .col_18 .col_9, .col_18 .col_8, .col_18 .col_7, .col_18 .col_6, .col_18 .col_5, .col_18 .col_4, .col_18 .col_3, .col_18 .col_2, .col_18 .col_1,
+                  .col_19 .col_18, .col_19 .col_17, .col_19 .col_16, .col_19 .col_15, .col_19 .col_14, .col_19 .col_13, .col_19 .col_12, .col_19 .col_11, .col_19 .col_10, .col_19 .col_9, .col_19 .col_8, .col_19 .col_7, .col_19 .col_6, .col_19 .col_5, .col_19 .col_4, .col_19 .col_3, .col_19 .col_2, .col_19 .col_1,
+                  .col_20 .col_19, .col_20 .col_18, .col_20 .col_17, .col_20 .col_16, .col_20 .col_15, .col_20 .col_14, .col_20 .col_13, .col_20 .col_12, .col_20 .col_11, .col_20 .col_10, .col_20 .col_9, .col_20 .col_8, .col_20 .col_7, .col_20 .col_6, .col_20 .col_5, .col_20 .col_4, .col_20 .col_3, .col_20 .col_2, .col_20 .col_1,
+                  .col_21 .col_20, .col_21 .col_19, .col_21 .col_18, .col_21 .col_17, .col_21 .col_16, .col_21 .col_15, .col_21 .col_14, .col_21 .col_13, .col_21 .col_12, .col_21 .col_11, .col_21 .col_10, .col_21 .col_9, .col_21 .col_8, .col_21 .col_7, .col_21 .col_6, .col_21 .col_5, .col_21 .col_4, .col_21 .col_3, .col_21 .col_2, .col_21 .col_1,
+                  .col_22 .col_21, .col_22 .col_20, .col_22 .col_19, .col_22 .col_18, .col_22 .col_17, .col_22 .col_16, .col_22 .col_15, .col_22 .col_14, .col_22 .col_13, .col_22 .col_12, .col_22 .col_11, .col_22 .col_10, .col_22 .col_9, .col_22 .col_8, .col_22 .col_7, .col_22 .col_6, .col_22 .col_5, .col_22 .col_4, .col_22 .col_3, .col_22 .col_2, .col_22 .col_1,
+                  .col_23 .col_22, .col_23 .col_21, .col_23 .col_20, .col_23 .col_19, .col_23 .col_18, .col_23 .col_17, .col_23 .col_16, .col_23 .col_15, .col_23 .col_14, .col_23 .col_13, .col_23 .col_12, .col_23 .col_11, .col_23 .col_10, .col_23 .col_9, .col_23 .col_8, .col_23 .col_7, .col_23 .col_6, .col_23 .col_5, .col_23 .col_4, .col_23 .col_3, .col_23 .col_2, .col_23 .col_1,
+                  .col_24 .col_23, .col_24 .col_22, .col_24 .col_21, .col_24 .col_20, .col_24 .col_19, .col_24 .col_18, .col_24 .col_17, .col_24 .col_16, .col_24 .col_15, .col_24 .col_14, .col_24 .col_13, .col_24 .col_12, .col_24 .col_11, .col_24 .col_10, .col_24 .col_9, .col_24 .col_8, .col_24 .col_7, .col_24 .col_6, .col_24 .col_5, .col_24 .col_4, .col_24 .col_3, .col_24 .col_2, .col_24 .col_1 {
+		padding-left: 0;
+		padding-right: 0;
+		width: 100%;
+	}
+
+	/* .row {width: 100%;} */
+	/* Type presets */
+	.container h1 {margin:.5em 0 .5em;}
+	.container h2 {margin:.5em 0 .535em;}
+	.container h3 {margin:.5em 0 .57em;}
+	.container h4 {margin:.5em 0 .615em;}
+	.container h5 {margin:.5em 0 .67em;}
+	.container h6 {margin:.5em 0 .8em;}
+
+	/* .reverse {padding-top: 1em; margin-bottom: 1em;} */
+
+	/* Columnal content control - use on any elements to show/hide content on mobile */
+	.mobile-hide {display: none ! important;}
+	.mobile-only {display: block ! important;}
+
+	/*****************************************
+	   CUSTOM ADDITIONS FOR MOBILE SITE LAYOUT 
+	*****************************************/
+
+	
+
+}
+/* END COLUMNAL - MOBILE
+///////////////////////////////////////////// */

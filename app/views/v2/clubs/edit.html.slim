@@ -1,0 +1,11 @@
+- content_for :subheader
+  div
+
+- content_for :header_actions
+  = back_to_group_link @club
+
+.b-row
+  h1 Update group
+
+  = render 'form'
+

@@ -1,0 +1,67 @@
+<ul class="navigation">
+  <li class="navigation-toggler dashboard">
+    <div class="a-wrapper walk_dashboard">
+      <a href="#">Dashboard</a>
+    </div>
+    <div class="navigation-wrapper hidden">
+      <%= render 'template/dashboard/dashboard' %>
+      <div class="close">^</div>
+    </div>
+  </li>
+  <% if !Rails.env.production? %>
+  <li class="navigation-toggler">
+    <div class="a-wrapper walk_groups">
+      <%= link_to "Groups", clubs_path %>
+    </div>
+    <div class="navigation-wrapper hidden">
+      <%= render 'template/groups/popup' %>
+      <div class="close">^</div>
+    </div>
+  </li>
+  <% end %>
+  <li class="navigation-toggler search">
+    <div class="a-wrapper walk_search">
+      <%= link_to(friends_view_path) do %>
+          Search
+          <span class="count-approve"></span>
+      <% end %>
+      <div class="back-search action-shortcut hidden">
+        <a class="orange-btn" href="#">
+          <span class="back-search-arrow">^</span>Back To Search Results
+        </a>
+      </div>
+      <div class="back-my-rides action-shortcut hidden">
+        <a class="orange-btn" href="#">
+          <span class="back-search-arrow">^</span>Back To My Rides
+        </a>
+      </div>
+      <% if current_user && current_user.card_expires && !cookies[:cc_expiration_seen] %>
+      <div class="cc-expiration action-shortcut">
+        <a class="orange-btn" href="#">
+          <span class="back-search-arrow">^</span>Credit Card Expiring
+        </a>
+      </div>
+      <% end %>
+    </div>
+    <div class="navigation-wrapper hidden"><%= friends_popup %>
+      <div class="close">^</div>
+    </div>
+  </li>
+  <% if !current_user.role?(:admin) %>
+      <li class="navigation-toggler" style="<%= current_user.role?(:pro) ? 'background: none' : '' %>" >
+        <div class="a-wrapper">
+          <a href="#" id="premium_popup">
+            <%= current_user.roles?(:pro, :plus) ? '' : 'Upgrade' %>
+          </a>
+        </div>
+        <div class="premium-popup navigation-wrapper hidden"><%= premium_popup %>
+          <div class="close">^</div>
+        </div>
+      </li>
+  <% end %>
+</ul>
+
+<div class="navigation-wrapper my-rides hidden"><%= my_rides %>
+  <div class="close">^</div>
+</div>
+<div class="navigation-wrapper-layer hidden"></div>

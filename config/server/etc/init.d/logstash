@@ -1,0 +1,25 @@
+#!/bin/sh
+### BEGIN INIT INFO
+# Provides: Logstash 1.4 init.d script
+# Required-Start: $network
+# Required-Stop: $network
+# Default-Start: 2 3 4 5
+# Description: Starts the Logstash 1.4
+### END INIT INFO
+export HOME=/opt/logstash
+case "$1" in
+'start')
+/opt/logstash/bin/logstash -f /etc/logstash/logstash.conf > /var/log/logstash.log 2>&1 &
+;;
+'stop')
+/usr/bin/kill -9 `ps auxww |grep logstash |grep logstash.conf | awk '{print $2}'`
+;;
+'restart')
+/etc/init.d/logstash stop
+/etc/init.d/logstash start
+;;
+*)
+echo "Usage: $0 { start | stop |restart }"
+;;
+esac
+exit 0

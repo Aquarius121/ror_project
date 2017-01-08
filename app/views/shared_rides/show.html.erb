@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Route:</strong>
+  <%= @shared_ride.route_id %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @shared_ride.user_id %>
+</p>
+
+<%= link_to 'Edit', edit_shared_ride_path(@shared_ride) %> |
+<%= link_to 'Back', shared_rides_path %>

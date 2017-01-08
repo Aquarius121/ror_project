@@ -1,0 +1,27 @@
+- content_for :header_actions do
+  = link_to 'Plan a ride', '#plan', class: 'b-header-actions'
+
+.b-row
+  h1 Challenges
+
+  ul.nav.nav-tabs
+    li.active
+      a href="#current" data-toggle="tab" Current
+
+    li
+      a href="#my-challenges" data-toggle="tab" My challenges
+
+    li
+      a href="#past" data-toggle="tab" past
+
+  .tab-content
+    .tab-pane.active#current
+      = render partial: 'v2/markup/challenges/current'
+
+    .tab-pane#my-challenges
+      = render partial: 'v2/markup/challenges/my_challenges'
+
+    .tab-pane#past
+      = render partial: 'v2/markup/challenges/past'
+
+

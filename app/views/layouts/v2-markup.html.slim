@@ -1,0 +1,57 @@
+doctype html
+html
+  head
+    title Markup &mdash; V2
+    meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"
+    = stylesheet_link_tag    'v2', media: 'all', 'data-turbolinks-track' => true
+    = javascript_include_tag 'v2', 'data-turbolinks-track' => true
+
+    link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'
+    link href='http://fonts.googleapis.com/css?family=Alfa+Slab+One' rel='stylesheet' type='text/css'
+
+    = csrf_meta_tags
+
+    /- if notice
+    /  javascript:
+    /    $(function () {
+    /      alertify.success("#{notice}");
+    /    })
+    /
+    /- if alert
+    /  javascript:
+    /    $(function () {
+    /      alertify.error("#{alert}");
+    /    })
+  body
+    header
+      .b-header-ribbon
+        div
+          a href="#" help/support
+          a href="#" get the app
+          a href="#" log out
+          div Allison Burgund &ndash; Standard Member &darr;
+
+      .l-header
+        = content_for :header_actions if content_for? :header_actions
+
+        .b-logo
+
+    .l-subheader
+      .container 
+        - if content_for? :subheader
+          = content_for :subheader
+        - else
+          = render partial: 'v2/markup/partials/subheader/user'
+
+
+    .container = yield
+
+    footer
+      .container 
+        .b-footer-links
+          a href="#" sign-up For emails
+          a href="#" try it for free
+          a href="#" Log In
+
+        .b-copyrights
+          | Copyright REVER &copy; #{ current_year } - All Rights Reserved

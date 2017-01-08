@@ -1,0 +1,77 @@
+a.b-block
+  &:hover
+    color: #fd9026
+    text-decoration: none
+
+    .title
+      text-decoration: underline
+
+.b-list
+  .b-block
+    margin-bottom: 2em
+
+.b-block
+  display: block
+  color: #fd9026
+  font-size: 22px
+
+  .date 
+    font-size: 12px
+    margin: .9em 0 0 
+    color: #555
+
+  .title
+    margin: .2em 0 .4em
+    line-height: 1.1
+    display: block
+    white-space: nowrap
+    text-overflow: ellipsis
+    overflow: hidden
+
+  a.title
+    color: inherit
+
+  & > .avatar
+    +box-shadow($box-shadow)
+    display: block
+    width: 100%
+
+    img 
+      display: block
+      width: 100%
+
+  .actions
+    margin-top: .5em
+
+    a 
+      width: 50%
+
+.l-sidebar
+  .b-row
+    padding-bottom: 40px
+
+  .b-block
+    border-bottom: 1px solid rgba(0,0,0,.3)
+    padding-bottom: 10px
+    margin-bottom: 20px
+
+    .date
+      color: #555
+
+    .date 
+      margin: .2em 0 .4em
+
+    .title
+      margin: .9em 0 0 
+
+    &:last-child
+      padding-bottom: 0
+      margin-bottom: 0
+      border-bottom: none
+
+
+
+
+
+
+

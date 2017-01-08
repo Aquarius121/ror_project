@@ -1,0 +1,33 @@
+<h1>Listing friendships</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Follower</th>
+      <th>User</th>
+      <th>Active</th>
+      <th>Date</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @friendships.each do |friendship| %>
+      <tr>
+        <td><%= friendship.follower_id %></td>
+        <td><%= friendship.user_id %></td>
+        <td><%= friendship.active %></td>
+        <td><%= friendship.date %></td>
+        <td><%= link_to 'Show', friendship %></td>
+        <td><%= link_to 'Edit', edit_friendship_path(friendship) %></td>
+        <td><%= link_to 'Destroy', friendship, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Friendship', new_friendship_path %>

@@ -1,0 +1,30 @@
+<div class="friend-head">
+  <div class="gravatar">
+    <%= image_tag avatar_url(friend) %>
+  </div>
+  <span class="friend-name"><%= friend.full_name %></span>
+</div>
+<div class="friend-body">
+  <ul class="friends_routes_block saved active">
+    <% friend_first_name = friend.firstname %>
+    <% routes = @friend_rides[friend.id]
+       if routes.blank? %>
+        <li class="blank">This user has no public rides</li>
+    <% else %>
+      <% routes.each do |route| %>
+        <li class="<%= route.completed ? 'ridden' : 'created' %>">
+          <a href="/friends/route/<%= route.id %>" data-routeid="<%= route.id %>"
+            class="friends-route" title="<%= route.completed ? "Ridden by #{friend_first_name}" : "Created by #{friend_first_name}" %>">
+
+            <span class="title">
+              <%= truncate(route.title, :length => 17) %>
+            </span>
+            <span class="date">
+              <%= route.ridedate %>
+            </span>
+          </a>
+        </li>
+      <% end %>
+    <% end %>
+  </ul>
+</div>

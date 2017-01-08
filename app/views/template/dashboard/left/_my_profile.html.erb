@@ -1,0 +1,55 @@
+<div class="dashboard-left-bottom-item">
+  <div class="dashboard-left-bottom-item-head">
+    <span class="dashboard-left-bottom-item-title">My profile</span>
+    <span class="dashboard-left-bottom-item-toggler"></span>
+  </div>
+  <div class="dashboard-left-bottom-item-body">
+    <div class="top">
+      <div class="left avatar-wrapper">
+        <%= image_tag(avatar_url(current_user, :medium), :class => "avatar", :width => '250', :height => '200') %>
+      </div>
+      <div class="right">
+        <div class="username"><%= name_or_email() %></div>
+        <div class="location"><%= current_user.location if current_user.location %></div>
+        <div class="rides">
+          <div class="rides-left">
+            <div class="rides-left-top">Total Rides:</div>
+            <div class="rides-left-bottom"><%= get_rides_stats.count.to_s %></div>
+          </div>
+          <div class="rides-right">
+            <div class="rides-right-top">Lastest Ride:</div>
+            <div class="rides-right-bottom">
+              <% title = get_last_ride_title %>
+              <%= title.first if title && title.length > 0 %>
+            </div>
+          </div>
+        </div>
+        <div class="update-profile">
+          <%= link_to 'Update Profile', edit_user_registration_path, :class => "update-profile-link" %>
+        </div>
+      </div>
+    </div>
+    <div class="clearfix"></div>
+    <div class="bottom">
+      <div class="update-bikes">
+        <span class="text">
+          In My Garage:
+        </span>
+        <%= link_to 'Update', edit_user_registration_path, :class => "update-link" %>
+        <% current_user.user_bikes.each do |bike| %>
+          <span class="dashboard-left-bottom-bike">
+            <%= bike.model %>
+          </span>
+        <% end %>
+      </div>
+
+      <div class="referral-link">
+        <span class="text">
+          <%= "Referral link (#{Referral.referrals_count(current_user.id)})" %>:
+        </span>
+        <% link = APP_CONFIG['base_url'] + '?ref=' + Digest::MD5.hexdigest(current_user.id.to_s) %>
+        <%= link_to link, link, :class => "update-link" %>
+      </div>
+    </div>
+  </div>
+</div>

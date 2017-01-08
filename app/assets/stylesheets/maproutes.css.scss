@@ -1,0 +1,179 @@
+
+.wp-template {
+    display: none;
+}
+
+.wp-origin .wp-remove, .wp-destination .wp-button {
+    display: none;
+}
+
+#butler-map {
+    width:100%;
+    height: 100%;
+}
+
+#butler-map-holder{
+    left: 0px;
+    position: fixed !important;
+    width:100%;
+    height: 100%;
+}
+
+.logged-in #butler-map-holder {
+    left: 110px;
+}
+
+#main {
+    background: white;
+    left: -60px;
+    border: 1px solid #000000;
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
+    padding: 20px 10px 20px 15px;
+    position: relative;
+    width: 300px;
+    z-index: 2;
+    top: 20px;
+}
+
+.start-end-points > p {
+  color: #F6F6F6 !important;
+}
+
+#type-in-locations {
+  font-family: "Open Sans";
+  font-size: 14px;
+  font-weight: normal;
+  text-align: left;
+  padding: 0 20px 0 20px;
+  margin-top: 15px;
+  color: #F6F6F6;
+  margin-bottom: 0;
+  p {margin-bottom: 13px;}
+  .title {
+    font-size: 20px;
+    font-family: 'Newtown';
+    font-weight: bold;
+    margin-bottom: 0px;
+
+    &.active {
+      color: rgb(217, 82, 35);
+    }
+  }
+  .appeal{
+  }
+  a {
+    color: #C84B20;
+    text-decoration: underline;
+  }
+}
+
+.start-end-points input {
+  height: 35px;
+  font-size: 15px;
+  font-style: normal;
+}
+
+.add-destination {
+  background-color: #E16423;
+  margin-left: 20px;
+  margin-right: 10px;
+  margin-top: -30px;
+  text-align: left;
+  line-height: 2;
+  padding-left: 5px;
+  a {
+    text-decoration: none;
+    font-family: 'Open Sans';
+    font-size: 13px;
+    color: #ffffff;
+  }
+}
+
+.additional-way-options {
+  width: 266px;
+  display: block;
+  border: 2px solid #E16423;
+  align-content: left;
+  text-align: left;
+  color: white;
+  background-color: #111111;
+  margin: -28px 0px 20px 20px;
+  line-height: 1.5;
+  font-size: 15px;
+  input[type="checkbox"] {
+    display: none;
+  }
+  input[type="checkbox"] + label span {
+    font: 'Open Sans';
+    display: inline-block;
+    width: 19px;
+    height: 19px;
+    margin-left: 5px;
+    vertical-align: middle;
+    background: image-url('checkbox-uncheck.png') left top no-repeat;
+  }
+  input[type="checkbox"]:checked + label span {
+    background: image-url('checkbox-check.png') left top no-repeat;
+  }
+  p {
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+}
+
+::-webkit-input-placeholder,
+  :-moz-placeholder,
+  ::-moz-placeholder,
+  :-ms-input-placeholder {
+    color: #F6F6F6;
+}
+
+#ElevationsProfileChartHolder {
+    position: fixed;
+    bottom: 0px;
+    left: 418px;
+    max-width: 900px;
+    color: #fff;
+    z-index: 70;
+    display: block;
+    height: 165px;
+    background: transparent image-url('evaluation-bg.png') repeat top left;
+    padding: 8px;
+}
+
+#Elevation-link{
+    position: absolute;
+    right: 26px;
+    top: 9px;
+    background: transparent image-url('evaluation-link.png') no-repeat top left;
+    width: 12px;
+    height: 20px;
+}
+
+#ElevationsProfileChart {
+  height : 100%;
+  width : 100%;
+  min-height : 150px;
+  margin : 0 auto 0 auto;
+  overflow-x : scroll;
+  overflow-y : hidden;
+
+  #PopupTooltip {
+    display: none;
+
+    padding: 5px;
+    position: absolute;
+    top: 35px;
+
+    white-space: nowrap;
+    font-family: Arial;;
+    font-size: 13px;
+    background: #ffffff;
+    color: #000000;
+
+    border: 1px solid #000000;
+    -webkit-border-radius: 5px;
+       -moz-border-radius: 5px;
+            border-radius: 5px;
+  }
+}

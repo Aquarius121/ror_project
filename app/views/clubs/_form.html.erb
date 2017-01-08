@@ -1,0 +1,76 @@
+<% unless @club
+     @club = Club.new
+   end
+%>
+
+
+<%= form_for(@club) do |f| %>
+  <% if @club.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@club.errors.count, 'error') %> prohibited this club from being saved:</h2>
+
+      <ul>
+        <% @club.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <%= f.hidden_field :logo_id %>
+
+  <div class="field">
+    <%= f.label :title, 'Group Name' %>
+    <%= f.text_field :title %>
+  </div>
+
+  <div class="field">
+    <%= f.label :location %>
+    <%= f.hidden_field :location %>
+    <%= select_tag nil, options_for_select(JSON.parse(open('app/assets/json/cities-per-state.json').read).keys.collect { |val| [val, val] }), {:prompt => '', :id => nil, :class => 'club-state add-custom-select'} %>
+    <%= select_tag nil, '', {:prompt => '', :id => nil, :class => 'club-city add-custom-select'} %>
+  </div>
+
+  <div class="field">
+    <%= f.label :club_type_id, 'Group Type' %>
+    <%= f.select :club_type_id, options_from_collection_for_select(ClubType.all, :id, :title, @club.club_type_id), {},
+                 {:class => 'add-custom-select'} %>
+  </div>
+
+  <div class="col_24">
+    <div><%= f.label :riding_preference %></div>
+    <% preferences = RidingPreference.all
+       club_preferences = @club.club_riding_preferences
+       preferences.each do |p| %>
+      <div class="riding-preference col_3 omega">
+        <%= check_box_tag "club[preference][]", p.id, club_preferences.any? {|my_p| my_p.preference_id == p.id} %>
+        <div><%= p.title %></div>
+      </div>
+    <% end %>
+    <!--<div class="field-wrapper col_24">-->
+      <!--< % =  f.text_field :riding_preference %>-->
+    <!--</div>-->
+  </div>
+
+  <div class="field inline">
+    <%= f.label :website, 'Web site' %>
+    <%= f.text_field :website %>
+  </div>
+  <div class="field inline">
+    <%= f.label :url, 'Group URL' %>
+    <%= f.text_field :url %>
+  </div>
+
+  <div class="field">
+    <%= f.label :description %>
+    <%= f.text_area :description, rows: 5 %>
+  </div>
+
+  <div class="field">
+    <%= f.check_box :privacy_id, {}, '1', '2' %>
+    <%= f.label :privacy_id, content_tag(:span, '') + 'Make your group private' %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit('Create Group') %>
+  </div>
+<% end %>

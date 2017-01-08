@@ -1,0 +1,96 @@
+<p id="notice"><%= notice %></p>
+<div id="view-part">
+  <% if false %>
+  <div class="routes-param">
+    <div class="routes-param-title"><strong>Ride Type:</strong></div>
+    <div class="routes-param-value"><%= @route.surface.title %></div>
+  </div>
+  <div class="routes-param">
+    <div class="routes-param-title"><strong>Rating:</strong></div>
+    <div class="routes-param-value raty"><%= @route.rating %></div>
+  </div>
+  <% end %>
+  <!--div class="routes-param">
+    <div class="routes-param-title"></div>
+    <div class="routes-param-value">
+      <a href="#" class="metric active" data-metric="false">miles</a>
+      &nbsp;&sol;&nbsp;
+      <a href="#" class="metric" data-metric="true">km</a></div>
+  </div-->
+  <div class="routes-param">
+    <div class="routes-param-title"><strong>Ride Date:</strong></div>
+    <div class="routes-param-value"><%= @route.ridedate %></div>
+  </div>
+
+  <!--<div class="routes-param">
+    <div class="routes-param-title"><strong>Elevation:</strong></div>
+    <div class="routes-param-value">
+      <%= @route.elevation %>
+      <a href="#" class="show-elevation-profile">show</a>
+      <a href="#" class="hide-elevation-profile">hide</a>
+    </div>
+  </div>-->
+
+
+<% if @route.has_attribute?(:privacy)%>
+  <div class="routes-param">
+    <div class="routes-param-title"><strong>Privacy:</strong></div>
+    <div class="routes-param-value"><%= @route.privacy.title %></div>
+  </div>
+<% end %>
+<% if @route.has_attribute?(:condition)%>
+  <div class="routes-param">
+    <div class="routes-param-title"><strong>Condition:</strong></div>
+    <div class="routes-param-value"><%= @route.condition.title %></div>
+  </div>
+<% end %>
+</div>
+
+<div class="route-accordion-holder">
+  <div class="route-accordion">
+    <h2>Description</h2>
+
+    <div><%= @route.description %></div>
+    <h2>Comments</h2>
+
+    <div>
+      <div class="comments-wrapper">
+        <ul class="comment-list">
+          <% if @comments %>
+              <% @comments.each do |comment| %>
+                  <li>
+                    <div><%= comment.user.full_name %></div>
+                    <div><%= comment.body %></div>
+                  </li>
+              <% end %>
+          <% end %>
+        </ul>
+      </div>
+      <a class="comment-ride" href="<%= comments_new_comment_comments_path(@route.id) %>">
+        Leave a Comment
+      </a>
+    </div>
+
+    <h2>Photo</h2>
+
+    <div class="route-photo">
+      <div class="route-photo-wrapper">
+        <% @photos.each do |photo| %>
+            <li class="photo-wrapper">
+              <% if @owner %>
+                  <a href="#" class="del-img" data-photo-id="<%= photo.id %>">x</a>
+              <% end %>
+              <img src="<%= photo.file(:thumb) %>" data-full-url="<%= photo.file(:original)%>">
+        <% end %>
+      </div>
+      <% if @owner %>
+          <div>
+            <a class="add-photo-to-ride" href="#" data-route-id="<%= @route.id %>">Add Photo</a>
+          </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+<div></div>
+<%= link_to 'Edit', edit_route_path(@route) %> |
+<%= link_to 'Back', routes_path %>

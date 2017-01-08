@@ -1,0 +1,46 @@
+.b-row
+  .row
+    .col-md-12
+      h1 
+        ' Trip title
+
+      /TODO share buttons
+
+  .row
+    .col-md-12
+      .b-trip
+        .avatar
+          = image_tag 'v2/trip.png'
+
+        .title 
+          .pull-right
+            .btn.btn-orange Edit ride
+          | Seattle to Boston
+
+        .stats
+          .row
+            - 4.times.each do
+              .col-md-3
+                .b-stat
+                  .heading
+                    | 123
+                    small mi
+                  .description total distance
+
+.b-row
+  .row
+    .col-md-12
+      h1 
+        ' Suggested content
+
+  .row
+    - 3.times do |i|
+      .col-md-4
+        a.b-block href="#"
+          .avatar
+            = image_tag 'v2/block1.png'
+
+          .date Nov 24, 2014
+
+          .title New Group Ride
+

@@ -1,0 +1,21 @@
+- content_for :subheader
+  = render partial: 'v2/partials/subheader/user', locals: { user: @user }
+
+.row
+  .col-sm-9
+    .b-row
+      = react_component 'ExpandableBlock', @stats
+
+      - if @user.user_bikes.present? or @user.riding_preferences.present?
+        = render partial: 'v2/partials/user/info', locals: { user: @user } 
+
+    - if current_user.can? :view_details, @user
+      .b-row = react_component 'ExpandableBlock', @info
+
+  - if @suggested_friends[:items].any?
+    .col-sm-3.l-sidebar
+      .b-row.b-userlist 
+        = react_component 'ExpandableBlock', @suggested_friends
+
+
+

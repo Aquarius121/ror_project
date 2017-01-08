@@ -1,0 +1,20 @@
+<div class="devise-form-container">
+  <div class="col_3"></div>
+  <div id="sign-div" class="col_18">
+    <div class="sign-div-wrapper col_24">
+      <div class="sign-up-form-title"><h2>Sign up</h2></div>
+      <p id="notice"><%= notice %></p>
+      <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
+        <%= devise_error_messages! %>
+        <%= render "s1_step", :f => f, :resource => resource %>
+
+      <% end %>
+      <div class="col_24 omega">
+        <div class="login-horisontal"></div>
+        <div class="col_24 omega">
+          <%= render 'devise/shared/two_acc_buttons' %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

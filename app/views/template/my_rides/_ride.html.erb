@@ -1,0 +1,53 @@
+<div class="result-wrapper" data-id="<%= ride.id %>">
+  <div class="top">
+    <% type_of_my_ride = Route.type_of_my_ride(ride, current_user).to_s%>
+    <div class="ride-type <%= type_of_my_ride %>">
+      <%=
+          if type_of_my_ride == 'created'
+            "Created by Me"
+          elsif type_of_my_ride == 'ridden'
+            "Ridden by Me"
+          elsif type_of_my_ride == 'shared'
+            "Shared with Me"
+          end
+      %>
+    </div>
+    <div class="img">
+      <% if ride.encoded_path %>
+      <img width="204" height="204" data-src="<%= ride.static_map_url('204x204') %>">
+      <% end %>
+    </div>
+    <div class="ride-title">
+      <%= ride.title %>
+    </div>
+    <div class="distance bordered">
+      <span class="name">Distance</span>
+      <span class="val">
+        <span class="num"><%= meters_to_mile(ride.ride_distance)%></span>
+        <span class="unit">mi</span>
+      </span>
+    </div>
+    <div class="elevation bordered">
+      <span class="name">Elevation</span>
+      <span class="val">
+        <span class="num"><%= meters_to_feet(ride.elevation) || 0 %></span>
+        <span class="unit">ft</span>
+      </span>
+    </div>
+    <div class="time bordered">
+      <span class="name">Est. Time</span>
+      <span class="val">
+        <span class="num"><%= seconds_to_time(ride.ride_time)%></span>
+      </span>
+    </div>
+  </div>
+  <div class="bottom">
+    <div class="created">
+      <span>Created on </span>
+      <span class="date">
+        <%= ride.created_at.to_formatted_s(:short_ordinal) %>
+      </span>
+    </div>
+  </div>
+  <div class="clearfix"></div>
+</div>

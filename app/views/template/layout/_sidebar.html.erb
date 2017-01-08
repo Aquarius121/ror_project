@@ -1,0 +1,24 @@
+<div class="side-main-wrapper">
+  <div class="my-rides a-wrapper">
+    <span class="new-shared-rides-count">0</span>
+    <a class="my-rides-link sidebar-link" href="#">My Rides</a></div>
+  <div class="plan-trip">
+    <a class="plan-trip-link sidebar-link" href="#">Plan Ride</a>
+  </div>
+  <div class="friends">
+    <span class="friend-request-count">0</span>
+    <a class="friends-link sidebar-link" href="#">Friends</a>
+  </div>
+
+  <% if current_user && current_user.roles?(:pro, :admin) %>
+  <div class="layers">
+    <a class="layers-link sidebar-link" href="#">Butler Segments ›</a>
+  </div>
+  <% end %>
+  <div class="legend">
+    <a class="legend-link sidebar-link" href="#">Legend ›</a>
+  </div>
+  <div class="powered-by-wrapper">
+    <div class="powered-by-copyright">©<%= Time.now.year %> RidingSocial</div>
+  </div>
+</div>

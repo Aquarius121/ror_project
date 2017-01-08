@@ -1,0 +1,11 @@
+- content_for :subheader
+  div
+
+- content_for :header_actions
+  = link_to 'Back to dashboard', v2_root_path, class: 'b-header-actions'
+
+.b-row
+  h1 Create group
+
+  = render 'form'
+

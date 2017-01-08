@@ -1,0 +1,21 @@
+<div class="col_9 omega">
+  <div class="have-account-button">
+    <%= link_to new_user_session_path, class: "register-link" do %>
+      <span class="arrow-sprites create-account-button-arrow">>></span>
+      I have an Account
+    <% end %>
+  </div>
+</div>
+<div class="col_9 omega">
+  <div class="have-fb-account-button">
+    <%= link_to user_omniauth_authorize_path(:facebook), :class => "fb-login-link" do %>
+            <span class="login-with-fb-button-icon">
+              f
+            </span>
+            <span class="arrow-sprites login-with-fb-button-arrow">
+              >>
+            </span>
+      Login via Facebook
+    <% end %>
+  </div>
+</div>

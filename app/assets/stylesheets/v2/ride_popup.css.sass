@@ -1,0 +1,61 @@
+.b-ride-popup
+  @extend .b-popup
+  width: 700px
+
+  padding: 0
+  border: 3px solid #fff
+
+  .b-ride-info
+    padding: $popup-space
+
+  & > .map
+    img
+      display: block
+      width: 100%
+
+  & > .header
+    background: #212121
+    color: #fff
+    height: 80px
+    line-height: 80px
+    padding: 0 $popup-space
+
+    h1
+      height: 57px
+      line-height: 60px
+      &:before
+        background-color: $orange-color
+
+  & > .description
+    border-top: 1px solid #fff
+    display: flex
+    background: #fafafa
+    text-shadow: 0 1px 0 #fff
+
+    .text
+      padding: $popup-space
+      flex-grow: 1
+
+    .stats
+      font-size: 60%
+      background: #dcdcdc
+      justify-content: space-between
+      flex: 0 0 25%
+      padding: $popup-space 0
+      display: flex
+      flex-direction: column
+
+      & > .b-stat
+        display: flex
+        align-items: flex-end
+
+        .description
+          text-align: right
+          flex: 0 0 50%
+          padding-left: 5%
+          padding-right: 5%
+          overflow: hidden
+          text-overflow: ellipsis
+        .heading
+          order: 2
+          text-align: left

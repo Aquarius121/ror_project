@@ -1,0 +1,10 @@
+<div class="dashboard-left-bottom-item active">
+  <div class="dashboard-left-bottom-item-head">
+    <span class="dashboard-left-bottom-item-title">Activity feed</span><span class="dashboard-left-bottom-item-toggler"></span>
+  </div>
+  <div class="dashboard-left-bottom-item-body">
+    <div class="activities-wrapper">
+      <%= render partial: 'template/dashboard/left/activity', collection: user_activities %>
+    </div>
+  </div>
+</div>
